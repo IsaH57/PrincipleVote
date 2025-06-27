@@ -1,108 +1,120 @@
 """SynthData: A Class for generating ad handling synthetic voting data."""
+from typing import Any
 
 import numpy as np
 import pref_voting
 from pref_voting.generate_profiles import generate_profile
-from pref_voting.scoring_methods import borda
+from pref_voting.scoring_methods import borda, plurality
 import torch
+from torch.utils.data import random_split, Subset
+
+from data_processing import DataProcessor
 
 
 class SynthData:
+    SUPPORTED_MODELS = ["mlp", "cnn", "wec"]
+    SUPPORTED_PROB_MODELS = ["IC", "MALLOWS-RELPHI", "Urn-R", "euclidean"]
+
     def __init__(self, model_type: str = None, **kwargs):
         """ Initializes the SynthData class.
 
         Args:
-            model_type (str, optional): Type of model to be used for encoding profiles. Defaults to None.
-
-        Attributes:
-            data (np.ndarray): Placeholder for synthetic voting data.
             model_type (str): Type of model to be used for encoding profiles.
 
+        Attributes:
+            data (torch.utils.data.TensorDataset): The generated dataset.
+            model_type (str): The type of model used for encoding profiles.
+            test_data (tuple): Tuple containing test data (X_test, y_test).
+
         """
-        self.data = None  # TODO store data here
+        self.data = None
+        if model_type not in self.SUPPORTED_MODELS:
+            raise ValueError(f"Unsupported model type: {model_type}. Supported types are: {self.SUPPORTED_MODELS}")
         self.model_type = model_type
+        self.test_data = None
 
-    def encode_pref_voting_profile_mlp(self, profile: pref_voting.profiles.Profile) -> np.ndarray:
-        """Encodes a pref_voting.Profile object for use in an MLP.
-
-        Args:
-            profile (pref_voting.profiles.Profile): A pref_voting.Profile object.
-
-        Returns:
-            np.ndarray: Encoded profile as a NumPy array.
-        """
-        num_voters = profile.num_voters
-        num_alternatives = profile.num_cands
-
-        # One-hot encoding
-        encoded_profile = np.zeros((num_voters, num_alternatives, num_alternatives))
-
-        voter_idx = 0
-        for ranking, count in zip(profile.rankings, profile.counts):
-            for _ in range(count):
-                for rank, alternative in enumerate(ranking):
-                    encoded_profile[voter_idx, rank, alternative - 1] = 1
-                voter_idx += 1
-
-        return encoded_profile
-
-    def generate_training_data(self, num_samples: int, num_candidates: int, num_voters: int,
-                               winner_method: str = "borda") -> tuple:
-        """Generates synthetic training data for a given model type.
+    def generate_training_dataset(self, cand_max: int, vot_max: int, num_samples: int,
+                                  min_candidates: int = 3, min_voters: int = 3,
+                                  prob_model: str = "IC",
+                                  winner_method: str = "borda") -> torch.utils.data.TensorDataset:
+        """Uses pref_voting to generate synthetic training data with variable profile sizes.
 
         Args:
+            cand_max (int): Maximum number of alternatives.
+            vot_max (int): Maximum number of voters.
             num_samples (int): Number of samples to generate.
-            num_candidates (int): Number of candidates in the voting profile.
-            num_voters (int): Number of voters in the voting profile.
-            model_type (str): Type of model for encoding (e.g., "mlp").
-            winner_method (str): Method to compute the winner (e.g., "borda").
+            min_candidates (int): Minimum number of candidates.
+            min_voters (int): Minimum number of voters.
+            prob_model (str): Probability model for generating profiles.
+            winner_method (str): Method to compute the winner.
 
         Returns:
-            tuple: A tuple containing the feature matrix X and the target vector y as PyTorch tensors.
+            torch.utils.data.TensorDataset: Dataset containing the generated profiles and their winners.
         """
-        X = []
-        y = []
+        if prob_model not in self.SUPPORTED_PROB_MODELS:
+            raise ValueError(f"Unsupported probability model: {prob_model}")
 
-        for _ in range(num_samples):
-            prof = generate_profile(num_candidates, num_voters,
-                                    probmodel="IC")  # TODO: add more profile generation methods
+        # Initialize np arrays with fixed shapes to hold the data
+        X_np = np.zeros((num_samples, cand_max * cand_max * vot_max), dtype=np.float32)
+        y_np = np.zeros((num_samples, cand_max), dtype=np.float32)
 
-            # Encode the profile based on the model type TODO: add more encoding methods
+        # Generate data for each sample
+        for i in range(num_samples):
+
+            # Random number of candidates and voters for each sample TODO check if random is needed
+            # num_candidates = np.random.randint(min_candidates, cand_max + 1)
+            # num_voters = np.random.randint(min_voters, vot_max + 1)
+
+            num_candidates = cand_max
+            num_voters = vot_max
+
+            # Generate a pref_voting profile
+            prof = generate_profile(num_candidates, num_voters, probmodel=prob_model)
+
+            data_processor = DataProcessor(prof)
+
+            # Encode the profile based on the model type
             if self.model_type == "mlp":
-                encoded_profile = self.encode_pref_voting_profile_mlp(prof)
+                encoded_profile = data_processor.encode_pref_voting_profile_mlp(cand_max=cand_max, vot_max=vot_max)
             else:
-                raise ValueError(f"Unsupported model type: {self.model_type}")
+                raise ValueError(f"Model type {self.model_type} not supported yet")
 
-            # Compute the winner using the specified method
-            winner = borda(prof)
+            # Compute winner
             if winner_method == "borda":
                 winner = borda(prof)
+            elif winner_method == "plurality":
+                winner = plurality(prof)
             else:
                 raise ValueError(f"Unsupported winner method: {winner_method}")
 
-            # One-hot encoding of the winner
-            winner_encoded = np.zeros(num_candidates)
-            for w in winner:  # Assuming winner is a list of winning candidates TODO: change for other methods
-                winner_encoded[w - 1] = 1
+            # Store data
+            X_np[i] = encoded_profile
+            # One-hot encode the winner
+            for w in winner:
+                y_np[i, w - 1] = 1
 
-            X.append(encoded_profile)
-            y.append(winner_encoded)
+        self.data = torch.utils.data.TensorDataset(torch.tensor(X_np, dtype=torch.float32),
+                                                   torch.tensor(y_np, dtype=torch.float32))
 
-        return torch.tensor(X, dtype=torch.float32), torch.tensor(y, dtype=torch.float32)
+        return torch.utils.data.TensorDataset(torch.tensor(X_np, dtype=torch.float32),
+                                              torch.tensor(y_np, dtype=torch.float32))
 
-    def generate_training_dataset(self, num_samples: int, num_candidates: int, num_voters: int,
-                                  winner_method: str = "borda") -> torch.utils.data.TensorDataset:
-        """Generates a PyTorch dataset for training.
+    def split_data(self, train_ratio: float = 0.8) -> tuple[Subset[Any], tuple[Any, Any]]:
+        """Splits the dataset into training and test sets.
 
         Args:
-            num_samples (int): Number of samples to generate.
-            num_candidates (int): Number of candidates in the voting profile.
-            num_voters (int): Number of voters in the voting profile.
-            model_type (str): Type of model for encoding (e.g., "mlp").
-            winner_method (str): Method to compute the winner (e.g., "borda").
+            train_ratio (float): Proportion of the dataset to include in the training set.
 
         Returns:
-            torch.utils.data.TensorDataset: A dataset containing the features and targets.
+            tuple[]: A tuple containing the training dataset and a tuple of test data (X_test, y_test).
         """
-        X, y = self.generate_training_data(num_samples, num_candidates, num_voters, winner_method)
-        return torch.utils.data.TensorDataset(X, y)
+        if self.data is None:
+            raise ValueError("Data has not been generated yet. Please call generate_training_dataset first.")
+
+        train_size = int(len(self.data) * train_ratio)
+        test_size = len(self.data) - train_size
+        train_dataset, test_dataset = random_split(self.data, [train_size, test_size])
+        #self.train_data = self.data.tensors[0][train_dataset.indices], self.data.tensors[1][train_dataset.indices]
+        self.test_data = self.data.tensors[0][test_dataset.indices], self.data.tensors[1][test_dataset.indices]
+        return train_dataset, self.test_data
+

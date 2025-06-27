@@ -1,30 +1,32 @@
 """Script to train a Voting MLP model using synthetic data."""
 
-import torch.nn as nn
-import torch.optim as optim
-from torch.utils.data import DataLoader, TensorDataset
+import torch
+from torch.utils.data import DataLoader, random_split
 
 from synth_data import SynthData
 from voting_mlp import VotingMLP
+from data_processing import DataProcessor
+torch.manual_seed(42)
 
 # Create data
-num_samples = 500
-num_candidates = 3
-num_voters = 10
+num_samples = 10000 # TODO try different values
+max_num_candidates = 5 # m
+max_num_voters = 55 # n
+
 data = SynthData(model_type="mlp")
-train_dataset = data.generate_training_dataset(num_samples=num_samples, num_candidates=num_candidates,
-                                               num_voters=num_voters, winner_method="borda")
-X_test, y_test = data.generate_training_data(num_samples=100, num_candidates=num_candidates, num_voters=num_voters,
-                                             winner_method="borda")
+dataset = data.generate_training_dataset(cand_max=max_num_candidates, vot_max=max_num_voters, num_samples=num_samples)
 
-# Create VotingMLP model
-model = VotingMLP(input_shape=(num_voters, num_candidates, num_candidates), num_candidates=3)
-model.set_train_loader(DataLoader(train_dataset, batch_size=32, shuffle=True))
-model.set_criterion(nn.CrossEntropyLoss())
-model.set_optimizer(optim.Adam(model.parameters(), lr=0.001))
+# Split dataset
+train_data, (X_test, y_test) = data.split_data()
 
+input_size = max_num_candidates * max_num_candidates * max_num_voters  # mmax² × nmax = 5² × 55 = 1375
+model = VotingMLP(
+    input_size=input_size,
+    num_classes=max_num_candidates,
+    train_loader=DataLoader(train_data, batch_size=200, shuffle=True)
+)
 # Train the model
-model.train_model(num_epochs=10)
+model.train_model(num_gradient_steps=5000, seed=42) # TODO try different values
 
 # Evaluate the model
 model.evaluate_model(X_test, y_test)
