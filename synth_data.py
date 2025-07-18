@@ -2,7 +2,6 @@
 from typing import Any
 
 import numpy as np
-import pref_voting
 from pref_voting.generate_profiles import generate_profile
 from pref_voting.scoring_methods import borda, plurality
 import torch
@@ -33,18 +32,15 @@ class SynthData:
         self.model_type = model_type
         self.test_data = None
 
-    def generate_training_dataset(self, cand_max: int, vot_max: int, num_samples: int,
-                                  min_candidates: int = 3, min_voters: int = 3,
+    def generate_training_dataset_mlp(self, cand_max: int, vot_max: int, num_samples: int,
                                   prob_model: str = "IC",
                                   winner_method: str = "borda") -> torch.utils.data.TensorDataset:
-        """Uses pref_voting to generate synthetic training data with variable profile sizes.
+        """Uses pref_voting to generate synthetic training data for MLP.
 
         Args:
             cand_max (int): Maximum number of alternatives.
             vot_max (int): Maximum number of voters.
             num_samples (int): Number of samples to generate.
-            min_candidates (int): Minimum number of candidates.
-            min_voters (int): Minimum number of voters.
             prob_model (str): Probability model for generating profiles.
             winner_method (str): Method to compute the winner.
 
@@ -77,8 +73,7 @@ class SynthData:
             if self.model_type == "mlp":
                 encoded_profile = data_processor.encode_pref_voting_profile_mlp(cand_max=cand_max, vot_max=vot_max)
             else:
-                raise ValueError(f"Model type {self.model_type} not supported yet")
-
+                raise ValueError(f"Wrong model type: {self.model_type}. Use generate_training_dataset_{self.model_type} instead.")
             # Compute winner
             if winner_method == "borda":
                 winner = borda(prof)
@@ -96,8 +91,67 @@ class SynthData:
         self.data = torch.utils.data.TensorDataset(torch.tensor(X_np, dtype=torch.float32),
                                                    torch.tensor(y_np, dtype=torch.float32))
 
-        return torch.utils.data.TensorDataset(torch.tensor(X_np, dtype=torch.float32),
-                                              torch.tensor(y_np, dtype=torch.float32))
+        return self.data
+
+    def generate_training_dataset_cnn(self, cand_max: int, vot_max: int, num_samples: int,
+                                        prob_model: str = "IC",
+                                        winner_method: str = "borda") -> torch.utils.data.TensorDataset:
+            """Generates synthetic training data for CNN models.
+
+            Args:
+                cand_max (int): Maximum number of alternatives.
+                vot_max (int): Maximum number of voters.
+                num_samples (int): Number of samples to generate.
+                prob_model (str): Probability model for generating profiles.
+                winner_method (str): Method to compute the winner.
+
+            Returns:
+                torch.utils.data.TensorDataset: Dataset containing the generated profiles and their winners.
+            """
+            if prob_model not in self.SUPPORTED_PROB_MODELS:
+                raise ValueError(f"Unsupported probability model: {prob_model}")
+
+            # Initialize np arrays with fixed shapes to hold the data
+            X_np = np.zeros((num_samples, cand_max, cand_max, vot_max), dtype=np.float32)
+            y_np = np.zeros((num_samples, cand_max), dtype=np.float32)
+
+            # Generate data for each sample
+            for i in range(num_samples):
+
+                # Random number of candidates and voters for each sample TODO check if random is needed
+                # num_candidates = np.random.randint(min_candidates, cand_max + 1)
+                # num_voters = np.random.randint(min_voters, vot_max + 1)
+
+                num_candidates = cand_max
+                num_voters = vot_max
+
+                # Generate a pref_voting profile
+                prof = generate_profile(num_candidates, num_voters, probmodel=prob_model)
+
+                data_processor = DataProcessor(prof)
+
+                # Encode the profile based on the model type
+                if self.model_type == "cnn":
+                    encoded_profile = data_processor.encode_pref_voting_profile_cnn(cand_max=cand_max, vot_max=vot_max)
+                else:
+                    raise ValueError(f"Wrong model type: {self.model_type}. Use generate_training_dataset_{self.model_type} instead.")
+
+                # Compute winner
+                if winner_method == "borda":
+                    winner = borda(prof)
+                elif winner_method == "plurality":
+                    winner = plurality(prof)
+                else:
+                    raise ValueError(f"Unsupported winner method: {winner_method}")
+
+                # Store data
+                X_np[i] = encoded_profile
+                # One-hot encode the winner
+                for w in winner:
+                    y_np[i, w - 1] = 1
+            self.data = torch.utils.data.TensorDataset(torch.tensor(X_np, dtype=torch.float32),
+                                                         torch.tensor(y_np, dtype=torch.float32))
+            return self.data
 
     def split_data(self, train_ratio: float = 0.8) -> tuple[Subset[Any], tuple[Any, Any]]:
         """Splits the dataset into training and test sets.
@@ -114,7 +168,11 @@ class SynthData:
         train_size = int(len(self.data) * train_ratio)
         test_size = len(self.data) - train_size
         train_dataset, test_dataset = random_split(self.data, [train_size, test_size])
-        #self.train_data = self.data.tensors[0][train_dataset.indices], self.data.tensors[1][train_dataset.indices]
+        self.train_data = self.data.tensors[0][train_dataset.indices], self.data.tensors[1][train_dataset.indices]
         self.test_data = self.data.tensors[0][test_dataset.indices], self.data.tensors[1][test_dataset.indices]
         return train_dataset, self.test_data
 
+
+    def make_tensor(self, data: np.ndarray) -> torch.Tensor:
+        """Converts a NumPy array to a PyTorch tensor."""
+        return torch.tensor(data, dtype=torch.float32)

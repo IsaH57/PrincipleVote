@@ -36,17 +36,6 @@ class VotingMLP(nn.Module):
         self.criterion = criterion if criterion is not None else nn.CrossEntropyLoss()
         self.optimizer = optimizer if optimizer is not None else optim.AdamW(self.parameters(), lr=0.001)
 
-    def forward(self, x):
-        """Defines the forward pass of the model.
-
-        Args:
-            x (torch.Tensor): Input tensor of shape (batch_size, input_size).
-
-        Returns:
-            torch.Tensor: Output tensor of shape (batch_size, num_classes).
-        """
-        return self.layers(x)
-
     def set_train_loader(self, train_loader: DataLoader):
         """Sets the training data loader for the model.
 
@@ -71,11 +60,22 @@ class VotingMLP(nn.Module):
         """
         self.optimizer = optimizer
 
-    def train_model(self, num_gradient_steps: int, seed: int = 42, plot: bool = False):
+    def forward(self, x):
+        """Defines the forward pass of the model.
+
+        Args:
+            x (torch.Tensor): Input tensor of shape (batch_size, input_size).
+
+        Returns:
+            torch.Tensor: Output tensor of shape (batch_size, num_classes).
+        """
+        return self.layers(x)
+
+    def train_model(self, num_steps: int, seed: int = 42, plot: bool = False):
         """Train the model using AdamW optimizer with cosine annealing scheduler.
 
         Args:
-            num_gradient_steps (int): Number of gradient steps to perform.
+            num_steps (int): Number of gradient steps to perform.
             seed (int): Random seed for reproducibility. Defaults to 42.
             plot (bool): Whether to plot the training loss. Defaults to False.
         """
@@ -99,9 +99,9 @@ class VotingMLP(nn.Module):
         losses = []
         steps = []
 
-        while step_count < num_gradient_steps:
+        while step_count < num_steps:
             for batch_X, batch_y in self.train_loader:
-                if step_count >= num_gradient_steps:
+                if step_count >= num_steps:
                     break
 
                 optimizer.zero_grad()  # Reset gradients
@@ -119,12 +119,12 @@ class VotingMLP(nn.Module):
 
                 if step_count % 100 == 0:
                     current_lr = scheduler.get_last_lr()[0]
-                    print(f"Step {step_count}/{num_gradient_steps}, Loss: {loss.item():.4f}, LR: {current_lr:.6f}")
+                    print(f"Step {step_count}/{num_steps}, Loss: {loss.item():.4f}, LR: {current_lr:.6f}")
 
         if plot:
             self.plot_training_loss(steps, losses)
 
-    def evaluate_model(self, X_test: torch.Tensor, y_test: torch.Tensor):
+    def evaluate_model(self, X_test: torch.Tensor, y_test: torch.Tensor) -> float:
         """Evaluates the model on the provided test data.
 
         Args:
@@ -165,7 +165,7 @@ class VotingMLP(nn.Module):
 
         plt.xlabel('Training Steps')
         plt.ylabel('Loss')
-        plt.title('Training Loss Over Time')
+        plt.title('MLP Training Loss Over Time')
         plt.legend()
         plt.grid(True, alpha=0.3)
 
