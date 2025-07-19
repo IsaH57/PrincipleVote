@@ -33,7 +33,7 @@ class VotingMLP(nn.Module):
         )
 
         self.train_loader = train_loader
-        self.criterion = criterion if criterion is not None else nn.CrossEntropyLoss()
+        self.criterion = criterion if criterion is not None else nn.BCEWithLogitsLoss() # TODO check if correct
         self.optimizer = optimizer if optimizer is not None else optim.AdamW(self.parameters(), lr=0.001)
 
     def set_train_loader(self, train_loader: DataLoader):
@@ -106,7 +106,7 @@ class VotingMLP(nn.Module):
 
                 optimizer.zero_grad()  # Reset gradients
                 outputs = self(batch_X)  # Forward pass
-                loss = self.criterion(outputs, batch_y)  # Compute loss
+                loss = self.criterion(outputs, batch_y.float())  # Compute loss
                 loss.backward()  # Backward pass
                 optimizer.step()  # Update weights
                 scheduler.step()  # Update learning rate
@@ -137,11 +137,28 @@ class VotingMLP(nn.Module):
         self.eval()
         with torch.no_grad():
             outputs = self(X_test)
-            _, predicted = torch.max(outputs, 1)
-            _, labels = torch.max(y_test, 1)
-            accuracy = (predicted == labels).sum().item() / labels.size(0)
+            preds = torch.sigmoid(outputs) > 0.5
+            correct = ((preds.int() == y_test.int()).all(dim=1)).sum().item()
+            total = y_test.size(0)
+            accuracy = correct / total
             print(f"Test Accuracy: {accuracy:.4f}")
         return accuracy
+
+    def predict(self, x: torch.Tensor) -> (torch.Tensor, torch.Tensor):
+        """Predicts the winners for the given input.
+        Args:
+            x (torch.Tensor): Input tensor of shape (batch_size, input_size).
+        Returns:
+            Tuple[torch.Tensor, torch.Tensor]: Tuple containing:
+                - winner_mask (torch.Tensor): Binary mask indicating winners.
+                - probs (torch.Tensor): Probabilities of each candidate being the winner.
+        """
+        self.eval()
+        with torch.no_grad():
+            logits = self.forward(x)
+            probs = torch.sigmoid(logits)
+            winner_mask = probs > 0.5
+            return winner_mask.int(), probs
 
     def plot_training_loss(self, steps: List[int], losses: List[float]):
         """Plots Training Loss.

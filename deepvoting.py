@@ -38,6 +38,16 @@ mlp_model.train_model(num_steps=5000, seed=42, plot=True)  # TODO try different 
 # Evaluation
 mlp_model.evaluate_model(mlp_X_test, mlp_y_test)
 
+# Prediction
+mlp_winner_mask, mlp_probabilities = mlp_model.predict(mlp_X_test)
+
+# Prediction for a single example
+mlp_single_example = mlp_X_test[0:1]
+mlp_winner_mask_single, mlp_probs_single = mlp_model.predict(mlp_single_example)
+
+print("\nMLP Prediction:")
+print(f"Predicted Winner: {mlp_winner_mask_single.numpy()}")
+print(f"Probabilities: {mlp_probs_single.numpy()}")
 
 
 #### CNN Model ####
@@ -58,3 +68,14 @@ cnn_model.train_model(num_steps=5000, seed=42, plot=True)
 
 # Evaluation
 cnn_model.evaluate_model(cnn_X_test, cnn_y_test)
+
+# Prediction
+winner_mask, probabilities = cnn_model.predict(cnn_X_test)
+
+# Single example prediction
+single_example = cnn_X_test[0:1]
+winner_mask_single, probs_single = cnn_model.predict(single_example)
+
+print("\nCNN Prediction:")
+print(f"Predicted Winner: {winner_mask_single.numpy()}")
+print(f"Probabilities: {probs_single.numpy()}")
