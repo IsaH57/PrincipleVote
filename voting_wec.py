@@ -1,8 +1,11 @@
+from typing import List
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from gensim.models import Word2Vec
 import numpy as np
+from matplotlib import pyplot as plt
 from pref_voting.generate_profiles import generate_profile
 from torch import optim
 
@@ -195,7 +198,7 @@ class VotingWEC(nn.Module):
         """
         Trains the VotingWEC model using Cosine Annealing with Warm Restarts scheduler.
         Args:
-            num_steps (int): Number of training steps.
+            num_steps(int): Number of training steps.
             train_loader (DataLoader): DataLoader for training data.
             seed (int): Random seed for reproducibility.
             plot (bool): Whether to plot training loss.
@@ -205,7 +208,10 @@ class VotingWEC(nn.Module):
         torch.manual_seed(seed)
 
         self.train()
+
+        # Loss tracking
         losses = []
+        steps = []
 
         optimizer = self.optimizer
         criterion = self.criterion
@@ -215,10 +221,10 @@ class VotingWEC(nn.Module):
             optimizer, T_0=500, T_mult=2, eta_min=1e-6
         )
 
-        step = 0
-        while step < num_steps:
+        step_count = 0
+        while step_count < num_steps:
             for batch_x, batch_y in train_loader:
-                if step >= num_steps:
+                if step_count >= num_steps:
                     break
 
                 optimizer.zero_grad()
@@ -228,21 +234,18 @@ class VotingWEC(nn.Module):
                 optimizer.step()
                 scheduler.step()  # update learning rate
 
+                # Track loss and steps
                 losses.append(loss.item())
-                step += 1
+                steps.append(step_count)
 
-                if step % 100 == 0:
+                step_count += 1
+
+                if step_count % 100 == 0:
                     current_lr = scheduler.get_last_lr()[0]
-                    print(f"Schritt {step}/{num_steps}, Loss: {loss.item():.4f}, LR: {current_lr:.6f}")
+                    print(f"Schritt {step_count}/{num_steps}, Loss: {loss.item():.4f}, LR: {current_lr:.6f}")
 
         if plot:
-            import matplotlib.pyplot as plt
-            plt.figure(figsize=(10, 5))
-            plt.plot(losses)
-            plt.title("Training Loss")
-            plt.xlabel("Steps")
-            plt.ylabel("Loss")
-            plt.show()
+            self.plot_training_loss(steps, losses)
 
         return self
 
@@ -280,3 +283,31 @@ class VotingWEC(nn.Module):
             accuracy = (predicted == y_test).float().mean()
             print(f"WEC Accuracy: {accuracy:.4f}")
         return accuracy
+
+    def plot_training_loss(self, steps: List[int], losses: List[float]):
+        """Plots the training loss over time.
+        Args:
+            steps (List[int]): List of training steps.
+            losses (List[float]): List of loss values corresponding to the steps.
+        """
+
+        plt.figure(figsize=(12, 6))
+
+        # Plot raw losses
+        plt.plot(steps, losses, 'b-', alpha=0.6, linewidth=0.5, label='Raw Loss')
+
+        # Plot moving average of losses
+        window_size = 50
+        if len(losses) > window_size:
+            moving_avg = []
+            for i in range(window_size, len(losses)):
+                moving_avg.append(sum(losses[i - window_size:i]) / window_size)
+            plt.plot(steps[window_size:], moving_avg, 'r-', linewidth=2, label=f'Moving Avg ({window_size})')
+
+        plt.xlabel('Training Steps')
+        plt.ylabel('Loss')
+        plt.title('CNN Training Loss Over Time')
+        plt.legend()
+        plt.grid(True, alpha=0.3)
+
+        plt.show()

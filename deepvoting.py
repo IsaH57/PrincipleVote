@@ -8,6 +8,7 @@ from synth_data import SynthData
 from voting_cnn import VotingCNN
 from voting_mlp import VotingMLP
 from data_processing import DataProcessor
+from voting_wec import VotingWEC
 
 torch.manual_seed(42)
 
@@ -79,3 +80,59 @@ winner_mask_single, probs_single = cnn_model.predict(single_example)
 print("\nCNN Prediction:")
 print(f"Predicted Winner: {winner_mask_single.numpy()}")
 print(f"Probabilities: {probs_single.numpy()}")
+
+
+#### Embedding Classifier ####
+
+print("WEC")
+
+# Generate synthetic data for WEC
+wec_data = SynthData(model_type="wec")
+wec_dataset = wec_data.generate_training_dataset_wec(
+    cand_max=max_num_candidates,
+    vot_max=max_num_voters,
+    num_samples=num_samples
+)
+
+# Split dataset
+wec_train_data, (wec_X_test, wec_y_test) = wec_data.split_data()
+
+# Initialize WEC model
+wec_model = VotingWEC(num_alternatives=max_num_candidates)
+
+def profile_collate_fn(batch):
+    """
+    Collate function for the DataLoader to process a batch of profiles and labels.
+
+    Args:
+        batch: List of tuples where each tuple contains a profile and its corresponding label.
+
+    Returns:
+        tuple: (profiles, labels) where profiles is a list of profiles and labels is a tensor of labels.
+    """
+    profiles = [item[0] for item in batch]
+    labels = torch.stack([item[1] for item in batch])
+
+    return profiles, labels
+
+# create DataLoader with custom collate function
+wec_train_loader = torch.utils.data.DataLoader(
+    wec_train_data,
+    batch_size=200,
+    shuffle=True,
+    collate_fn=profile_collate_fn
+)
+
+# training
+wec_model.train_model(num_steps=5000, train_loader=wec_train_loader, seed=42, plot=True)
+
+# evaluation
+wec_model.evaluate_model(wec_X_test, wec_y_test)
+
+# prediction
+single_example = wec_X_test[0:1]
+winner_mask, probs = wec_model.predict(single_example)
+
+print("\nWEC Prediction:")
+print(f"VPredicted Winner: {winner_mask.numpy()}")
+print(f"Probabilities: {probs.numpy()}")
