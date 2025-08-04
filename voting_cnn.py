@@ -12,8 +12,7 @@ import numpy as np
 
 
 class VotingCNN(nn.Module):
-    def __init__(self, train_loader: DataLoader, m_max=5, n_max=55, conv_channels=[32, 64], output_dim=5,
-                 criterion=None, optimizer=None):
+    def __init__(self, train_loader: DataLoader, m_max=5, n_max=55, conv_channels=[32, 64], output_dim=5):
         """Initializes the VotingCNN model.
 
         Args:
@@ -22,8 +21,18 @@ class VotingCNN(nn.Module):
             n_max (int): Maximum number of voters.
             conv_channels (List[int]): Number of channels for convolutional layers.
             output_dim (int): Number of output classes (candidates).
-            criterion (nn.Module, optional): Loss function. Defaults to None.
-            optimizer (torch.optim.Optimizer, optional): Optimizer. Defaults to None.
+
+        Attributes:
+            m_max (int): Maximum number of candidates (alternatives).
+            n_max (int): Maximum number of voters.
+            output_dim (int): Number of output classes (candidates).
+            conv1 (nn.Conv2d): First convolutional layer.
+            conv2 (nn.Conv2d): Second convolutional layer.
+            flattened_dim (int): Flattened dimension after convolutional layers.
+            fc1, fc2, fc3 (nn.Linear): Fully connected layers.
+            train_loader (DataLoader): DataLoader for training data.
+            criterion (nn.Module): Loss function used for training.
+            optimizer (torch.optim.Optimizer): Optimizer for model parameters.
         """
         super(VotingCNN, self).__init__()
 
@@ -35,17 +44,17 @@ class VotingCNN(nn.Module):
         self.conv1 = nn.Conv2d(in_channels=m_max, out_channels=conv_channels[0], kernel_size=(5, 1))
         self.conv2 = nn.Conv2d(in_channels=conv_channels[0], out_channels=conv_channels[1], kernel_size=(1, 5))
 
-        # Compute flattened dim after convs
+        # Compute flattened dim after conv layers
         self.flattened_dim = conv_channels[1] * (m_max - 4) * (n_max - 4)
 
         # Fully connected layers
         self.fc1 = nn.Linear(self.flattened_dim, 128)
         self.fc2 = nn.Linear(128, 128)
-        self.fc3 = nn.Linear(128, output_dim)
+        self.fc3 = nn.Linear(128, output_dim) # TODO check if extra output layer is needed
 
         self.train_loader = train_loader
-        self.criterion = criterion if criterion is not None else nn.BCEWithLogitsLoss()  # TODO check if loss function is correct. paper uses CrossEntropyLoss
-        self.optimizer = optimizer if optimizer is not None else optim.AdamW(self.parameters(), lr=0.001)
+        self.criterion =  nn.BCEWithLogitsLoss()  # TODO check if loss function is correct. paper uses CrossEntropyLoss
+        self.optimizer =  optim.AdamW(self.parameters(), lr=0.001)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """Forward pass of the CNN.
@@ -77,6 +86,7 @@ class VotingCNN(nn.Module):
 
         optimizer = self.optimizer
         criterion = self.criterion
+        # Cosine Annealing scheduler with warm restarts
         scheduler = optim.lr_scheduler.CosineAnnealingWarmRestarts(
             optimizer, T_0=500, T_mult=2, eta_min=1e-6
         )

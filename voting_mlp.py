@@ -9,16 +9,19 @@ from typing import List
 
 
 class VotingMLP(nn.Module):
-    def __init__(self, input_size: int, train_loader: DataLoader, num_classes: int,
-                 criterion=None, optimizer=None):
+    def __init__(self, input_size: int, train_loader: DataLoader, num_classes: int):
         """Initializes the VotingMLP model.
 
         Args:
             input_size (int): Size of flattened input features (mmax² × nmax).
             train_loader (DataLoader): DataLoader for training data.
             num_classes (int): Number of candidates to classify.
-            criterion (nn.Module): Loss function. Defaults to CrossEntropyLoss.
-            optimizer (torch.optim.Optimizer): Optimizer. Defaults to AdamW with learning rate 0.001.
+
+        Attributes:
+            layers (nn.Sequential): Sequential container of the MLP layers.
+            train_loader (DataLoader): DataLoader for training data.
+            criterion (nn.Module): Loss function used for training.
+            optimizer (torch.optim.Optimizer): Optimizer for model parameters.
         """
         super(VotingMLP, self).__init__()
 
@@ -33,8 +36,8 @@ class VotingMLP(nn.Module):
         )
 
         self.train_loader = train_loader
-        self.criterion = criterion if criterion is not None else nn.BCEWithLogitsLoss() # TODO check if correct
-        self.optimizer = optimizer if optimizer is not None else optim.AdamW(self.parameters(), lr=0.001)
+        self.criterion =  nn.BCEWithLogitsLoss() # TODO check if correct
+        self.optimizer =  optim.AdamW(self.parameters(), lr=0.001)
 
     def set_train_loader(self, train_loader: DataLoader):
         """Sets the training data loader for the model.

@@ -2,6 +2,7 @@
 
 import numpy as np
 import pref_voting
+import torch
 
 
 class DataProcessor:
@@ -97,3 +98,5 @@ class DataProcessor:
 
         #x = torch.tensor(prof, dtype=torch.float32).unsqueeze(0)  # (1, mmax, mmax, nmax)
         return prof
+
+
