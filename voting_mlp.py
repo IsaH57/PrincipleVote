@@ -9,15 +9,18 @@ from typing import List
 
 
 class VotingMLP(nn.Module):
-    def __init__(self, input_size: int, train_loader: DataLoader, num_classes: int):
+    def __init__(self, train_loader: DataLoader, max_candidates: int, max_voters: int, ):
         """Initializes the VotingMLP model.
 
         Args:
-            input_size (int): Size of flattened input features (mmax² × nmax).
             train_loader (DataLoader): DataLoader for training data.
-            num_classes (int): Number of candidates to classify.
+            max_candidates (int): Maximum number of candidates to consider.
+            max_voters (int): Maximum number of voters to consider.
 
         Attributes:
+            input_size (int): Size of the input layer, calculated as max_candidates² * max_voters.
+            max_cand (int): Maximum number of candidates (alternatives).
+            max_vot (int): Maximum number of voters.
             layers (nn.Sequential): Sequential container of the MLP layers.
             train_loader (DataLoader): DataLoader for training data.
             criterion (nn.Module): Loss function used for training.
@@ -25,43 +28,23 @@ class VotingMLP(nn.Module):
         """
         super(VotingMLP, self).__init__()
 
+        self.input_size = max_candidates * max_candidates * max_voters
+        self.max_cand = max_candidates
+        self.max_vot = max_voters
+
         self.layers = nn.Sequential(
-            nn.Linear(input_size, 128),  # first hidden layer: 128 neurons
+            nn.Linear(self.input_size, 128),  # first hidden layer: 128 neurons
             nn.ReLU(),
             nn.Linear(128, 128),  # second hidden layer: 128 neurons
             nn.ReLU(),
             nn.Linear(128, 128),  # third hidden layer: 128 neurons
             nn.ReLU(),
-            nn.Linear(128, num_classes),  # output layer: number of candidates
+            nn.Linear(128, self.max_cand),  # output layer: number of candidates #TODO check if output layer is needed
         )
 
         self.train_loader = train_loader
-        self.criterion =  nn.BCEWithLogitsLoss() # TODO check if correct
-        self.optimizer =  optim.AdamW(self.parameters(), lr=0.001)
-
-    def set_train_loader(self, train_loader: DataLoader):
-        """Sets the training data loader for the model.
-
-        Args:
-            train_loader (DataLoader): DataLoader containing the training data.
-        """
-        self.train_loader = train_loader
-
-    def set_criterion(self, criterion):
-        """Sets the loss function for the model.
-
-        Args:
-            criterion (nn.Module): The loss function to be used.
-        """
-        self.criterion = criterion
-
-    def set_optimizer(self, optimizer):
-        """Sets the optimizer for the model.
-
-        Args:
-            optimizer (torch.optim.Optimizer): The optimizer to be used.
-        """
-        self.optimizer = optimizer
+        self.criterion = nn.BCEWithLogitsLoss()
+        self.optimizer = optim.AdamW(self.parameters(), lr=0.001)
 
     def forward(self, x):
         """Defines the forward pass of the model.
@@ -75,7 +58,7 @@ class VotingMLP(nn.Module):
         return self.layers(x)
 
     def train_model(self, num_steps: int, seed: int = 42, plot: bool = False):
-        """Train the model using AdamW optimizer with cosine annealing scheduler.
+        """Train the model using the set optimizer with cosine annealing scheduler.
 
         Args:
             num_steps (int): Number of gradient steps to perform.
@@ -86,11 +69,9 @@ class VotingMLP(nn.Module):
         torch.manual_seed(seed)
         torch.cuda.manual_seed(seed) if torch.cuda.is_available() else None
 
-        # AdamW optimizer
         optimizer = self.optimizer
 
         # Cosine Annealing with Warm Restarts scheduler
-        # T_0 = initial restart period, T_mult = factor for increasing restart periods
         scheduler = optim.lr_scheduler.CosineAnnealingWarmRestarts(
             optimizer, T_0=500, T_mult=2, eta_min=1e-6
         )
@@ -127,30 +108,60 @@ class VotingMLP(nn.Module):
         if plot:
             self.plot_training_loss(steps, losses)
 
-    def evaluate_model(self, X_test: torch.Tensor, y_test: torch.Tensor) -> float:
-        """Evaluates the model on the provided test data.
+    def evaluate_model_hard(self, X_test: torch.Tensor, y_test: torch.Tensor) -> float:
+        """Evaluates the model using hard accuracy, meaning that the predicted set of winners must match exactly with the true set: F(P)=S.
 
         Args:
-            X_test (torch.Tensor): Test input data of shape (num_samples, num_voters, num_alternatives, num_alternatives).
-            y_test (torch.Tensor): Test target labels of shape (num_samples, num_candidates).
+            X_test (torch.Tensor): Test input tensor of shape (num_samples, input_size).
+            y_test (torch.Tensor): True labels tensor of shape (num_samples, num_classes).
 
         Returns:
-            float: Accuracy of the model on the test data.
+            float: Hard accuracy as a fraction of correct predictions.
         """
         self.eval()
         with torch.no_grad():
             outputs = self(X_test)
-            preds = torch.sigmoid(outputs) > 0.5
-            correct = ((preds.int() == y_test.int()).all(dim=1)).sum().item()
-            total = y_test.size(0)
-            accuracy = correct / total
-            print(f"Test Accuracy: {accuracy:.4f}")
-        return accuracy
+            predicted = (torch.sigmoid(outputs) > 0.5).int()
+
+            # hard accuracy: predicted set must match exactly
+            correct = 0
+            for pred, true in zip(predicted, y_test.int()):
+                if torch.equal(pred, true):
+                    correct += 1
+
+            print(f"Hard Accuracy: {correct / len(y_test)}")
+            return correct / len(y_test)
+
+    def evaluate_model_soft(self, X_test: torch.Tensor, y_test: torch.Tensor) -> float:
+        """Evaluates the model using soft accuracy, meaning that there is at least one overlap between predicted winners and true winners: F(P) ⊆ S.
+
+        Args:
+            X_test (torch.Tensor): Test input tensor of shape (num_samples, input_size).
+            y_test (torch.Tensor): True labels tensor of shape (num_samples, num_classes).
+
+        Returns:
+            float: Soft accuracy as a fraction of correct predictions.
+        """
+        self.eval()
+        with torch.no_grad():
+            outputs = self(X_test)
+            predicted = (torch.sigmoid(outputs) > 0.5).int()
+
+            correct = 0
+            for pred, true in zip(predicted, y_test.int()):
+                # Check if there is any overlap between predicted winners and true winners
+                if (pred & true).any():
+                    correct += 1
+
+            print(f"Soft Accuracy: {correct / len(y_test)}")
+            return correct / len(y_test)
 
     def predict(self, x: torch.Tensor) -> (torch.Tensor, torch.Tensor):
         """Predicts the winners for the given input.
+
         Args:
             x (torch.Tensor): Input tensor of shape (batch_size, input_size).
+
         Returns:
             Tuple[torch.Tensor, torch.Tensor]: Tuple containing:
                 - winner_mask (torch.Tensor): Binary mask indicating winners.
@@ -164,7 +175,7 @@ class VotingMLP(nn.Module):
             return winner_mask.int(), probs
 
     def plot_training_loss(self, steps: List[int], losses: List[float]):
-        """Plots Training Loss.
+        """Plots the Training Loss.
 
         Args:
             steps (List[int]): List of training steps.

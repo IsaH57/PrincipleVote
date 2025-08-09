@@ -1,165 +1,191 @@
 """SynthData: A Class for generating ad handling synthetic voting data."""
-from typing import Any
 
 import numpy as np
+import pref_voting.profiles
 from pref_voting.generate_profiles import generate_profile
 from pref_voting.scoring_methods import borda, plurality
-import torch
-import sklearn
 from sklearn.model_selection import train_test_split
-from torch.utils.data import random_split, Subset, Dataset
-from gensim.models import Word2Vec
-
-from data_processing import DataProcessor
+import torch
+from torch.utils.data import random_split, Subset, Dataset, TensorDataset
 
 
 class SynthData:
     SUPPORTED_MODELS = ["mlp", "cnn", "wec"]
     SUPPORTED_PROB_MODELS = ["IC", "MALLOWS-RELPHI", "Urn-R", "euclidean"]
+    SUPPORTED_VOTING_RULES = ["borda", "plurality", "copeland"]
 
     def __init__(self, model_type: str = None, **kwargs):
-        """ Initializes the SynthData class.
+        """Initializes the SynthData class.
 
         Args:
             model_type (str): Type of model to be used for encoding profiles.
 
         Attributes:
-            data (torch.utils.data.TensorDataset): The generated dataset.
             model_type (str): The type of model used for encoding profiles.
+            data (torch.utils.data.TensorDataset): The generated dataset.
+            train_data (tuple): Tuple containing training data (X_train, y_train).
             test_data (tuple): Tuple containing test data (X_test, y_test).
-
         """
-        self.data = None
         if model_type not in self.SUPPORTED_MODELS:
             raise ValueError(f"Unsupported model type: {model_type}. Supported types are: {self.SUPPORTED_MODELS}")
+
         self.model_type = model_type
+        self.data = None
+        self.train_data = None
         self.test_data = None
-        self.embedding_matrix = None
-        self.ranking_to_idx = None
 
     # TODO make one function?
-    def generate_training_dataset_mlp(self, cand_max: int, vot_max: int, num_samples: int,
-                                      prob_model: str = "IC",
-                                      winner_method: str = "borda") -> torch.utils.data.TensorDataset:
-        """Uses pref_voting to generate synthetic training data for MLP.
+    def generate_training_dataset_mlp(self, cand_max, vot_max, num_samples, prob_model="IC",
+                                      winner_method="borda") -> TensorDataset:
+        """Generates synthetic training data for Multi-Layer Perceptron (MLP) models.
 
         Args:
-            cand_max (int): Maximum number of alternatives.
+            cand_max (int): Maximum number of candidates.
             vot_max (int): Maximum number of voters.
             num_samples (int): Number of samples to generate.
-            prob_model (str): Probability model for generating profiles.
-            winner_method (str): Method to compute the winner.
+            prob_model (str): Probability model for generating profiles. Defaults to "IC".
+            winner_method (str): Method to compute the winner. Defaults to "borda".
 
         Returns:
-            torch.utils.data.TensorDataset: Dataset containing the generated profiles and their winners.
+            torch.utils.data.TensorDataset: Custom dataset containing the generated profiles and their winners.
         """
+        # TODO make utils function
         if prob_model not in self.SUPPORTED_PROB_MODELS:
-            raise ValueError(f"Unsupported probability model: {prob_model}")
+            raise ValueError(
+                f"Unsupported probability model: {prob_model}. Supported models are: {self.SUPPORTED_PROB_MODELS}")
+        if winner_method not in self.SUPPORTED_VOTING_RULES:
+            raise ValueError(
+                f"Unsupported winner method: {winner_method}. Supported methods are: {self.SUPPORTED_VOTING_RULES}")
 
-        # Initialize np arrays with fixed shapes to hold the data
         X_np = np.zeros((num_samples, cand_max * cand_max * vot_max), dtype=np.float32)
         y_np = np.zeros((num_samples, cand_max), dtype=np.float32)
 
-        # Generate data for each sample
         for i in range(num_samples):
-
-            # Random number of candidates and voters for each sample TODO check if random is needed
-            # num_candidates = np.random.randint(min_candidates, cand_max + 1)
-            # num_voters = np.random.randint(min_voters, vot_max + 1)
-
-            num_candidates = cand_max
-            num_voters = vot_max
-
-            # Generate a pref_voting profile
+            num_candidates = np.random.randint(1, cand_max + 1)
+            num_voters = np.random.randint(1, vot_max + 1)
             prof = generate_profile(num_candidates, num_voters, probmodel=prob_model)
 
-            data_processor = DataProcessor(prof)
+            encoded_profile = self.pad_profile(prof, cand_max, vot_max, mode="mlp")
+            X_np[i] = encoded_profile
 
-            # Encode the profile based on the model type
-            if self.model_type == "mlp":
-                encoded_profile = data_processor.encode_pref_voting_profile_mlp(cand_max=cand_max, vot_max=vot_max)
-            else:
-                raise ValueError(
-                    f"Wrong model type: {self.model_type}. Use generate_training_dataset_{self.model_type} instead.")
-            # Compute winner
             if winner_method == "borda":
                 winner = borda(prof)
             elif winner_method == "plurality":
                 winner = plurality(prof)
+            elif winner_method == "copeland":
+                raise NotImplementedError("Copeland method is not implemented yet.")
             else:
-                raise ValueError(f"Unsupported winner method: {winner_method}")
-
-            # Store data
-            X_np[i] = encoded_profile
-            # One-hot encode the winner
+                raise ValueError(
+                    f"Winner method not supported: {winner_method}. Supported methods are: {self.SUPPORTED_VOTING_RULES}")
             for w in winner:
                 y_np[i, w - 1] = 1
 
-        self.data = torch.utils.data.TensorDataset(torch.tensor(X_np, dtype=torch.float32),
-                                                   torch.tensor(y_np, dtype=torch.float32))
-
+        self.data = TensorDataset(
+            torch.tensor(X_np, dtype=torch.float32),
+            torch.tensor(y_np, dtype=torch.float32)
+        )
         return self.data
 
-    def generate_training_dataset_cnn(self, cand_max: int, vot_max: int, num_samples: int,
-                                      prob_model: str = "IC",
-                                      winner_method: str = "borda") -> torch.utils.data.TensorDataset:
-        """Generates synthetic training data for CNN models.
+    def generate_training_dataset_cnn(self, cand_max, vot_max, num_samples, prob_model="IC",
+                                      winner_method="borda") -> TensorDataset:
+        """Generates synthetic training data for Convolutional Neural Network (CNN) models.
 
         Args:
-                cand_max (int): Maximum number of alternatives.
-                vot_max (int): Maximum number of voters.
-                num_samples (int): Number of samples to generate.
-                prob_model (str): Probability model for generating profiles.
-                winner_method (str): Method to compute the winner.
+            cand_max (int): Maximum number of candidates.
+            vot_max (int): Maximum number of voters.
+            num_samples (int): Number of samples to generate.
+            prob_model (str): Probability model for generating profiles. Defaults to "IC".
+            winner_method (str): Method to compute the winner. Defaults to "borda".
 
         Returns:
-                torch.utils.data.TensorDataset: Dataset containing the generated profiles and their winners.
-            """
+            torch.utils.data.TensorDataset: Custom dataset containing the generated profiles and their winners.
+        """
+        # TODO make utils function
         if prob_model not in self.SUPPORTED_PROB_MODELS:
-            raise ValueError(f"Unsupported probability model: {prob_model}")
+            raise ValueError(
+                f"Unsupported probability model: {prob_model}. Supported models are: {self.SUPPORTED_PROB_MODELS}")
+        if winner_method not in self.SUPPORTED_VOTING_RULES:
+            raise ValueError(
+                f"Unsupported winner method: {winner_method}. Supported methods are: {self.SUPPORTED_VOTING_RULES}")
 
-            # Initialize np arrays with fixed shapes to hold the data
         X_np = np.zeros((num_samples, cand_max, cand_max, vot_max), dtype=np.float32)
         y_np = np.zeros((num_samples, cand_max), dtype=np.float32)
 
-        # Generate data for each sample
         for i in range(num_samples):
-
-            # Random number of candidates and voters for each sample TODO check if random is needed
-            # num_candidates = np.random.randint(min_candidates, cand_max + 1)
-            # num_voters = np.random.randint(min_voters, vot_max + 1)
-
-            num_candidates = cand_max
-            num_voters = vot_max
-
-            # Generate a pref_voting profile
+            num_candidates = np.random.randint(1, cand_max + 1)
+            num_voters = np.random.randint(1, vot_max + 1)
             prof = generate_profile(num_candidates, num_voters, probmodel=prob_model)
 
-            data_processor = DataProcessor(prof)
+            encoded_profile = self.pad_profile(prof, cand_max, vot_max, mode="cnn")
+            X_np[i] = encoded_profile
 
-            # Encode the profile based on the model type
-            if self.model_type == "cnn":
-                encoded_profile = data_processor.encode_pref_voting_profile_cnn(cand_max=cand_max, vot_max=vot_max)
-            else:
-                raise ValueError(
-                    f"Wrong model type: {self.model_type}. Use generate_training_dataset_{self.model_type} instead.")
-
-            # Compute winner
             if winner_method == "borda":
                 winner = borda(prof)
             elif winner_method == "plurality":
                 winner = plurality(prof)
+            elif winner_method == "copeland":
+                raise NotImplementedError("Copeland method is not implemented yet.")
             else:
-                raise ValueError(f"Unsupported winner method: {winner_method}")
-
-            # Store data
-            X_np[i] = encoded_profile
-            # One-hot encode the winner
+                raise ValueError(
+                    f"Winner method not supported: {winner_method}. Supported methods are: {self.SUPPORTED_VOTING_RULES}")
             for w in winner:
                 y_np[i, w - 1] = 1
-        self.data = torch.utils.data.TensorDataset(torch.tensor(X_np, dtype=torch.float32),
-                                                   torch.tensor(y_np, dtype=torch.float32))
+
+        self.data = TensorDataset(
+            torch.tensor(X_np, dtype=torch.float32),
+            torch.tensor(y_np, dtype=torch.float32)
+        )
         return self.data
+
+    def pad_profile(self, profile: pref_voting.profiles.Profile, cand_max: int, vot_max: int, mode: str):
+        """Padding logic for CNN and MLP.
+
+        Args:
+            profile (pref_voting.profiles.Profile): The preference voting profile to be padded.
+            cand_max (int): Maximum number of candidates (alternatives).
+            vot_max (int): Maximum number of voters.
+            mode (str): The mode of encoding, either "mlp" or "cnn".
+
+        Returns:
+            np.ndarray
+                - MLP: flat vector length cand_max^2 * vot_max, Fortran order
+                - CNN: (cand_max, cand_max, vot_max) one-hot [alt, rank, voter]
+        """
+        num_voters = profile.num_voters
+        num_alternatives = profile.num_cands
+
+        if num_voters > vot_max:
+            raise ValueError(f"Number of voters ({num_voters}) exceeds maximum ({vot_max})")
+        if num_alternatives > cand_max:
+            raise ValueError(f"Number of alternatives ({num_alternatives}) exceeds maximum ({cand_max})")
+
+        if mode == "mlp":
+            encoded = np.zeros((cand_max, cand_max, vot_max), dtype=np.float32)
+            voter_idx = 0
+            for ranking, count in zip(profile.rankings, profile.counts):
+                for _ in range(count):
+                    if voter_idx < vot_max:
+                        for rank_pos, alt in enumerate(ranking):
+                            if rank_pos < cand_max:
+                                if alt < cand_max:
+                                    encoded[alt, rank_pos, voter_idx] = 1
+                        voter_idx += 1
+            return encoded.flatten(order='F')
+
+        elif mode == "cnn":
+            encoded = np.zeros((cand_max, cand_max, vot_max), dtype=np.float32)
+            voter_idx = 0
+            for ranking, count in zip(profile.rankings, profile.counts):
+                for _ in range(count):
+                    if voter_idx < vot_max:
+                        for rank_pos, alt in enumerate(ranking):
+                            if rank_pos < cand_max:
+                                if alt < cand_max:
+                                    encoded[alt, rank_pos, voter_idx] = 1
+                        voter_idx += 1
+            return encoded
+        else:
+            raise ValueError(f"Unknown mode: {mode}")
 
     def generate_training_dataset_wec(self, cand_max: int, vot_max: int, num_samples: int,
                                       prob_model: str = "IC",
@@ -170,8 +196,8 @@ class SynthData:
             cand_max (int): Maximum number of candidates.
             vot_max (int): Maximum number of voters.
             num_samples (int): Number of samples to generate.
-            prob_model (str): Probability model for generating profiles.
-            winner_method (str): Method to compute the winner.
+            prob_model (str): Probability model for generating profiles. Defaults to "IC".
+            winner_method (str): Method to compute the winner. Defaults to "borda".
 
         Returns:
             ProfileDataset: Custom dataset containing the generated profiles and their winners.
@@ -186,8 +212,9 @@ class SynthData:
 
         # Generate data for each sample
         for i in range(num_samples):
-            num_candidates = cand_max
-            num_voters = vot_max
+            # Random number of candidates and voters for each sample
+            num_candidates = np.random.randint(1, cand_max + 1)
+            num_voters = np.random.randint(1, vot_max + 1)
 
             # Generate a pref_voting profile
             prof = generate_profile(num_candidates, num_voters, probmodel=prob_model)
@@ -219,14 +246,27 @@ class SynthData:
             def __getitem__(self, idx):
                 return self.profiles[idx], self.targets[idx]
 
-
         self.data = ProfileDataset(
             X_profiles,
             torch.tensor(y_np, dtype=torch.float32)
         )
         return self.data
 
-    def split_data(self, train_ratio: float = 0.8):
+    def collate_profile(self, batch) -> tuple[list, torch.Tensor]:
+        """Collate function for the DataLoader to process a batch of profiles and labels.
+
+        Args:
+            batch: List of tuples where each tuple contains a profile and its corresponding label.
+
+        Returns:
+            tuple: (profiles, labels) where profiles is a list of profiles and labels is a tensor of labels.
+        """
+        profiles = [item[0] for item in batch]
+        labels = torch.stack([item[1] for item in batch])
+
+        return profiles, labels
+
+    def split_data(self, train_ratio: float = 0.8) -> tuple[Dataset, tuple[list, torch.Tensor]]:
         """Splits the dataset into training and test sets.
 
         Args:
@@ -263,6 +303,7 @@ class SynthData:
             X_test = [self.data.profiles[i] for i in test_indices]
             y_test = self.data.targets[test_indices]
 
+            self.train_data = train_dataset
             self.test_data = (X_test, y_test)
 
         return train_dataset, self.test_data

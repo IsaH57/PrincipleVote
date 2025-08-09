@@ -1,39 +1,50 @@
-from typing import List
+"""VotingWEC: An implementation of the Voting with Embedding Classifier (WEC) model for preference voting."""
 
+from gensim.models import Word2Vec
+from matplotlib import pyplot as plt
+import numpy as np
+from pref_voting.generate_profiles import generate_profile
+from synth_data import SynthData
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from gensim.models import Word2Vec
-import numpy as np
-from matplotlib import pyplot as plt
-from pref_voting.generate_profiles import generate_profile
 from torch import optim
-
-from synth_data import SynthData
+from typing import List
 
 
 class VotingWEC(nn.Module):
-    def __init__(self, num_alternatives, pre_trained_embeddings=None):
+    def __init__(self, max_candidates: int, max_voters: int, corpus_size: int, embed_dim: int, window_size: int,
+                 pre_trained_embeddings=None):
         """Initializes the VotingWEC model.
 
         Args:
-            num_alternatives (int): Number of candidate alternatives (classes).
-            pre_trained_embeddings (torch.Tensor, optional): Pre-trained embeddings to use. If None, train embeddings from scratch.
+            max_candidates (int): Maximum number of candidate alternatives.
+            max_voters (int): Maximum number of voters.
+            corpus_size (int): Size of the synthetic corpus for pre-training embeddings.
+            embed_dim (int): Dimension of the word embeddings.
+            window_size (int): Context window size for Word2Vec.
+            pre_trained_embeddings (torch.Tensor, optional): Pre-trained embeddings to use instead of training new ones.
+
         Attributes:
             word_to_idx (dict): Mapping from ranking strings to indices.
             vocab_size (int): Size of the vocabulary.
-            num_alternatives (int): Number of candidate alternatives.
-            embeddings (nn.Embedding): Embedding layer for word embeddings.
-            avg (nn.AvgPool2d): Averaging layer to pool over voters.
-            fc1, fc2, fc3, out (nn.Linear): Fully connected layers for classification.
-            criterion (nn.Module): Loss function used for training.
-            optimizer (torch.optim.Optimizer): Optimizer for model parameters.
+            max_cand (int): Maximum number of candidates.
+            max_vot (int): Maximum number of voters.
+            corpus_size (int): Size of the synthetic corpus for pre-training embeddings.
+            embed_dim (int): Dimension of the word embeddings.
+            window_size (int): Context window size for Word2Vec.
         """
         super().__init__()
+
         self.word_to_idx = None
         self.vocab_size = None
-        self.num_alternatives = num_alternatives
+        self.max_cand = max_candidates
+        self.max_vot = max_voters
+        self.corpus_size = corpus_size
+        self.embed_dim = embed_dim
+        self.window_size = window_size
 
+        # TODO given embedding must match the number of alternatives. add check for this
         if pre_trained_embeddings is not None:
             # use pretrained embeddings if available
             self.embeddings = nn.Embedding.from_pretrained(
@@ -41,68 +52,24 @@ class VotingWEC(nn.Module):
                 freeze=False,
             )
         else:
-            self.pre_train_embeddings(corpus_size=100000, embedding_dim=200, window=7, prob_model="IC")
+            self.pre_train_embeddings(corpus_size=self.corpus_size, embedding_dim=self.embed_dim,
+                                      window=self.window_size, prob_model="IC")
 
         # averaging layer
-        self.avg = nn.AvgPool1d(kernel_size=200, stride=1)
+        self.avg = nn.AvgPool1d(kernel_size=self.embed_dim, stride=1)
 
         # 3 liner layers with 128 neurons each
-        self.fc1 = nn.Linear(200, 128)
+        self.fc1 = nn.Linear(self.embed_dim, 128)
         self.fc2 = nn.Linear(128, 128)
         self.fc3 = nn.Linear(128, 128)
-        self.out = nn.Linear(128, num_alternatives)
+        self.out = nn.Linear(128, self.max_cand)  # TODO check if extra output layer is needed
 
-        self.criterion = nn.BCEWithLogitsLoss()  # TODO check if loss function is correct. paper uses CrossEntropyLoss
+        self.criterion = nn.BCEWithLogitsLoss()
         self.optimizer = optim.AdamW(self.parameters(), lr=0.001)
 
-    def forward(self, x) -> torch.Tensor:
-        """
-        Forward pass of the VotingWEC model.
-        Args:
-            x (List[pref_voting.profiles.Profile]): List of pref_voting.Profile objects.
-        Returns:
-            torch.Tensor: Output logits of shape (batch_size, num_alternatives).
-        """
-        batch_size = len(x)
-
-        # convert profiles to sequences of indices
-        sequences = []
-        for prof in x:
-            sequence = []
-            for ranking, count in zip(prof.rankings, prof.counts):
-                ranking_str = ''.join(map(str, ranking))
-                for _ in range(count):
-                    if ranking_str in self.word_to_idx:
-                        sequence.append(self.word_to_idx[ranking_str])
-                    else:
-                        sequence.append(self.word_to_idx["<unk>"])
-
-            # padding to ensure all sequences have the same length
-            while len(sequence) < 200:  # embedding dimension
-                sequence.append(self.word_to_idx["<pad>"])
-
-            sequences.append(sequence[:200])
-
-        # convert sequences to tensor
-        input_tensor = torch.tensor(sequences, dtype=torch.long)
-
-        # Embedding layer
-        embedded = self.embeddings(input_tensor)  # [batch_size, seq_len, embed_dim]
-
-        # Averaging Layer (average over voters)
-        x = self.avg(embedded.permute(0, 2, 1)).squeeze(-1)  # [batch_size, embed_dim]
-
-        # Linear layers
-        x = F.relu(self.fc1(x))
-        x = F.relu(self.fc2(x))
-        x = F.relu(self.fc3(x))
-        x = self.out(x)
-
-        return x
-
-    def pre_train_embeddings(self, corpus_size=100000, embedding_dim=200, window=8, prob_model="IC"):
-        """
-        Pre-train embeddings using Word2Vec on a synthetic corpus.
+    def pre_train_embeddings(self, corpus_size: int, embedding_dim: int, window: int,
+                             prob_model="IC"):
+        """Pre-train embeddings using Word2Vec on a synthetic corpus.
 
         Args:
             corpus_size (int): Number of profiles to generate for training
@@ -111,7 +78,7 @@ class VotingWEC(nn.Module):
             prob_model (str): Probability model to use for generating profiles.
 
         Returns:
-            (torch.Tensor, dict): Embeddings matrix and mapping from words to indices.
+            (torch.Tensor, dict): Embedding matrix and mapping from words to indices.
         """
         if prob_model not in SynthData.SUPPORTED_PROB_MODELS:
             raise ValueError(f"Probability model not supported: {prob_model}")
@@ -125,8 +92,8 @@ class VotingWEC(nn.Module):
         # Generate profiles
         for i in range(corpus_size):
             # set number of candidates and voters
-            num_candidates = self.num_alternatives
-            num_voters = np.random.randint(1, 20)  # random number of voters between 1 and 20
+            num_candidates = np.random.randint(1, self.max_cand + 1)
+            num_voters = np.random.randint(1, self.max_vot + 1)
 
             # generate profile
             profile = generate_profile(num_candidates, num_voters, probmodel=prob_model)
@@ -137,9 +104,13 @@ class VotingWEC(nn.Module):
                 ranking_str = ''.join(map(str, ranking))
                 vocabulary.add(ranking_str)
 
-                # add ranking to sentence multiple times according to count
+                # add ranking to sentence multiple times according to count #TODO check if this is correct
                 for _ in range(count):
                     sentence.append(ranking_str)
+
+            # pad the sentence to the maximum length
+            while len(sentence) < embedding_dim:
+                sentence.append('<pad>')
 
             corpus.append(sentence)
 
@@ -194,14 +165,63 @@ class VotingWEC(nn.Module):
 
         return embed, word_to_idx
 
+    def forward(self, x) -> torch.Tensor:
+        """
+        Forward pass of the VotingWEC model.
+
+        Args:
+            x (List[pref_voting.profiles.Profile]): List of pref_voting.Profile objects.
+
+        Returns:
+            torch.Tensor: Output logits of shape (batch_size, num_alternatives).
+        """
+        batch_size = len(x)
+
+        # convert profiles to sequences of indices
+        sequences = []
+        for prof in x:
+            sequence = []
+            for ranking, count in zip(prof.rankings, prof.counts):
+                ranking_str = ''.join(map(str, ranking))
+                for _ in range(count):
+                    if ranking_str in self.word_to_idx:
+                        sequence.append(self.word_to_idx[ranking_str])
+                    else:
+                        sequence.append(self.word_to_idx["<unk>"])
+
+            # padding to ensure all sequences have the same length
+            while len(sequence) < self.embed_dim:
+                sequence.append(self.word_to_idx["<pad>"])
+
+            sequences.append(sequence[:self.embed_dim])
+
+        # convert sequences to tensor
+        input_tensor = torch.tensor(sequences, dtype=torch.long)
+
+        # Embedding layer
+        embedded = self.embeddings(input_tensor)  # [batch_size, seq_len, embed_dim]
+
+        # Averaging Layer (average over voters)
+        x = self.avg(embedded.permute(0, 2, 1)).squeeze(-1)  # [batch_size, embed_dim]
+
+        # Linear layers
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = F.relu(self.fc3(x))
+        x = self.out(x)
+
+        return x
+
     def train_model(self, num_steps, train_loader, seed=42, plot=False):
         """
         Trains the VotingWEC model using Cosine Annealing with Warm Restarts scheduler.
+
         Args:
             num_steps(int): Number of training steps.
             train_loader (DataLoader): DataLoader for training data.
             seed (int): Random seed for reproducibility.
             plot (bool): Whether to plot training loss.
+
         Returns:
             VotingWEC: The trained model.
         """
@@ -252,8 +272,10 @@ class VotingWEC(nn.Module):
     def predict(self, x):
         """
         Predicts the winners for the given input profiles.
+
         Args:
             x (List[pref_voting.profiles.Profile]): List of pref_voting.Profile objects.
+
         Returns:
             Tuple[torch.Tensor, torch.Tensor]: Tuple containing:
                 - winners (torch.Tensor): Binary mask indicating winners.
@@ -267,25 +289,63 @@ class VotingWEC(nn.Module):
 
         return winners, probs
 
-    def evaluate_model(self, x_test, y_test):
-        """
-        Evaluates the model on the provided test data.
+    def evaluate_model_hard(self, x_test, y_test) -> float:
+        """Evaluates the WEC model using hard accuracy, meaning that the predicted set of winners must match exactly with the true set: F(P)=S.
+
         Args:
-            x_test (List[pref_voting.profiles.Profile]): List of pref_voting.Profile objects for testing.
-            y_test (torch.Tensor): Test target labels of shape (num_samples, num_alternatives).
+            x_test (torch.Tensor): Test input tensor of shape (num_samples, input_size).
+            y_test (torch.Tensor): True labels tensor of shape (num_samples, num_classes).
+
         Returns:
-            float: Accuracy of the model on the test data.
+            float: Hard accuracy as a fraction of correct predictions.
         """
         self.eval()
+        hard_correct = 0
+
         with torch.no_grad():
             outputs = self(x_test)
-            predicted = torch.sigmoid(outputs) > 0.5
-            accuracy = (predicted == y_test).float().mean()
-            print(f"WEC Accuracy: {accuracy:.4f}")
+            predicted = (torch.sigmoid(outputs) > 0.5).int()
+
+            for pred_row, true_row in zip(predicted, y_test.int()):
+                if torch.equal(pred_row, true_row):
+                    hard_correct += 1
+
+        accuracy = hard_correct / len(y_test)
+        print(f"WEC Hard Accuracy: {accuracy:.4f}")
+        return accuracy
+
+    def evaluate_model_soft(self, x_test, y_test) -> float:
+        """Evaluates the WEC model using soft accuracy, meaning that there is at least one overlap between predicted winners and true winners: F(P) ⊆ S.
+
+        Args:
+            x_test (torch.Tensor): Test input tensor of shape (num_samples, input_size).
+            y_test (torch.Tensor): True labels tensor of shape (num_samples, num_classes).
+
+        Returns:
+            float: Soft accuracy as a fraction of correct predictions.
+        """
+        self.eval()
+        total_score = 0.0
+
+        with torch.no_grad():
+            outputs = self(x_test)
+            predicted = (torch.sigmoid(outputs) > 0.5).int()
+            y_test_int = y_test.int()
+
+            for pred_row, true_row in zip(predicted, y_test_int):
+                true_winners = (true_row == 1).nonzero(as_tuple=True)[0]
+                if len(true_winners) == 0:
+                    continue  # skip edge cases with no winners
+                correctly_predicted = (pred_row[true_winners] == 1).sum().item()
+                total_score += correctly_predicted / len(true_winners)
+
+        accuracy = total_score / len(y_test)
+        print(f"WEC Soft Accuracy: {accuracy:.4f}")
         return accuracy
 
     def plot_training_loss(self, steps: List[int], losses: List[float]):
         """Plots the training loss over time.
+
         Args:
             steps (List[int]): List of training steps.
             losses (List[float]): List of loss values corresponding to the steps.

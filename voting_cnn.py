@@ -1,31 +1,27 @@
 """VotingCNN: A CNN for Voting-Based Classification"""
 
-from typing import List
-
+from matplotlib import pyplot as plt
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
-from matplotlib import pyplot as plt
 from torch import optim
+import torch.nn.functional as F
 from torch.utils.data import DataLoader
-import numpy as np
+from typing import List
 
 
 class VotingCNN(nn.Module):
-    def __init__(self, train_loader: DataLoader, m_max=5, n_max=55, conv_channels=[32, 64], output_dim=5):
+    def __init__(self, train_loader: DataLoader, max_candidates: int, max_voters: int, conv_channels=[32, 64]):
         """Initializes the VotingCNN model.
 
         Args:
             train_loader (DataLoader): DataLoader for training data.
-            m_max (int): Maximum number of candidates (alternatives).
-            n_max (int): Maximum number of voters.
+            max_candidates (int): Maximum number of candidates (alternatives).
+            max_voters (int): Maximum number of voters.
             conv_channels (List[int]): Number of channels for convolutional layers.
-            output_dim (int): Number of output classes (candidates).
 
         Attributes:
-            m_max (int): Maximum number of candidates (alternatives).
-            n_max (int): Maximum number of voters.
-            output_dim (int): Number of output classes (candidates).
+            max_candidates (int): Maximum number of candidates (alternatives).
+            max_voters (int): Maximum number of voters.
             conv1 (nn.Conv2d): First convolutional layer.
             conv2 (nn.Conv2d): Second convolutional layer.
             flattened_dim (int): Flattened dimension after convolutional layers.
@@ -36,35 +32,38 @@ class VotingCNN(nn.Module):
         """
         super(VotingCNN, self).__init__()
 
-        self.m_max = m_max
-        self.n_max = n_max
-        self.output_dim = output_dim
+        self.max_cand = max_candidates
+        self.max_vot = max_voters
 
         # CNN layers
-        self.conv1 = nn.Conv2d(in_channels=m_max, out_channels=conv_channels[0], kernel_size=(5, 1))
-        self.conv2 = nn.Conv2d(in_channels=conv_channels[0], out_channels=conv_channels[1], kernel_size=(1, 5))
+        self.conv1 = nn.Conv2d(in_channels=max_candidates, out_channels=conv_channels[0],
+                               kernel_size=(5, 1))  # TODO check if this kernel size works for 77/7
+        self.conv2 = nn.Conv2d(in_channels=conv_channels[0], out_channels=conv_channels[1],
+                               kernel_size=(1, 5))  # TODO check effect of conv_channels
 
         # Compute flattened dim after conv layers
-        self.flattened_dim = conv_channels[1] * (m_max - 4) * (n_max - 4)
+        self.flattened_dim = conv_channels[1] * (max_candidates - 4) * (max_voters - 4)
 
         # Fully connected layers
         self.fc1 = nn.Linear(self.flattened_dim, 128)
         self.fc2 = nn.Linear(128, 128)
-        self.fc3 = nn.Linear(128, output_dim) # TODO check if extra output layer is needed
+        self.fc3 = nn.Linear(128, self.max_cand)
 
         self.train_loader = train_loader
-        self.criterion =  nn.BCEWithLogitsLoss()  # TODO check if loss function is correct. paper uses CrossEntropyLoss
-        self.optimizer =  optim.AdamW(self.parameters(), lr=0.001)
+        self.criterion = nn.BCEWithLogitsLoss()
+        self.optimizer = optim.AdamW(self.parameters(), lr=0.001)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """Forward pass of the CNN.
+
         Args:
             x (torch.Tensor): Input tensor of shape (batch_size, m_max, m_max, n_max).
+
         Returns:
             torch.Tensor: Output logits of shape (batch_size, output_dim).
         """
-        x = F.relu(self.conv1(x))  # -> (batch, 32, m_max-4, n_max)
-        x = F.relu(self.conv2(x))  # -> (batch, 64, m_max-4, n_max-4)
+        x = F.relu(self.conv1(x))
+        x = F.relu(self.conv2(x))
         x = x.view(x.size(0), -1)  # flatten
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
@@ -73,6 +72,7 @@ class VotingCNN(nn.Module):
 
     def train_model(self, num_steps: int, seed: int = 42, plot: bool = False):
         """Trains the CNN model.
+
         Args:
             num_steps (int): Number of training steps.
             seed (int): Random seed for reproducibility.
@@ -86,6 +86,7 @@ class VotingCNN(nn.Module):
 
         optimizer = self.optimizer
         criterion = self.criterion
+
         # Cosine Annealing scheduler with warm restarts
         scheduler = optim.lr_scheduler.CosineAnnealingWarmRestarts(
             optimizer, T_0=500, T_mult=2, eta_min=1e-6
@@ -121,8 +122,10 @@ class VotingCNN(nn.Module):
 
     def predict(self, x: torch.Tensor) -> (torch.Tensor, torch.Tensor):
         """Predicts the winners for the given input.
+
         Args:
             x (torch.Tensor): Input tensor of shape (batch_size, m_max, m_max, n_max).
+
         Returns:
             Tuple[torch.Tensor, torch.Tensor]: Tuple containing:
                 - winner_mask (torch.Tensor): Binary mask indicating winners.
@@ -135,27 +138,57 @@ class VotingCNN(nn.Module):
             winner_mask = probs > 0.5
             return winner_mask.int(), probs
 
-    def evaluate_model(self, X_test: torch.Tensor, y_test: torch.Tensor) -> float:
-        """Evaluates the model on the test set.
-        Args:
-            X_test (torch.Tensor): Test input data of shape (num_samples, m_max, m_max, n_max).
-            y_test (torch.Tensor): Test target labels of shape (num_samples, output_dim).
-        Returns:
-            float: Accuracy of the model on the test data.
-        """
+    def evaluate_model_hard(self, X_test: torch.Tensor, y_test: torch.Tensor) -> float:
+        """Evaluates the model using hard accuracy, meaning that the predicted set of winners must match exactly with the true set: F(P)=S.
 
+        Args:
+            X_test (torch.Tensor): Test input tensor of shape (num_samples, m_max, m_max, n_max).
+            y_test (torch.Tensor): True labels tensor of shape (num_samples, num_classes).
+
+        Returns:
+            float: Hard accuracy as a fraction of correct predictions.
+        """
         self.eval()
         with torch.no_grad():
             outputs = self(X_test)
-            preds = torch.sigmoid(outputs) > 0.5
-            correct = ((preds.int() == y_test.int()).all(dim=1)).sum().item()
-            total = y_test.size(0)
-            accuracy = correct / total
-            print(f"Test Accuracy: {accuracy:.4f}")
-        return accuracy
+            predicted = (torch.sigmoid(outputs) > 0.5).int()
+
+            # hard accuracy: predicted set must match exactly
+            correct = 0
+            for pred, true in zip(predicted, y_test.int()):
+                if torch.equal(pred, true):
+                    correct += 1
+
+            print(f"Hard Accuracy: {correct / len(y_test)}")
+            return correct / len(y_test)
+
+    def evaluate_model_soft(self, X_test: torch.Tensor, y_test: torch.Tensor) -> float:
+        """Evaluates the model using soft accuracy, meaning that there is at least one overlap between predicted winners and true winners: F(P) ⊆ S.
+
+        Args:
+            X_test (torch.Tensor): Test input tensor of shape (num_samples, m_max, m_max, n_max).
+            y_test (torch.Tensor): True labels tensor of shape (num_samples, num_classes).
+
+        Returns:
+            float: Soft accuracy as a fraction of correct predictions.
+        """
+        self.eval()
+        with torch.no_grad():
+            outputs = self(X_test)
+            predicted = (torch.sigmoid(outputs) > 0.5).int()
+
+            correct = 0
+            for pred, true in zip(predicted, y_test.int()):
+                # Check if there is any overlap between predicted winners and true winners
+                if (pred & true).any():
+                    correct += 1
+
+            print(f"Soft Accuracy: {correct / len(y_test)}")
+            return correct / len(y_test)
 
     def plot_training_loss(self, steps: List[int], losses: List[float]):
         """Plots the training loss over time.
+
         Args:
             steps (List[int]): List of training steps.
             losses (List[float]): List of loss values corresponding to the steps.
