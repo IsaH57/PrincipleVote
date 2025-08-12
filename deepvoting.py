@@ -24,18 +24,18 @@ num_samples = 15000
 max_num_candidates = 5 # m
 max_num_voters = 55  # n
 
+data = SynthData(cand_max=max_num_candidates,vot_max=max_num_voters,num_samples=num_samples, prob_model="IC",winner_method="borda")
+
+
 #### MLP Model ####
-"""
+
 print("MLP")
 # Generate synthetic data for MLP
-mlp_data = SynthData(model_type="mlp")
-mlp_dataset = mlp_data.generate_training_dataset_mlp(cand_max=max_num_candidates, vot_max=max_num_voters,
-                                                     num_samples=num_samples)
+mlp_dataset = data.encode_mlp()
 
 # Split dataset
-mlp_train_data, (mlp_X_test, mlp_y_test) = mlp_data.split_data()
+mlp_train_data, (mlp_X_test, mlp_y_test) = data.split_data(mode="mlp")
 
-input_size = max_num_candidates * max_num_candidates * max_num_voters  # mmax² × nmax = 5² × 55 = 1375
 mlp_model = VotingMLP(train_loader=DataLoader(mlp_train_data, batch_size=200, shuffle=True), max_candidates=max_num_candidates, max_voters=max_num_voters
 )
 # Training
@@ -60,15 +60,13 @@ print(f"Probabilities: {mlp_probs_single.numpy()}")
 #### CNN Model ####
 print("CNN")
 # Generate synthetic data for CNN
-cnn_data = SynthData(model_type="cnn")
-cnn_dataset = cnn_data.generate_training_dataset_cnn(cand_max=max_num_candidates, vot_max=max_num_voters,
-                                                     num_samples=num_samples)
+cnn_dataset = data.encode_cnn()
 
 # Split dataset
-cnn_train_data, (cnn_X_test, cnn_y_test) = cnn_data.split_data()
+cnn_train_data, (cnn_X_test, cnn_y_test) = data.split_data(mode="cnn")
 
 
-cnn_model = VotingCNN(train_loader=DataLoader(cnn_train_data, batch_size=200, shuffle=True), max_candidates=5, max_voters=55)
+cnn_model = VotingCNN(train_loader=DataLoader(cnn_train_data, batch_size=200, shuffle=True), max_candidates=max_num_candidates, max_voters=max_num_voters)
 # Training
 cnn_model.train_model(num_steps=5000, seed=42, plot=True)
 
@@ -87,21 +85,16 @@ print("\nCNN Prediction:")
 print(f"Predicted Winner: {winner_mask_single.numpy()}")
 print(f"Probabilities: {probs_single.numpy()}")
 
-"""
+
 #### Embedding Classifier ####
 
 print("WEC")
 
 # Generate synthetic data for WEC
-wec_data = SynthData(model_type="wec")
-wec_dataset = wec_data.generate_training_dataset_wec(
-    cand_max=max_num_candidates,
-    vot_max=max_num_voters,
-    num_samples=num_samples
-)
+wec_dataset = data.encode_wec()
 
 # Split dataset
-wec_train_data, (wec_X_test, wec_y_test) = wec_data.split_data()
+wec_train_data, (wec_X_test, wec_y_test) = data.split_data(mode="wec")
 
 # Initialize WEC model
 wec_model = VotingWEC(max_candidates=max_num_candidates, max_voters=max_num_voters, corpus_size=2 * 10 ** 4, embed_dim=100, window_size=5)
@@ -113,7 +106,7 @@ wec_train_loader = torch.utils.data.DataLoader(
     wec_train_data,
     batch_size=200,
     shuffle=True,
-    collate_fn=wec_data.collate_profile
+    collate_fn=data.collate_profile
 )
 
 # training
