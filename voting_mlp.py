@@ -7,17 +7,14 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 from typing import List
 
+from axioms import set_training_axiom
+
 
 class VotingMLP(nn.Module):
-    def __init__(self, train_loader: DataLoader, max_candidates: int, max_voters: int, ):
-        """Initializes the VotingMLP model.
+    """A Multi-Layer Perceptron (MLP) for Voting-Based Classification.
 
-        Args:
-            train_loader (DataLoader): DataLoader for training data.
-            max_candidates (int): Maximum number of candidates to consider.
-            max_voters (int): Maximum number of voters to consider.
-
-        Attributes:
+    Attributes:
+            name (str): Name of the model.
             input_size (int): Size of the input layer, calculated as max_candidates² * max_voters.
             max_cand (int): Maximum number of candidates (alternatives).
             max_vot (int): Maximum number of voters.
@@ -25,21 +22,32 @@ class VotingMLP(nn.Module):
             train_loader (DataLoader): DataLoader for training data.
             criterion (nn.Module): Loss function used for training.
             optimizer (torch.optim.Optimizer): Optimizer for model parameters.
+    """
+    def __init__(self, train_loader: DataLoader, max_candidates: int, max_voters: int, ):
+        """Initializes the VotingMLP model.
+
+        Args:
+            train_loader (DataLoader): DataLoader for training data.
+            max_candidates (int): Maximum number of candidates to consider.
+            max_voters (int): Maximum number of voters to consider.
         """
         super(VotingMLP, self).__init__()
+        self.name = "mlp"
 
         self.input_size = max_candidates * max_candidates * max_voters
         self.max_cand = max_candidates
         self.max_vot = max_voters
 
         self.layers = nn.Sequential(
-            nn.Linear(self.input_size, 128),  # first hidden layer: 128 neurons
+            nn.Linear(self.input_size, 128),  # input layer: 128 neurons
+            nn.ReLU(),
+            nn.Linear(128, 128),  # first hidden layer: 128 neurons
             nn.ReLU(),
             nn.Linear(128, 128),  # second hidden layer: 128 neurons
             nn.ReLU(),
             nn.Linear(128, 128),  # third hidden layer: 128 neurons
             nn.ReLU(),
-            nn.Linear(128, self.max_cand),  # output layer: number of candidates #TODO check if output layer is needed
+            nn.Linear(128, self.max_cand),  # output layer: number of candidates
         )
 
         self.train_loader = train_loader
@@ -57,13 +65,14 @@ class VotingMLP(nn.Module):
         """
         return self.layers(x)
 
-    def train_model(self, num_steps: int, seed: int = 42, plot: bool = False):
+    def train_model(self, num_steps: int, seed: int = 42, plot: bool = False, axiom: str="default"):
         """Train the model using the set optimizer with cosine annealing scheduler.
 
         Args:
             num_steps (int): Number of gradient steps to perform.
             seed (int): Random seed for reproducibility. Defaults to 42.
             plot (bool): Whether to plot the training loss. Defaults to False.
+            axiom (str): Axiom to enforce during training. Defaults to "default".
         """
         # Set fixed seed for reproducibility
         torch.manual_seed(seed)
@@ -84,14 +93,19 @@ class VotingMLP(nn.Module):
         steps = []
 
         while step_count < num_steps:
-            for batch_X, batch_y in self.train_loader:
+            for batch_X, batch_y, prof in self.train_loader:
                 if step_count >= num_steps:
                     break
 
                 optimizer.zero_grad()  # Reset gradients
                 outputs = self(batch_X)  # Forward pass
-                loss = self.criterion(outputs, batch_y.float())  # Compute loss
+
+                loss = self.criterion(outputs, batch_y.float())
+                loss += set_training_axiom(self, batch_X, prof, axiom)
+
                 loss.backward()  # Backward pass
+                torch.nn.utils.clip_grad_norm_(self.parameters(), max_norm=1.0)
+
                 optimizer.step()  # Update weights
                 scheduler.step()  # Update learning rate
 

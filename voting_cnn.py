@@ -8,8 +8,25 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader
 from typing import List
 
+from axioms import set_training_axiom
+
 
 class VotingCNN(nn.Module):
+    """A Convolutional Neural Network (CNN) for Voting-Based Classification.
+
+    Attributes:
+            name (str): Name of the model.
+            max_cand (int): Maximum number of candidates (alternatives).
+            max_vot (int): Maximum number of voters.
+            conv1 (nn.Conv2d): First convolutional layer.
+            conv2 (nn.Conv2d): Second convolutional layer.
+            flattened_dim (int): Flattened dimension after convolutional layers.
+            fc1, fc2, fc3 (nn.Linear): Fully connected layers.
+            train_loader (DataLoader): DataLoader for training data.
+            criterion (nn.Module): Loss function used for training.
+            optimizer (torch.optim.Optimizer): Optimizer for model parameters.
+    """
+
     def __init__(self, train_loader: DataLoader, max_candidates: int, max_voters: int, conv_channels=[32, 64]):
         """Initializes the VotingCNN model.
 
@@ -18,19 +35,9 @@ class VotingCNN(nn.Module):
             max_candidates (int): Maximum number of candidates (alternatives).
             max_voters (int): Maximum number of voters.
             conv_channels (List[int]): Number of channels for convolutional layers.
-
-        Attributes:
-            max_candidates (int): Maximum number of candidates (alternatives).
-            max_voters (int): Maximum number of voters.
-            conv1 (nn.Conv2d): First convolutional layer.
-            conv2 (nn.Conv2d): Second convolutional layer.
-            flattened_dim (int): Flattened dimension after convolutional layers.
-            fc1, fc2, fc3 (nn.Linear): Fully connected layers.
-            train_loader (DataLoader): DataLoader for training data.
-            criterion (nn.Module): Loss function used for training.
-            optimizer (torch.optim.Optimizer): Optimizer for model parameters.
         """
         super(VotingCNN, self).__init__()
+        self.name = "cnn"
 
         self.max_cand = max_candidates
         self.max_vot = max_voters
@@ -38,11 +45,11 @@ class VotingCNN(nn.Module):
         # CNN layers
         self.conv1 = nn.Conv2d(in_channels=max_candidates, out_channels=conv_channels[0],
                                kernel_size=(5, 1))  # TODO check if this kernel size works for 77/7
-        self.conv2 = nn.Conv2d(in_channels=conv_channels[0], out_channels=conv_channels[1],
+        self.conv2 = nn.Conv2d(in_channels=conv_channels[0], out_channels=conv_channels[0],
                                kernel_size=(1, 5))  # TODO check effect of conv_channels
 
         # Compute flattened dim after conv layers
-        self.flattened_dim = conv_channels[1] * (max_candidates - 4) * (max_voters - 4)
+        self.flattened_dim = conv_channels[0] * (max_candidates - 4) * (max_voters - 4)
 
         # Fully connected layers
         self.fc1 = nn.Linear(self.flattened_dim, 128)
@@ -70,13 +77,14 @@ class VotingCNN(nn.Module):
         logits = self.fc3(x)  # shape: (batch_size, output_dim)
         return logits
 
-    def train_model(self, num_steps: int, seed: int = 42, plot: bool = False):
+    def train_model(self, num_steps: int, seed: int = 42, plot: bool = False, axiom: str="default"):
         """Trains the CNN model.
 
         Args:
             num_steps (int): Number of training steps.
             seed (int): Random seed for reproducibility.
             plot (bool): Whether to plot training loss.
+            axiom (str): Axiom to enforce during training.
         """
         # Set fixed seed for reproducibility
         torch.manual_seed(seed)
@@ -99,10 +107,11 @@ class VotingCNN(nn.Module):
         steps = []
 
         while step_count < num_steps:
-            for batch_x, batch_y in self.train_loader:
+            for batch_x, batch_y, prof in self.train_loader:
                 optimizer.zero_grad()
                 logits = self.forward(batch_x)
                 loss = criterion(logits, batch_y.float())
+                loss += set_training_axiom(self, batch_x, prof, axiom)
                 loss.backward()
                 optimizer.step()
                 scheduler.step()

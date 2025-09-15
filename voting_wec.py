@@ -1,9 +1,11 @@
 """VotingWEC: An implementation of the Voting with Embedding Classifier (WEC) model for preference voting."""
-
+import pref_voting
 from gensim.models import Word2Vec
 from matplotlib import pyplot as plt
 import numpy as np
 from pref_voting.generate_profiles import generate_profile
+
+from axioms import set_training_axiom
 from synth_data import SynthData
 import torch
 import torch.nn as nn
@@ -13,6 +15,19 @@ from typing import List
 
 
 class VotingWEC(nn.Module):
+    """VotingWEC: A Voting Classifier using Word Embeddings and a Feedforward Neural Network.
+
+        Attributes:
+            name (str): Name of the model.
+            word_to_idx (dict): Mapping from ranking strings to indices.
+            vocab_size (int): Size of the vocabulary.
+            max_cand (int): Maximum number of candidates.
+            max_vot (int): Maximum number of voters.
+            corpus_size (int): Size of the synthetic corpus for pre-training embeddings.
+            embed_dim (int): Dimension of the word embeddings.
+            window_size (int): Context window size for Word2Vec.
+    """
+
     def __init__(self, max_candidates: int, max_voters: int, corpus_size: int, embed_dim: int, window_size: int,
                  pre_trained_embeddings=None):
         """Initializes the VotingWEC model.
@@ -24,17 +39,9 @@ class VotingWEC(nn.Module):
             embed_dim (int): Dimension of the word embeddings.
             window_size (int): Context window size for Word2Vec.
             pre_trained_embeddings (torch.Tensor, optional): Pre-trained embeddings to use instead of training new ones.
-
-        Attributes:
-            word_to_idx (dict): Mapping from ranking strings to indices.
-            vocab_size (int): Size of the vocabulary.
-            max_cand (int): Maximum number of candidates.
-            max_vot (int): Maximum number of voters.
-            corpus_size (int): Size of the synthetic corpus for pre-training embeddings.
-            embed_dim (int): Dimension of the word embeddings.
-            window_size (int): Context window size for Word2Vec.
         """
         super().__init__()
+        self.name = "wec"
 
         self.word_to_idx = None
         self.vocab_size = None
@@ -68,7 +75,7 @@ class VotingWEC(nn.Module):
         self.optimizer = optim.AdamW(self.parameters(), lr=0.001)
 
     def pre_train_embeddings(self, corpus_size: int, embedding_dim: int, window: int,
-                             prob_model="IC"):
+                             prob_model="IC") -> (torch.Tensor, dict):
         """Pre-train embeddings using Word2Vec on a synthetic corpus.
 
         Args:
@@ -212,7 +219,7 @@ class VotingWEC(nn.Module):
 
         return x
 
-    def train_model(self, num_steps, train_loader, seed=42, plot=False):
+    def train_model(self, num_steps, train_loader, seed=42, plot=False, axiom: str = "default"):
         """
         Trains the VotingWEC model using Cosine Annealing with Warm Restarts scheduler.
 
@@ -221,6 +228,7 @@ class VotingWEC(nn.Module):
             train_loader (DataLoader): DataLoader for training data.
             seed (int): Random seed for reproducibility.
             plot (bool): Whether to plot training loss.
+            axiom (str): Axiom to enforce during training.
 
         Returns:
             VotingWEC: The trained model.
@@ -250,6 +258,7 @@ class VotingWEC(nn.Module):
                 optimizer.zero_grad()
                 outputs = self(batch_x)
                 loss = criterion(outputs, batch_y)
+                loss += set_training_axiom(self, batch_x, batch_x, axiom)
                 loss.backward()
                 optimizer.step()
                 scheduler.step()  # update learning rate
@@ -262,14 +271,14 @@ class VotingWEC(nn.Module):
 
                 if step_count % 100 == 0:
                     current_lr = scheduler.get_last_lr()[0]
-                    print(f"Schritt {step_count}/{num_steps}, Loss: {loss.item():.4f}, LR: {current_lr:.6f}")
+                    print(f"Step {step_count}/{num_steps}, Loss: {loss.item():.4f}, LR: {current_lr:.6f}")
 
         if plot:
             self.plot_training_loss(steps, losses)
 
         return self
 
-    def predict(self, x):
+    def predict(self, x: List[pref_voting.profiles.Profile]) -> (torch.Tensor, torch.Tensor):
         """
         Predicts the winners for the given input profiles.
 
@@ -283,11 +292,10 @@ class VotingWEC(nn.Module):
         """
         self.eval()
         with torch.no_grad():
-            outputs = self(x)
-            probs = torch.sigmoid(outputs)
-            winners = probs > 0.5
-
-        return winners, probs
+            logits = self.forward(x)
+            probs = torch.sigmoid(logits)
+            winner_mask = probs > 0.5
+            return winner_mask.int(), probs
 
     def evaluate_model_hard(self, x_test, y_test) -> float:
         """Evaluates the WEC model using hard accuracy, meaning that the predicted set of winners must match exactly with the true set: F(P)=S.
