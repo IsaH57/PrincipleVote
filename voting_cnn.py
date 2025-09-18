@@ -8,7 +8,9 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader
 from typing import List
 
-from axioms import set_training_axiom
+from axioms import set_training_axiom, check_anonymity, check_neutrality, check_condorcet, check_pareto, \
+    check_independence
+from synth_data import SynthData
 
 
 class VotingCNN(nn.Module):
@@ -77,7 +79,7 @@ class VotingCNN(nn.Module):
         logits = self.fc3(x)  # shape: (batch_size, output_dim)
         return logits
 
-    def train_model(self, num_steps: int, seed: int = 42, plot: bool = False, axiom: str="default"):
+    def train_model(self, num_steps: int, seed: int = 42, plot: bool = False, axiom: str = "default"):
         """Trains the CNN model.
 
         Args:
@@ -110,9 +112,13 @@ class VotingCNN(nn.Module):
             for batch_x, batch_y, prof in self.train_loader:
                 optimizer.zero_grad()
                 logits = self.forward(batch_x)
+
                 loss = criterion(logits, batch_y.float())
                 loss += set_training_axiom(self, batch_x, prof, axiom)
+
                 loss.backward()
+                torch.nn.utils.clip_grad_norm_(self.parameters(), max_norm=1.0)
+
                 optimizer.step()
                 scheduler.step()
 
@@ -194,6 +200,42 @@ class VotingCNN(nn.Module):
 
             print(f"Soft Accuracy: {correct / len(y_test)}")
             return correct / len(y_test)
+
+    AXIOM_SAT_FUNCTIONS = {
+        "anonymity": check_anonymity,
+        "neutrality": check_neutrality,
+        "condorcet": check_condorcet,
+        "pareto": check_pareto,
+        "independence": check_independence,
+    }
+
+    def evaluate_axiom_satisfaction(self, data: SynthData, axiom: str) -> float:
+        """Evaluates the model's axiom satisfaction rate on the test set.
+
+        Args:
+            data (SynthData): The synthetic data containing test profiles and winners.
+            axiom (str): The axiom to evaluate. Must be one of the keys in AXIOM_SAT_FUNCTIONS.
+
+        Returns:
+            float: Axiom satisfaction rate as a fraction of samples satisfying the axiom.
+        """
+        axiom_fun = self.AXIOM_SAT_FUNCTIONS.get(axiom)
+
+        X_test, y_test = data.get_encoded_cnn()
+        profiles = data.get_raw_profiles()
+
+        self.eval()
+        with torch.no_grad():
+            outputs = self(X_test)
+            predicted = (torch.sigmoid(outputs) > 0.5).int()
+
+            satisfied = 0
+            for profile, pred in zip(profiles, predicted):
+                satisfied += axiom_fun(profile, pred, data.cand_max, data.winner_method)
+            print(satisfied)
+            print(f"Axiom ({axiom}) Satisfaction Rate: {satisfied / len(y_test)}")
+
+        return satisfied / len(y_test)
 
     def plot_training_loss(self, steps: List[int], losses: List[float]):
         """Plots the training loss over time.

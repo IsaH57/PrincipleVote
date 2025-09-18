@@ -42,7 +42,7 @@ mlp_model = VotingMLP(
     )
 
 # Training
-mlp_model.train_model(num_steps=5000, seed=42, plot=True, axiom="independence")  # TODO try different values
+mlp_model.train_model(num_steps=1000, seed=42, plot=True, axiom="none")  # TODO try different values
 
 
 # Evaluation
@@ -51,6 +51,7 @@ mlp_X_test, mlp_y_test = data_test.get_encoded_mlp()
 
 mlp_model.evaluate_model_hard(mlp_X_test, mlp_y_test)
 mlp_model.evaluate_model_soft(mlp_X_test, mlp_y_test)
+mlp_model.evaluate_axiom_satisfaction(data_test, axiom="neutrality")
 
 # Prediction for a single example
 mlp_single_example = mlp_X_test[0:1]
@@ -70,13 +71,14 @@ cnn_model = VotingCNN(train_loader=DataLoader(cnn_dataset_train, batch_size=200,
                       max_candidates=max_num_candidates, max_voters=max_num_voters)
 
 # Training
-cnn_model.train_model(num_steps=5000, seed=42, plot=True, axiom="independence")
+cnn_model.train_model(num_steps=5000, seed=42, plot=True, axiom="none")
 
 # Evaluation
 data_test.encode_cnn()
 cnn_X_test, cnn_y_test = data_test.get_encoded_cnn()
 cnn_model.evaluate_model_hard(cnn_X_test, cnn_y_test)
 cnn_model.evaluate_model_soft(cnn_X_test, cnn_y_test)
+cnn_model.evaluate_axiom_satisfaction(data_test, axiom="neutrality")
 
 # Single example prediction
 cnn_single_example = cnn_X_test[0:1]
@@ -85,7 +87,6 @@ cnn_winner_mask_single, cnn_probs_single = cnn_model.predict(cnn_single_example)
 print("\nCNN Prediction:")
 print(f"Predicted Winner: {cnn_winner_mask_single.numpy()}")
 print(f"Probabilities: {cnn_probs_single.numpy()}")
-
 
 
 #### Embedding Classifier ####
@@ -106,7 +107,7 @@ wec_train_loader = torch.utils.data.DataLoader(
 )
 
 # training
-wec_model.train_model(num_steps=5000, train_loader=wec_train_loader, seed=42, plot=True, axiom="independence")
+wec_model.train_model(num_steps=5000, train_loader=wec_train_loader, seed=42, plot=True, axiom="none")
 
 
 # evaluation
@@ -115,6 +116,7 @@ wec_X_test, wec_y_test = data_test.get_encoded_wec()
 
 wec_model.evaluate_model_hard(wec_X_test, wec_y_test)
 wec_model.evaluate_model_soft(wec_X_test, wec_y_test)
+wec_model.evaluate_axiom_satisfaction(data_test, axiom="neutrality")
 
 # prediction
 wec_single_example = wec_X_test[0:1]
