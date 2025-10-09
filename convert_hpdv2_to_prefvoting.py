@@ -55,13 +55,11 @@ def load_and_convert(file_path):
 
 
 if __name__ == "__main__":
-    # Laden und konvertieren der Daten
     file_path = r"99218df700704ef3e75bfc1510d5f4a97f74a5737d944674aca84c7057d920b7"
 
-    # Konvertierung zu pref_voting Profilen
     profiles = load_and_convert(file_path)
 
-    # Anzeige der Ergebnisse
+
     for i, profile in enumerate(profiles):
         print(f"Profile {i + 1}:")
         print(f"  Prompt: {profile.prompt}")
