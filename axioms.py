@@ -143,19 +143,20 @@ def anonymity_loss(model, X_batch, num_samples=50, eps=1e-8) -> torch.Tensor:
     return loss / num_samples
 
 
-def check_anonymity(profile, winners, cand_max, winner_method="borda") -> int:
-    """ Checks whether a given profile fulfills the anonymity axiom.
+def check_anonymity(profile, winners, cand_max, winner_method="borda", n_permutations=50):
+    """Check whether a given voting profile satisfies the anonymity axiom.
 
     Args:
-        profile: pref_voting Profile object
-        winners: tensor of shape (cand_max,) with 1 for winning candidates and 0 else
-        cand_max: maximum number of candidates
-        winner_method: voting rule to use ("borda", "plurality", "copeland")
+        profile: pref_voting Profile object (with .rankings as list of voter rankings)
+        winners: torch.Tensor of shape (cand_max,), 1 for winners and 0 otherwise
+        cand_max: int, number of candidates
+        winner_method: str, voting rule ("borda", "plurality", "copeland")
+        n_permutations: int, number of random voter permutations to test
 
     Returns:
-        int: 1 if anonymity is satisfied, 0 otherwise
+        int: 1 if anonymity is satisfied for all tested permutations, 0 otherwise
     """
-    original_winners = winners
+    # Select voting rule
     if winner_method == "borda":
         rule = borda
     elif winner_method == "plurality":
@@ -165,28 +166,32 @@ def check_anonymity(profile, winners, cand_max, winner_method="borda") -> int:
     else:
         raise ValueError(f"Winner method '{winner_method}' not supported")
 
-    satisfaction = 0
+    # Ensure the original winners are binary tensor of length cand_max
+    original_winners = winners.clone().int()
 
-    profile_list = profile.rankings
-    permuted_winners = [0] * cand_max
+    # Get voter list safely
+    voter_rankings = list(profile.rankings)  # shallow copy to avoid mutation
+    n_voters = len(voter_rankings)
 
-    # permute voters in profile
-    random.shuffle(profile_list)
-    permuted_profile = Profile(profile_list)
-
-    # compute winners of permuted profile
-    winner = rule(permuted_profile)
-
-    for w in winner:
-        permuted_winners[w] = 1
-    # Check if rule on original and permuted profile agrees
-    if torch.equal(original_winners, torch.tensor(permuted_winners)):
-        satisfaction += 1
-        # continue
+    # If there are very few voters, test all permutations
+    if n_voters <= 5:
+        from itertools import permutations
+        perms = list(permutations(voter_rankings))
     else:
-        satisfaction += 0
-        # break
-    return satisfaction
+        # Otherwise test n_permutations random shuffles
+        perms = [random.sample(voter_rankings, n_voters) for _ in range(n_permutations)]
+
+    # Check each permutation
+    for perm in perms:
+        permuted_profile = Profile(list(perm))
+        permuted_winners = torch.zeros(cand_max, dtype=torch.int)
+        for w in rule(permuted_profile):
+            permuted_winners[w] = 1
+
+        if not torch.equal(original_winners, permuted_winners):
+            return 0  # anonymity violated
+
+    return 1
 
 
 #### Neutrality Loss ####
