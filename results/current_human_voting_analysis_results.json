@@ -1,0 +1,9707 @@
+[
+  {
+    "profile_id": 0,
+    "prompt": "Dwayne the Rock Johnson wrestles Jesus Christ in a WWE match in a hell in a cell.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 1,
+    "prompt": "An anime man in flight uniform with hyper detailed digital artwork and an art style inspired by Klimt, Nixeu, Ian Sprigger, Wlop, and Krenz Cushart.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 2,
+    "prompt": "A Wojak looking over a sea of memes from a cliff on 4chan.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 3,
+    "prompt": "Ralsei and Asriel from Deltarune eating pizza.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 4,
+    "prompt": "A portrait of an anime mecha robot with a Japanese town background and a starred night sky.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2,
+        8
+      ],
+      "plurality": [
+        7
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 5,
+    "prompt": "A minimalist portrait of Chloe Grace by Jean Giraud in a comic style.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 6,
+    "prompt": "A raccoon riding an oversized fox through a forest in a furry art anime still.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 7,
+    "prompt": "Chucky doll dressed as Beetlejuice.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 8,
+    "prompt": "2B from NieR Automata eating a bagel.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 9,
+    "prompt": "Groot depicted as a flower.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 10,
+    "prompt": "A portrait of two women with purple hair flying in different directions against a dark background.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 11,
+    "prompt": "A girl with pink pigtails and face tattoos.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 12,
+    "prompt": "A cat in a tutu dancing to Swan Lake.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 13,
+    "prompt": "Wicked witch casting fireball dressed in green with screaming expression.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 14,
+    "prompt": "Link fights an octorok in a cave in a Don Bluth-style from The Legend of Zelda, Breath of the Wild.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2,
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 0,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 15,
+    "prompt": "A cat with two horns on its head.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 16,
+    "prompt": "A cute anime schoolgirl with a sad face submerged in dark pink and blue water, portrayed in an oil painting style.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 17,
+    "prompt": "The image is a portrait of Homer Simpson as a Na'vi from Avatar, created with vibrant colors and highly detailed in a cinematic style reminiscent of romanticism by Eugene de Blaas and Ross Tran, available on Artstation with credits to Greg Rutkowski.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 18,
+    "prompt": "A depiction of Chucky, the killer doll in anime style.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 19,
+    "prompt": "A hand-drawn cute gnome holding a pumpkin in an autumn disguise, portrayed in a detailed close-up of the face with warm lighting and high detail.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 20,
+    "prompt": "The image is of an anthropomorphic orange walking on a sidewalk.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 21,
+    "prompt": "16-year-old teenager wearing a white bear-ear hat with a smirk on their face.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 22,
+    "prompt": "A spoon dressed up with eyes and a smile.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 23,
+    "prompt": "Keqing from Genshin Impact.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 24,
+    "prompt": "a papaya fruit dressed as a sailor.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 25,
+    "prompt": "The image features artwork in the style of Neon Genesis Evangelion, with a colorful anime design of John Key.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 26,
+    "prompt": "A still of Doraemon from \"Shaun the Sheep\" by Aardman Animation.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 27,
+    "prompt": "Rosario Dawson minimalist portrait by Jean Giraud in a comic book style.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 28,
+    "prompt": "Totem pole made out of cats.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 29,
+    "prompt": "Paul Chuckle bowling on a pirate ship during a storm.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 30,
+    "prompt": "Cartoonish serpent cephalopod mutants emerge from a fiery hell.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 31,
+    "prompt": "A gummy chameleon hanging on a tree branch.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 32,
+    "prompt": "A portrait of Nyan Cat, styled after Annie Leibovitz's dramatic photography.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        5,
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 33,
+    "prompt": "An anime girl is riding a bicycle in Akihabara, resembling the style seen in Studio Ghibli films, and the depiction is detailed.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 34,
+    "prompt": "A full body portrait of Andre the Giant in the style of Justin Roiland.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 35,
+    "prompt": "An image of an emo with dark brown hair in a messy pixie cut, large entirely-black eyes, wearing black clothing and boots.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 36,
+    "prompt": "A fruit basket on a kitchen table with a Studio Ghibli reference.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 37,
+    "prompt": "A corgi puppy with many eyes depicted in a horror manga drawn by Junji Ito.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 38,
+    "prompt": "A young woman witch cosplaying with a magic wand and broom, wearing boots, and posing in a full body shot with a detailed face.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 39,
+    "prompt": "There is a Michael J. Fox Funko Pop figurine depicted in the image.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 40,
+    "prompt": "Girl shooting fireballs at a dragon in a battle pose, Madhouse studio anime style.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 41,
+    "prompt": "Portrait of anime girl in mechanic armor in night Tokyo.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 42,
+    "prompt": "Mugshot of Superman with unkempt appearance and green skin.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        1,
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 43,
+    "prompt": "The image is of dancing potatoes in a cute cartoony style.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 44,
+    "prompt": "Miss Piggy dressed in futuristic outfit resembling Leeloo from The Fifth Element.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 45,
+    "prompt": "The image is of a raccoon wearing a Peaky Blinders hat, surrounded by swirling mist and rendered with fine detail.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 46,
+    "prompt": "A green Gundam in an action pose that resembles Shrek.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": -1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 47,
+    "prompt": "Digital anime art of mattress-man with a serious expression in an empty warehouse, highly detailed and spotlighted.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 48,
+    "prompt": "Portrait of an anime maid by Krenz Cushart, Alphonse Mucha, and Ilya Kuvshinov.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 49,
+    "prompt": "Siamese twins enjoying pickled eggs at a pub.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 50,
+    "prompt": "An anime furry anthro dragon in a deep forest, depicted in a realistic and detailed cel shading style.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 51,
+    "prompt": "Gnomes are playing music during Independence Day festivities in a forest near Lake George.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 52,
+    "prompt": "Spider-Man holding a ginger cat.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        1,
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 53,
+    "prompt": "Close-up of Cad Bane, with bad flash.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 54,
+    "prompt": "Claymation of Futurama characters.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 55,
+    "prompt": "The image is a highly-detailed, symmetrical concept art depicting a full-body illustration of a character from the anime Saitama, with vibrant colors and a galaxy background.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 56,
+    "prompt": "A full body pic of a comic character drawn by Rob Liefield.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 57,
+    "prompt": "A still frame from the anime film Akira.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 58,
+    "prompt": "A small green dinosaur toy with orange spots standing on its hind legs and roaring with its mouth open.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 59,
+    "prompt": "An anime Spider-Man girl.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 60,
+    "prompt": "A 3D rendering of anime schoolgirls with a sad expression underwater, surrounded by dramatic lighting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 61,
+    "prompt": "Teenage boy wearing a skull mask and smoking.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 62,
+    "prompt": "A colorful digital painting with a front view and anime-inspired vibes featuring a magical composition.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 63,
+    "prompt": "A vampire wearing Dr. Martens shoes.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 64,
+    "prompt": "Jack Pumpkinhead in the Land of Oz.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 65,
+    "prompt": "Portrait of young Jerry Lewis in comic style, colorized and created digitally by four artists.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 66,
+    "prompt": "A happy daffodil with big eyes, multiple leaf arms and vine legs, rendered in 3D Pixar style.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2,
+        8
+      ],
+      "plurality": [
+        1,
+        2,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 67,
+    "prompt": "Head and shoulders portrait of Jinx from League of Legends of Arcane animated Series.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 68,
+    "prompt": "A one-eyed dwarf wizard holding a flagon in clean cel shaded vector art.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2,
+        6
+      ],
+      "copeland": [
+        2,
+        6
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 0,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 69,
+    "prompt": "A painting of a koala wearing a princess dress and crown, with a confetti background.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 70,
+    "prompt": "A lemon with a McDonald's hat.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 71,
+    "prompt": "Ewoks swinging from Walmart rafters.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 72,
+    "prompt": "The image is of Pixel Art Huggy Wuggy performing a jumpscare.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 73,
+    "prompt": "Cartoonish illustration of a sci-fi machine shop inside a shipping container.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2,
+        6,
+        7
+      ],
+      "copeland": [
+        7
+      ],
+      "plurality": [
+        4
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 0,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 74,
+    "prompt": "Australian soldiers surrendering to an emu.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 75,
+    "prompt": "A digital anime portrait of tatsumaki with green curly hair and green eyes wearing a jacket, featuring intricate details and atmospheric lighting, by artists wlop, Ilya Kuvshinov, and Krenz Cushart, trending on ArtStation.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 76,
+    "prompt": "A book about the history of Pepe the Frog.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 77,
+    "prompt": "A slime monster.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 78,
+    "prompt": "Francois Hollande depicted as a manga character in Japan.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 79,
+    "prompt": "The image features an anime girl in a short skirt and thigh-high socks, with a slim figure and accentuated hips.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 80,
+    "prompt": "Portrait of an anime princess in white and golden clothes.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 81,
+    "prompt": "A cute little anthropomorphic Tropical fish knight wearing a cape and a crown in short, pale blue armor.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 82,
+    "prompt": "Fullbody portrait of half-mouse anime girl by A-1 Pictures, trending on ArtStation.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 83,
+    "prompt": "An anthropomorphized block of tofu cartoon-style busting through a brick wall, inspired by Kool Aid man.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1,
+        8
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 84,
+    "prompt": "A kitten with a panda coloring eating bamboo.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        2,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 85,
+    "prompt": "The image is of Aunt Jemima in period attire on stage at Van's Warped Tour at 40 years old, throwing pancakes to the crowd.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 86,
+    "prompt": "A demon boy smiling while reading a book in a library.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 87,
+    "prompt": "Uncanny creatures with yin yang flagella in a surreal 1930s cartoon style.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 88,
+    "prompt": "Popcorn in mouth.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 89,
+    "prompt": "An anime-style demon princess is depicted in a digital painting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 90,
+    "prompt": "A white polar bear cub wearing sunglasses sits in a meadow with flowers.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 91,
+    "prompt": "A plush of a cute sun-eating creature.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 92,
+    "prompt": "A cute rainbow kitten with different colored eyes in the chibi-style of Studio Ghibli is featured on a postcard.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 93,
+    "prompt": "Two Somali friends sitting and watching a Studio Ghibli movie.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 94,
+    "prompt": "An image of an aircraft carrier made of cheese.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 95,
+    "prompt": "Scene from Muppet Mad Max-Fury Road.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 96,
+    "prompt": "Family assembling missile in living room.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 97,
+    "prompt": "A lemon wearing a suit and tie, full body portrait.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 98,
+    "prompt": "Astolfo, an anime character, wearing a witch hat and lab coat, is flying on a broom while hexing in a forest.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": -1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 99,
+    "prompt": "A sci-fi machine shop in a shipping container, depicted in a manga-style digital painting with intricate details.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 100,
+    "prompt": "The image shows centric diatoms.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        3
+      ],
+      "copeland": [
+        3
+      ],
+      "plurality": [
+        3
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 0,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 101,
+    "prompt": "A spaceship in an empty landscape.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 102,
+    "prompt": "A mechanical planet amidst a space war with superships and exploding stars, featuring steampunk and clockpunk elements.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 103,
+    "prompt": "A photo of a mechanical angel woman with crystal wings, in the sci-fi style of Stefan Kostic, created by Stanley Lau and Artgerm.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1,
+        2
+      ],
+      "copeland": [
+        1,
+        2
+      ],
+      "plurality": [
+        2,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 104,
+    "prompt": "Anthropomorphic alien plant creature with big eyes and leafy limbs depicted in a detailed painting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 105,
+    "prompt": "A cyber girl with demon horns holds a black feather in front of a cybercity with a gloomy expression.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 106,
+    "prompt": "A massive and brightly colored spacecraft in a deserted landscape, depicted in retro 1960s sci-fi art.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 107,
+    "prompt": "A photorealistic image from a furry fandom convention set in a biopunk era after the genetic revolution and quantum singularity.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        1,
+        6,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 108,
+    "prompt": "Gillian Anderson in a science fiction film directed by John Carpenter.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2,
+        6
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 0,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 109,
+    "prompt": "The image depicts a muscular blonde butch tomboy engineer wearing a patched flight suit, set in a detailed sci-fi environment with cinematic lighting and crepuscular rays.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 110,
+    "prompt": "A digital art image of a detailed surreal alien biomechanical temple interior by Giger.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1,
+        7
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 111,
+    "prompt": "A key visual of a young female swat officer with a neon futuristic gas mask in a cyberpunk setting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        2,
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 112,
+    "prompt": "A person wearing a lab coat holding a green apple and standing in front of a whiteboard filled with equations and diagrams.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2,
+        8
+      ],
+      "plurality": [
+        2,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 113,
+    "prompt": "Scene from the 1931 science fiction film \"Escape from New York.\"",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 114,
+    "prompt": "Sandman wearing black clothing, in a sci-fi themed digital painting by Greg Rutkowski.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": -1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 115,
+    "prompt": "A man watches an old TV while toxic slime and debris pour from the cracked steampunk ceiling into a glowing, neon-lit room.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 116,
+    "prompt": "A jellyfish sleeping in a space station pod.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 117,
+    "prompt": "Dr. Pepper floating in space, viewed through the window of a spaceship.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        2,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 118,
+    "prompt": "Alien abduction depicted in a blurry, old polaroid with lost and later found footage.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 119,
+    "prompt": "A ginger haired mouse mechanic in blue overalls in a cyberpunk scene with neon slums in the background.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 120,
+    "prompt": "The image is a symmetrical barge with a clearheaded textured fractal pattern.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        7
+      ],
+      "plurality": [
+        7
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 121,
+    "prompt": "Looking down at a destroyed city from a plane.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        3
+      ],
+      "copeland": [
+        3
+      ],
+      "plurality": [
+        3
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 122,
+    "prompt": "Witches performing a ritual in a dark mall.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 123,
+    "prompt": "The image depicts a concept car resembling a supercar or hypercar with a chrome reflection and global illumination.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 124,
+    "prompt": "The image is a front view of a mutant from Doom Eternal, with tubes fused to its body, and is a digital art masterpiece painted by Stanley Lau (Artgerm) and Greg Rutkowski.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 125,
+    "prompt": "A detailed and realistic fantasy Proto-Slavic skinny red troll creature.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 126,
+    "prompt": "A teddy bear mad scientist mixing chemicals depicted in oil painting style as a fantasy concept art piece.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 127,
+    "prompt": "Lava falls upon a crumbling stadium as crowds panic.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        1,
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 128,
+    "prompt": "Image of a woman with snakes in her mouth, surrounded by flowers and a twisted branch background, created by various artists, with a dark and moody atmosphere.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2,
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 129,
+    "prompt": "A portrait of Childe Hassam in digital art style surrounded by other famous artists in HD.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 130,
+    "prompt": "Mixed media collage with broken glass photo and torn paper textures in a contemporary art style.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        3
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 131,
+    "prompt": "A cyber goth elf priestess strikes dramatic poses in a post-apocalyptic cyberpunk city with overgrown vegetation.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 132,
+    "prompt": "An alter made of bones with a glowing pineapple lamp on it and surrounded by candles, in front of a swirling mist with epic lighting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 133,
+    "prompt": "A 3D render of a volcanic icon on a rocky background, in isometric perspective and darkly lit.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        0
+      ],
+      "copeland": [
+        0
+      ],
+      "plurality": [
+        0
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 134,
+    "prompt": "Sonic the Hedgehog depicted as a muscular Greek god in a highly detailed digital painting by Greg Rutkowski and Alphonse Mucha on Artstation.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2,
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 135,
+    "prompt": "The image is a highly detailed concept art of a medieval city, with a cinematic style and painted beautifully in oil by various artists including Wlop, Greg Rutkowski, and Artgerm, and can be viewed on Artstation.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        3
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 136,
+    "prompt": "An abandoned Israeli bus station in Tel Aviv depicted in a flat, colorful Ghibli-style digital artwork by Makoto Shinkai.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 137,
+    "prompt": "The image depicts alien flowers and plants surrounded by visceral exoskeletal formations in front of mythical mountains with dramatic contrast lighting, created with surreal hyper detailing in a 3D render.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 138,
+    "prompt": "Grogu is featured in the center of the image, with a cloudy sky, sun, and neon lights in the background, utilizing the rule of thirds and incorporating elements of retrofuturism and Studio Ghibli-inspired aesthetics.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 139,
+    "prompt": "Plasticine sculptures of two lovers walking through Paris with strict clothing and bright colors.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 140,
+    "prompt": "Undead army on riding beasts with symbols and music.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 141,
+    "prompt": "Kinetic wind sculpture in 3D render.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        0
+      ],
+      "copeland": [
+        0
+      ],
+      "plurality": [
+        0
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 142,
+    "prompt": "A warrior in glowing azure plate armor stands in a doorway to hell sliced by iridescent glass cracks, with crimson clouds and an art deco palace backdrop.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 143,
+    "prompt": "A male elf wearing heavy armor with a cape and a weathered face portrayed in detailed, smooth illustration.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 144,
+    "prompt": "A digital painting by Loish featuring a rush of half-body, cyberpunk androids and cyborgs adorned with intricate jewelry and colorful holographic dreads.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 145,
+    "prompt": "An investigator fights a tentacled monster in a finely detailed horror film still.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 146,
+    "prompt": "The image is a close up portrait of a man and a girl, with vibrant colors and a thermal background, resembling the style of Francis Bacon.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 147,
+    "prompt": "An intricate and elegant art deco-inspired metropolis with retrofuturistic elements in a cyberpunk style.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        0
+      ],
+      "copeland": [
+        1,
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 148,
+    "prompt": "American cowboy with a scruffy appearance in a retrofuturistic style, inspired by the animations of Studio Ghibli.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 149,
+    "prompt": "A dragon standing in a forest, drinking river water.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 150,
+    "prompt": "White lines depict topography on a black background.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        0
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 151,
+    "prompt": "A planisphere lavalamp glows inside a glass jar buried in sand with swirling mist around it.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 152,
+    "prompt": "A full-body wide-angle photo of a wooden art doll by Agostino Arrivabene, depicting a peaceful sleeping pose.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 153,
+    "prompt": "A photorealistic 3D render of wooly mammoths grazing in a surreal mystical forest with a bright winding blue creek.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 154,
+    "prompt": "A portrait of a zebra with super detailed eyes and nose by various artists, posted on art platforms.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 155,
+    "prompt": "The image is titled \"Queen of the Robots,\" created by artists Greg Rutowski, Victo Ngai, and Alphonse Mucha.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 156,
+    "prompt": "Close-up shot of a person running on a treadmill with worn running shoes under dramatic lighting and a comic book-style painting effect.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 157,
+    "prompt": "A point and click adventure based on Breaking Bad.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 158,
+    "prompt": "The image depicts a stunning supernova within a fantasy artwork on Artstation.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2,
+        8
+      ],
+      "plurality": [
+        2,
+        7,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 159,
+    "prompt": "A surreal restaurant floating on water with architecture resembling Salvador Dalí's art, depicted in a film directed by Denis Villeneuve.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 160,
+    "prompt": "A highly detailed portrait of Yakuza 0's Goro Majima, featuring a variety of talented artists, created using Unreal Engine and featuring intricate environments.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 161,
+    "prompt": "A red-haired female knight with a golden prosthetic arm wields a long golden blade.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 162,
+    "prompt": "A key shot of an Australian Shepherd with a pastel color palette and dramatic lighting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 163,
+    "prompt": "A black and white drawing of a road splitting the ocean leading to a giant eyeball looking at clouds in the distance.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 164,
+    "prompt": "Jim Carrey is eating giant hamburgers in a hyper-detailed, horror-inspired image trending on DeviantArt.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 165,
+    "prompt": "A photograph of a giant diamond skull in the ocean, featuring vibrant colors and detailed textures.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 166,
+    "prompt": "A woman's face in profile, with white carapace plates extruding from the skin and red kintsurugi.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 167,
+    "prompt": "Zarya from Overwatch jumping from a tall bridge into action.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 168,
+    "prompt": "A minimalist portrait of Rita Ora by Jean Giraud, inspired by the Moebius Starwatcher comic.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        2,
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 169,
+    "prompt": "The image features baroque architecture by Escher and Jean Delville in the walled city of Kowloon, lit with golden lighting and displaying ornate details.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        3
+      ],
+      "copeland": [
+        3
+      ],
+      "plurality": [
+        3
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 170,
+    "prompt": "A hybrid creature concept painting of a zebra-striped unicorn with bunny ears and a colorful mane.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        2,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 171,
+    "prompt": "An image of a corn elemental, created as concept art for a high fantasy setting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 172,
+    "prompt": "A raw green gemstone covered in black slime, with a shiny appearance, captured in a photorealistic digital art photograph.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        7
+      ],
+      "copeland": [
+        0,
+        7
+      ],
+      "plurality": [
+        7
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 0,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 173,
+    "prompt": "Molten lava hanging from the ceiling creates art with octagons in a museum setting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 174,
+    "prompt": "A giant nose made of water in a restaurant is depicted in a film still with unique art direction.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 175,
+    "prompt": "A red cobweb is seen inside a marble with an hourglass, lightning and intricate details, creating a sense of awe with swirling mist.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        6,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 176,
+    "prompt": "A village of stone buildings built on the side of a hill glowing with silver light.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 177,
+    "prompt": "A steampunk pocketwatch owl is trapped inside a glass jar buried in sand, surrounded by an hourglass and swirling mist.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1,
+        6
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1,
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 0,
+      "condorcet": -1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 178,
+    "prompt": "A pocketwatch hangs from a steam punk hot air balloon amidst a swirling mist.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 179,
+    "prompt": "Small carved figurines of fantasy buildings, miniatures and standalone objects on a table.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        7
+      ],
+      "copeland": [
+        7
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 180,
+    "prompt": "A full body character of a mouse technomage in cyberpunk armor with a neon background, painted by jorsch.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 181,
+    "prompt": "A female human barbarian depicted in a traditional Dungeons and Dragons illustration.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 182,
+    "prompt": "Hooded figure standing over a ruined city with red haze and a grin.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 183,
+    "prompt": "A screenshot taken in hl2.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 184,
+    "prompt": "A digital illustration titled \"The Rise of a Dadaist Government\" by Jeffrey Smith and Tim Biskup.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 185,
+    "prompt": "A lady in a purple dress sitting in a tree - concept art.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 186,
+    "prompt": "A spray painted and analogue collage with canvas texture in a contemporary art style featuring a mathematically correct Tetris design.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 187,
+    "prompt": "The image features a closeup portrait of stone angel statues, created with the Unreal Engine and featuring intricate details by various artists.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 188,
+    "prompt": "A colorful tin toy robot runs a steam engine on a path near a beautiful flower meadow in the Swiss Alps with a mountain panorama in the background, captured in a long shot with motion blur and depth of field.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 189,
+    "prompt": "Male vampire of clan Banu Haqim with blue braided hair stands in a modern city at night surrounded by neon signs, jewelry, and tattoos.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 190,
+    "prompt": "The image is a fashion photograph of a humanoid lobster wearing a designer outfit with titanium claws, captured in red color and detailed texture by photographer Jovana Rikalo.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 191,
+    "prompt": "A giant cosmic tardigrade descending on Tokyo at sunset in a highly detailed concept art.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 192,
+    "prompt": "The image depicts Rengoku as Lucifer morningstar in a detailed digital painting available on ArtStation, featuring smooth render and sharp focus.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 193,
+    "prompt": "An image depicting a fantasy architectural concept with dramatic and cinematic touches through environmental concept art and an infographic-like display of marginalia.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        2,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 194,
+    "prompt": "\"A samurai warrior made of smoke in Ghibli Studio's mystical and magical style.\"",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 195,
+    "prompt": "A brightly painted temple with ornate structures and dramatic lighting inspired by Mayan and Islamic architecture.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 196,
+    "prompt": "Underwater concept art of marine life in Sea of Thieves featuring a wild boar.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 197,
+    "prompt": "Side-view blue-ice sneaker inspired by Spiderman created by Weta FX.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1,
+        2
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 0,
+      "condorcet": -1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 198,
+    "prompt": "The image is a digital art depiction of a female angel warrior with detailed features by artist Magali Villeneuve.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 199,
+    "prompt": "A phantom airship.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": -1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 200,
+    "prompt": "An abstract painting depicting the balance between dark and light in nature with rough brushstrokes and fine details in natural colors.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        0
+      ],
+      "copeland": [
+        0
+      ],
+      "plurality": [
+        0
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 201,
+    "prompt": "Image of a foothpath in Indian summer with Zugspitze mountain in the background, painted by Sargent, Leyendecker, and Greg Hildebrandt.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 202,
+    "prompt": "A painting featuring two men in a fighting scene wearing black jodhpurs.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 203,
+    "prompt": "A town of pod homes integrated in a forest area with water and trees, depicted in a detailed watercolor by Lurid.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 204,
+    "prompt": "The image is a mixed media collage with broken glass and torn paper elements, featuring intricate oil details and a canvas texture, in a contemporary art style.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 205,
+    "prompt": "The Mona Lisa wearing headphones and listening to Lana Del Rey on a phone, depicted with photorealistic high detail.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 206,
+    "prompt": "\"Albus Dumbledore\" - a portrait of the headmaster of Hogwarts School of Witchcraft and Wizardry from the Harry Potter series.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2,
+        8
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 207,
+    "prompt": "The image is a Roy Lichtenstein emo portraying a woman with dark brown pixie hair, entirely black eyes, wearing a black tank top, leather jacket, skirt, choker, and boots.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 208,
+    "prompt": "\"A portrait painting of Batman on Artstation.\"",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 209,
+    "prompt": "Elvis Presley performing in a jumpsuit, artwork by Alessandro Pautasso.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 210,
+    "prompt": "The image depicts a gold filigree tree of life in a detailed fantasy painting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 211,
+    "prompt": "A surreal painting by Ronny Khalil depicting a bestiary of wild emotion monsters repressed in the deep sea of the unconscious psyche, led by Baba Yaga, glowing with dramatic fire light as they prepare to escape in a revolution.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 212,
+    "prompt": "A man wearing a hat performs a magic trick for Jesus in a kitchen painting by Rockwell, Lovell, and Schoonover.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 213,
+    "prompt": "A graveyard at night with a moonlit grave under a sakura tree, rain falling, by Aleksandra Waliszewska.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2,
+        8
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 214,
+    "prompt": "The image depicts three female figures, known as the muses, playing musical instruments.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 215,
+    "prompt": "A person wearing black and white boots and pants sits in a portrait pose in a detailed fantasy painting by various artists.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 216,
+    "prompt": "Female human barbarian in a dungeon, illustrated by Jeff Easley for Dungeons and Dragons.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 217,
+    "prompt": "a pointillism ink painting of a Japanese demon with high detail.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6,
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 218,
+    "prompt": "A nebula forms the shape of a face in this detailed artwork.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 219,
+    "prompt": "The image depicts a Studio Ghibli-style painting of a colossal, ancient ruin with a road winding through the forest, overlooking a sunrise above the cloudy sea.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 220,
+    "prompt": "Michael Van Gerwen drinking a cup of tea in black and white Warhammer fantasy art.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 221,
+    "prompt": "Portrait of a Victorian gentleman standing on a balcony, richly detailed color illustration with cinematic lighting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 222,
+    "prompt": "A painting of a woman by Zinaida Serebriakova wearing a T-shirt with the Supreme brand logo, a sleeveless white blouse, dark brown capris, and black loafers.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 223,
+    "prompt": "A painting of a starship landing by a temple, created by Hubert Robert.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 224,
+    "prompt": "Panorama of Hogwarts.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 225,
+    "prompt": "Close up portrait of a person speaking on the phone in front of a dark, geometrically abstract painting in the style of Sophie Taeuber-Arp, Gary Hume, and Tatsuro Kiuchi.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 226,
+    "prompt": "a shiny metallic renaissance steampunk robot in the style of Jan van Eyck.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1,
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": -1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 227,
+    "prompt": "Album art of a hand holding a balloon emerging from the water against a red sky.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 228,
+    "prompt": "A canvas artwork with art nouveau style depicting an ocean on fire, inspired by artists Reylia Slaby, Peter Gric, and Lexie Liu, featuring intricate and ornate details and volumetric lighting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        7
+      ],
+      "plurality": [
+        7
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 229,
+    "prompt": "A painting depicting a foothpath at Indian summer with an epic evening sky at sunset and low thunder clouds.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        0
+      ],
+      "copeland": [
+        0
+      ],
+      "plurality": [
+        0
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 230,
+    "prompt": "A surreal dark painting featuring mythical creatures, by Ronny Khalil.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        7
+      ],
+      "copeland": [
+        7
+      ],
+      "plurality": [
+        7
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 231,
+    "prompt": "A frightened woman with blood on her face, wearing an emerald necklace, crouched in fear in a castle hallway.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 232,
+    "prompt": "Robot painted by Salvador Dali, resembling Wall-E.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        2,
+        8
+      ],
+      "plurality": [
+        2,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 233,
+    "prompt": "The image features a person wearing jodhpurs, knee-high boots, and a leather jacket, painted in a fantasy style by various artists including Greg Manchess, Leyendecker, Greg Rutkowski, Greg Tocchini, James Gilleard, and Joe Fenton.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 234,
+    "prompt": "A portrait painting of a male deer in a suit sitting on a sofa near a window by John Singer Sargent.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 235,
+    "prompt": "The image is an ink and wash painting featuring vibrant colors, calligraphy, woodblock and geometric 3D shapes.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 236,
+    "prompt": "A detailed soft painting of a bat with golden rose flowers and amethyst stained glass in the background.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 237,
+    "prompt": "The image is a painting by Pierre-Auguste Renoir of an emo with short, messy brown hair, large entirely-black eyes, wearing a black tank top, leather jacket, knee-length skirt, choker, and boots.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2,
+        6,
+        8
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 238,
+    "prompt": "Hyper realistic matte painting of the legendary ancient world of Shangrila.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 239,
+    "prompt": "Lady Britannia portrayed in crosshatching in 18th century art by William Hogarth.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        2,
+        6
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 240,
+    "prompt": "The image is an oil on canvas painting of a broken man.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 241,
+    "prompt": "A watercolor portrait of a woman by Luke Rueda Studios and David Downton.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 242,
+    "prompt": "Cyrano de Bergerac holds Roxanne's hand in an illustrated scene by Csók István.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        2,
+        8
+      ],
+      "plurality": [
+        2,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 243,
+    "prompt": "Geometric, colorful creature painted with rough brushstrokes on an abstract background by Pavel Lizano (2018).",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        7
+      ],
+      "copeland": [
+        7
+      ],
+      "plurality": [
+        7
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 244,
+    "prompt": "Oil portrait of Gearless Joe by Greg Rutowski and Alphonse Mucha.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2,
+        8
+      ],
+      "plurality": [
+        2,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 245,
+    "prompt": "A portrait painting of Leighann Vail.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 246,
+    "prompt": "Oil portrait of a skeleton in a Victorian suit.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 247,
+    "prompt": "A colorful, detailed painting of a raccoon with a long, flowing mane reminiscent of a lion's, styled in a mohawk.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 248,
+    "prompt": "Two cats, one grey and one black, are wearing steampunk attire and standing in front of a ship in a heavily detailed painting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2,
+        8
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 249,
+    "prompt": "Mythical beasts around a fire in a dark, surreal painting by Ronny Khalil.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 250,
+    "prompt": "Renaissance angel depicted in Gerhard Richter's oil painting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 251,
+    "prompt": "Interior of a cathedral with a koi pond and surrounding greenery.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 252,
+    "prompt": "A silkscreen print of a woman with a short dark brown pixie cut, evil entirely-black eyes, wearing all black clothing.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 253,
+    "prompt": "The image features a painting of a person wearing white cloth fabric jodhpurs, with elements of fantasy and intricacy.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 254,
+    "prompt": "Portrait of Steve Buscemi by Ilya Kuvshinov.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 255,
+    "prompt": "A portrait of Phoenix Wright, painted in oil by Greg Rutowski and inspired by the art of Alphonse Mucha.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 256,
+    "prompt": "An award-winning portrait of a lemon in a muted, space age style reminiscent of the 1930s.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 257,
+    "prompt": "A painting by Raffaello Sanzi portraying Kajol and symbiots Riot during the Renaissance era, showcased on Artstation.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 258,
+    "prompt": "\"Beeple's painting 'ethos of ego, mythos of id' on canvas features hyperrealistic photorealism.\"",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 259,
+    "prompt": "Artwork by Shaun Tan.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": -1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 260,
+    "prompt": "Illustration of a sugar skull day of the dead girl.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1,
+        2
+      ],
+      "copeland": [
+        1,
+        2
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 261,
+    "prompt": "A painting of the TV tower by Zaha Hadid.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6,
+        8
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": -1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 262,
+    "prompt": "A giant minotaur warrior holding a two handed axe, depicted in a dark fantasy digital painting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        2,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 263,
+    "prompt": "A Japanese castle landscape painting trending on Artstation.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 264,
+    "prompt": "A depiction of Boudica, queen and warrior, with a battlefield in the background.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 265,
+    "prompt": "Mila Kunis portrayed as a fire elemental in a highly detailed digital painting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 266,
+    "prompt": "The image is titled \"Left 4 Dead\" and was painted by John William Waterhouse.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 267,
+    "prompt": "A Proto-Slavic hero is depicted in an intricate and elegant digital painting by multiple artists on ArtStation.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 268,
+    "prompt": "A painting depicting a snowy winter scene featuring a river, a small house on a hill, and a dreamy cloudy sky.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 269,
+    "prompt": "Digital painting with vivid colors and a front view featuring a magical composition.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1,
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        1,
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 0,
+      "condorcet": -1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 270,
+    "prompt": "The image depicts a portrait of a panda by Petros Afshar.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 271,
+    "prompt": "An androgynous glam rocker poses outside CBGB in the style of Phil Hale.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2,
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 272,
+    "prompt": "A digital painting of a symmetric fantasy depiction of a Shinigami Japanese figure with highly detailed and realistic intricate port.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 273,
+    "prompt": "A magical hand reaching up on a dark-violet background, depicted through a digital painting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 274,
+    "prompt": "An oil painting portrait of a beautiful dryad wearing an ombre velvet gown, with long hair and a tiara, adorned with dozens of jeweled necklaces, and illuminated with dramatic cinematic lighting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 275,
+    "prompt": "Michal Karcz has painted a beautiful landscape, featuring purple trees with intricate and elegant details.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 276,
+    "prompt": "Portrait of a black man with open mouth, viewed from below, in the style of Lucian Freud.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 277,
+    "prompt": "Whimsical creatures in a dark, surreal painting by Ronny Khalil.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1,
+        6,
+        7
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 0,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 278,
+    "prompt": "A falcon in flight, depicted in a highly detailed painting by Ilya Repin, Phil Hale, and Kent Williams.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 279,
+    "prompt": "A portrait painting of Lashaundra Garrette.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 280,
+    "prompt": "A polar expedition unloads from a ship in the 19th century in an intricate and elegant fantasy illustration.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 281,
+    "prompt": "Close-up view of ancient Greek ruins set against a colourful, starry night sky creating a mystical atmosphere.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        2,
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 282,
+    "prompt": "A Monet portrait.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2,
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": -1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 283,
+    "prompt": "A portrait painting of Roxie Kownacki.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        6,
+        8
+      ],
+      "plurality": [
+        6,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 284,
+    "prompt": "A cave painting of a Stone Age party.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 285,
+    "prompt": "An oil on canvas painting depicting a surreal cognitive illusion of a key, by artists Oleg Shupliak and Jeffrey Smith, with nods to Afrofuturism and surrealism.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 286,
+    "prompt": "A Weezer album painted by Hieronymus Bosch.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 287,
+    "prompt": "A painting by Ludek Marold of cattle grazing in a field, done in oil on canvas.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 288,
+    "prompt": "The image depicts a Sri Lankan king, created by artist Nizovtsev, Victor.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 289,
+    "prompt": "A semirealistic digital painting of a Japanese schoolgirl in a gentle grayish color palette, by Chinese artists on ArtStation.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 290,
+    "prompt": "A portrait of Frank Zappa smoking, with vivid neon colors, by various artists.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1,
+        8
+      ],
+      "plurality": [
+        1,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 291,
+    "prompt": "A portrait of Larry David playing poker by Sandra Chevrier, featured on Artstation.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 292,
+    "prompt": "A digital painting of a small universe with intricate details and ornate features, featuring the styles of Claude Monet and Vincent van Gogh.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        0
+      ],
+      "copeland": [
+        0
+      ],
+      "plurality": [
+        0,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 293,
+    "prompt": "A white Persian cat wearing a peacock feather headdress and surrounded by flowers, in a magical realism painting.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 294,
+    "prompt": "A purple and black generative art, with repeating biomorphic patterns by Patrick Heron.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 295,
+    "prompt": "The Magician by René Magritte.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 296,
+    "prompt": "Digital painting of a lush natural scene on an alien planet with colourful, weird vegetation, cliffs, and water by Gerald Brom.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        3
+      ],
+      "copeland": [
+        1,
+        3
+      ],
+      "plurality": [
+        3
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 297,
+    "prompt": "Plankton creatures gathered around a fire geyser in a surreal, dark painting by Ronny Khalil.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 298,
+    "prompt": "Oil painting portrait of demon king with gazing eyes, art by John Howe, Keith Parkinson, and Larry Elmore, featured on ArtStation and CGSociety.",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 299,
+    "prompt": "\"Hyperrealistic acrylic painting on canvas by Junji Ito depicting the mythos of ego and ethos of id.\"",
+    "num_candidates": 9,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 0,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 300,
+    "prompt": "A train is moving along the track in the countryside.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1,
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 301,
+    "prompt": "a castle is in the middle of a eurpean city ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        1,
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": -1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 302,
+    "prompt": "A lot of building on each side of the road, with a very curvy road in the middle.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 303,
+    "prompt": "People standing in the grass playing with a frisbee.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 304,
+    "prompt": "A street light and other road signs. ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 305,
+    "prompt": "Two men sitting in a green living room talking to a girl seen in the mirror.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 306,
+    "prompt": "Empty double decker London bus in rural area.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        2,
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 307,
+    "prompt": "A plate topped with lots of different kinds of fruit.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 308,
+    "prompt": "an empty bench next to a busy street.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 309,
+    "prompt": "A person holding a remote while playing a game",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 310,
+    "prompt": "Racing horse being guided by an asian man. ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1,
+        9
+      ],
+      "plurality": [
+        1,
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 311,
+    "prompt": "there is a old rusted train sitting on the ground",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 312,
+    "prompt": "baseball player swinging metal bat at home plate.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2,
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 313,
+    "prompt": "Room full of people playing video games and having a party.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 314,
+    "prompt": "An airplane is flying with a white line in the sky above it.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 315,
+    "prompt": "Three zebras crowd around each other in a painting. ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 316,
+    "prompt": "a plate that has some kind of food on it",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 317,
+    "prompt": "a  vehicle with many people even on top",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 318,
+    "prompt": "The skater is riding very low on his board.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 319,
+    "prompt": "Snow boarder falling down in almost white out conditions of snow.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 320,
+    "prompt": "A brown and black dog sticking its head out a window.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 321,
+    "prompt": "A train is coming along near some unusual looking tracks.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 322,
+    "prompt": "A group of four friends commemorating a ski trip in the snow.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8,
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 323,
+    "prompt": "Very ornate bedroom with a chandelier over the bed.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        1,
+        3,
+        6,
+        7
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 324,
+    "prompt": "A mother bear and her cub crossing a two lane road.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2,
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 325,
+    "prompt": "Two little dogs looking a large pizza sitting on a table.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 326,
+    "prompt": "an image of a messy counter in a bathroom",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 327,
+    "prompt": "The bus is parked beside of the shopping center.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 328,
+    "prompt": "Side of a street, where there is a fire hydrant and a mirror showing the street.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8,
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 329,
+    "prompt": "Two young ladies seated with several other people at a dinner table.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 330,
+    "prompt": "A great room with the living area in the foreground, dining table behind it and kitchen in the very back. ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 331,
+    "prompt": "The shadow of a person across an asphalt street next to a street sign.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 332,
+    "prompt": "There is a bicycle parked next to a car.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 333,
+    "prompt": "A man walking on the bea with his surfboard.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 334,
+    "prompt": "A lighted birthday cake with chunks of walnuts.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 335,
+    "prompt": "A woman wearing a bridal veil and suitcase poses with a man in a yellow tie.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 336,
+    "prompt": "a man walking alone down the street in a velvet jacket",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 337,
+    "prompt": "A person holding a very small slice on pizza between their fingers.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 338,
+    "prompt": "A person flying a kite while standing in the grass.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 339,
+    "prompt": "A man stands in front of a bus and a car that have collided.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 340,
+    "prompt": "An airplane is flying down above a tree.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 341,
+    "prompt": "A woman riding skis across snow covered ground.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 342,
+    "prompt": "A bunch of people waiting in line by a rail.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 343,
+    "prompt": "A man playing with a tennis racquet, on a court.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 344,
+    "prompt": "A small dog looking at a white plate holding donuts.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 345,
+    "prompt": "A couple of men are standing outside their car watching sheep cross a road. ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 346,
+    "prompt": "People rafting on a river while others ride on top of elephants.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2,
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 347,
+    "prompt": "A motorcycle that is sitting in the dirt.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 348,
+    "prompt": "A blue vase filled with yellow flowers on a window sill.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 349,
+    "prompt": "A giraffe walking through the grass towards a wall.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 350,
+    "prompt": "A baseball player pitching a baseball on a field.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 351,
+    "prompt": "Bikes sit parked under trees on a city street.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 352,
+    "prompt": "a young male holding a baseball bat in a baseball uniform",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 353,
+    "prompt": "A clock tower with lighted clock faces, against a twilight sky.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 354,
+    "prompt": "a girl a white bear a camera a tea pot and a cup",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        8,
+        9
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 355,
+    "prompt": "An athletic middle aged male skier courses downhill. ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 356,
+    "prompt": "a public transit bus on a city street ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 357,
+    "prompt": "A tanker trunk is on it's side on the side of a road near a police car.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 358,
+    "prompt": "A bathroom stall containing an empty toilet in it.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 359,
+    "prompt": "A flag flying with kites all around it.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6,
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": -1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 360,
+    "prompt": "A train that is going by a building.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        2,
+        9
+      ],
+      "plurality": [
+        2,
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 361,
+    "prompt": "The feet of Lacrosse players scramble for the ball.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 362,
+    "prompt": "A little kid riding a skateboard down a sidewalk.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 363,
+    "prompt": "A man with his finger held up to his nose.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8,
+        9
+      ],
+      "plurality": [
+        8,
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 364,
+    "prompt": "A man placing a turkey in an oven with oven mitts.  ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        8,
+        9
+      ],
+      "plurality": [
+        8,
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 365,
+    "prompt": "freshly baked donuts priced to sell at 60cents each",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1,
+        2
+      ],
+      "copeland": [
+        1,
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 366,
+    "prompt": "Some giraffes are walking around the zoo exhibit. ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 367,
+    "prompt": "A pizza is displayed inside a pizza box.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 368,
+    "prompt": "a vintage photo of a man and a nurse ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 369,
+    "prompt": "A blue airplane in a blue, cloudless sky",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 370,
+    "prompt": "A large dog laying on a couch in a room.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 371,
+    "prompt": "A wooden trunk sitting outside with stickers on it.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 372,
+    "prompt": "A white Fed Ex sitting in front of a tall building.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 373,
+    "prompt": "there are three woman that are laying on the beach",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 374,
+    "prompt": "Carrots bundled up for sale at an outside market",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 375,
+    "prompt": "A nighstand topped with a white land-line phone, remote control, a metallic lamp, and two pens next to a black hardcover book.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 376,
+    "prompt": "There is a man and woman posing together  in a restaurant",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 377,
+    "prompt": "A tall giraffe in a zoo eating branches ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8,
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 0,
+      "condorcet": -1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 378,
+    "prompt": "A bear walks through a group of bushes with a plant in its mouth.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 379,
+    "prompt": "A giraffe stands inside a enclosure with a group of people standing near by. ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 380,
+    "prompt": "A pigeon sitting on top of a white table.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 381,
+    "prompt": "A group of people on a field playing with a frisbee.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 382,
+    "prompt": "A view of a red light at Tenth Avenue",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 383,
+    "prompt": "A sculpture that is planted in rocks in front of the water.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        3
+      ],
+      "copeland": [
+        3
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 384,
+    "prompt": "A bowl filled with apple slices and ice cream",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 385,
+    "prompt": "people bicycling near the beach on a bicycle lane",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 386,
+    "prompt": "A high shot of many people standing in an airport. ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        6
+      ],
+      "copeland": [
+        6
+      ],
+      "plurality": [
+        6
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 387,
+    "prompt": "A portrait of a dinner dish of a protein and greens.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 388,
+    "prompt": "A big metal bed frame with no mattress on it.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 389,
+    "prompt": "Several different types of cell phones are shown here.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 390,
+    "prompt": "The umpire, catcher and batter during a baseball game",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 391,
+    "prompt": "Kids are peering over a fence as a train rolls by.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 392,
+    "prompt": "Three cows eating in a field with sea in background.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 393,
+    "prompt": "A tall giraffe is eating out of a basket.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 394,
+    "prompt": "Group of birds sitting on top of a television antenna on a building. ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 395,
+    "prompt": "a group of people wearing ski equipment on a snowy field",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1
+      ],
+      "plurality": [
+        1,
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 396,
+    "prompt": "A stop sign with the phrase \"hammer time\" written on it. ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        8
+      ],
+      "copeland": [
+        8
+      ],
+      "plurality": [
+        8
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 397,
+    "prompt": "Several bunches of unripened bananas growing from trees.",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        2
+      ],
+      "copeland": [
+        2
+      ],
+      "plurality": [
+        2
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  },
+  {
+    "profile_id": 398,
+    "prompt": "a cellphone standing on a counter next to a small statue of buddy christ",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        1
+      ],
+      "copeland": [
+        1,
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 0,
+      "pareto": 1,
+      "independence": 0
+    }
+  },
+  {
+    "profile_id": 399,
+    "prompt": "a train on a track with a car near by",
+    "num_candidates": 10,
+    "num_voters": 10,
+    "winners": {
+      "borda": [
+        9
+      ],
+      "copeland": [
+        9
+      ],
+      "plurality": [
+        9
+      ]
+    },
+    "axioms": {
+      "anonymity": 1,
+      "neutrality": 1,
+      "condorcet": 1,
+      "pareto": 1,
+      "independence": 1
+    }
+  }
+]
