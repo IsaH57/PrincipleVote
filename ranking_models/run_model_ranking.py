@@ -8,9 +8,9 @@ from hpsv2.src.training.data import RankingDataset, collate_rank
 MODEL_NAME = "ViT-H-14"
 PRECISION = "amp"
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-CHECKPOINT_PATH = "/home/h/hansi/PycharmProjects/HPSv2/HPS_v2_compressed.pt"
-DATA_PATH = "/home/h/hansi/PycharmProjects/HPSv2/test_data"
-IMAGE_FOLDER = "/home/h/hansi/PycharmProjects/HPSv2/test_data/test"
+CHECKPOINT_PATH = "PATH/TO/HPS_v2_compressed.pt"
+DATA_PATH = "PATH/TO/FOLDER/HOLDING/TEST.JSON/AND/IMAGE/FOLDER"
+IMAGE_FOLDER = "PATH/TO/IMAGES"
 BATCH_SIZE = 20
 
 def load_model():

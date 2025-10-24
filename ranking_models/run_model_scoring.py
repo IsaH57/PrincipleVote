@@ -14,9 +14,10 @@ import numpy as np
 MODEL_NAME = "ViT-H-14"
 PRECISION = "amp"
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-CHECKPOINT_PATH = "/home/h/hansi/PycharmProjects/HPSv2/HPS_v2_compressed.pt"
-IMAGE_FOLDER = "/home/h/hansi/PycharmProjects/HPSv2/test_data/test"
-with open('/home/h/hansi/PycharmProjects/HPSv2/test_data/test.json', 'r') as f:
+CHECKPOINT_PATH = "PATH/TO/HPS_v2_compressed.pt"
+DATA_PATH = "PATH/TO/FOLDER/HOLDING/TEST.JSON/AND/IMAGE/FOLDER"
+IMAGE_FOLDER = "PATH/TO/IMAGES"
+with open('PATH/TO/TEST.JSON', 'r') as f:
     data = json.load(f)
 
 #prompts = [item['prompt'] for item in data]
