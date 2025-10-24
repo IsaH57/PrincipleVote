@@ -14,9 +14,9 @@ import numpy as np
 MODEL_NAME = "ViT-H-14"
 PRECISION = "amp"
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-CHECKPOINT_PATH = "t"
-IMAGE_FOLDER = ""
-with open('test.json', 'r') as f:
+CHECKPOINT_PATH = "/home/h/hansi/PycharmProjects/HPSv2/HPS_v2_compressed.pt"
+IMAGE_FOLDER = "/home/h/hansi/PycharmProjects/HPSv2/test_data/test"
+with open('/home/h/hansi/PycharmProjects/HPSv2/test_data/test.json', 'r') as f:
     data = json.load(f)
 
 #prompts = [item['prompt'] for item in data]
@@ -89,8 +89,8 @@ def main():
         for img, score in zip(ranked_images, sorted(scores, reverse=True)):
             print(f"  {img}: {score:.4f}")
 
-    # save results
-    with open("results/model_scoring_results.json", "w") as f:
+    # save ranking_results
+    with open("ranking_results/model_scoring_results_raw_output.json", "w") as f:
         json.dump(results, f, indent=2)
 
 if __name__ == "__main__":

@@ -336,7 +336,7 @@ class SynthData:
             tuple: A tuple containing the training dataset and a tuple of test data (X_test, y_test).
         """
 
-        # TODO add check if data is there
+        # TODO add check if data exists
         # For TensorDatasets
         if mode == "mlp" or mode == "cnn":
             data = self.mlp_data if mode == "mlp" else self.cnn_data

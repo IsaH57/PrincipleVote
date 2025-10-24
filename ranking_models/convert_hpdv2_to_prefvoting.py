@@ -1,13 +1,9 @@
 import json
 
 from pref_voting.c1_methods import copeland
-from pref_voting.dominance_axioms import condorcet_winner
 from pref_voting.profiles import Profile
 from pref_voting.scoring_methods import borda, plurality
 import torch
-from torch import Tensor
-
-import axioms
 
 
 def convert_to_pref_voting_profiles(data):
@@ -104,11 +100,11 @@ def write_to_json(profiles: list[Profile]):
         copeland_winner = copeland(prof)
         plurality_winner = plurality(prof)
 
-        anonymity = axioms.check_anonymity(prof, make_winner_array(prof, "borda"), cand_max=10)
-        neutrality = axioms.check_neutrality(prof, make_winner_array(prof, "borda"), cand_max=10)
-        condorcet = axioms.check_condorcet(prof, make_winner_array(prof, "borda"), cand_max=10)
-        pareto = axioms.check_pareto(prof, make_winner_array(prof, "borda"), cand_max=10)
-        independence = axioms.check_independence(prof, make_winner_array(prof, "borda"), cand_max=10)
+        #anonymity = axioms.check_anonymity(prof, make_winner_array(prof, "borda"), cand_max=9)
+        #neutrality = axioms.check_neutrality(prof, make_winner_array(prof, "borda"), cand_max=9)
+        #condorcet = axioms.check_condorcet(prof, make_winner_array(prof, "borda"), cand_max=9)
+        #pareto = axioms.check_pareto(prof, make_winner_array(prof, "borda"), cand_max=9)
+        #independence = axioms.check_independence(prof, make_winner_array(prof, "borda"), cand_max=9)
 
         profile_result = {
             "profile_id": i,
@@ -120,18 +116,18 @@ def write_to_json(profiles: list[Profile]):
                 "copeland": [int(x) for x in copeland_winner],
                 "plurality": [int(x) for x in plurality_winner]
             },
-            "axioms": {
-                "anonymity": int(anonymity),
-                "neutrality": int(neutrality),
-                "condorcet": int(condorcet),
-                "pareto": int(pareto),
-                "independence": int(independence)
-            }
+            #"axioms": {
+            #    "anonymity": int(anonymity),
+            #    "neutrality": int(neutrality),
+            #    "condorcet": int(condorcet),
+            #    "pareto": int(pareto),
+            #    "independence": int(independence)
+            #}
         }
 
         results.append(profile_result)
 
-    output_file = "voting_analysis_results.json"
+    output_file = "results/human_voting_analysis.json"
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
 

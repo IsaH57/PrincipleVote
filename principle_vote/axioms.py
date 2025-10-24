@@ -3,7 +3,7 @@ import itertools
 import pref_voting
 import random
 import torch
-import utils
+from principle_vote import utils
 
 from pref_voting.c1_methods import copeland
 from pref_voting.other_methods import pareto
@@ -143,7 +143,7 @@ def anonymity_loss(model, X_batch, num_samples=50, eps=1e-8) -> torch.Tensor:
     return loss / num_samples
 
 
-def check_anonymity(profile, winners, cand_max, winner_method="borda", n_permutations=50):
+def check_anonymity(profile, winners, cand_max, winner_method="borda", n_permutations=10):
     """Check whether a given voting profile satisfies the anonymity axiom.
 
     Args:
@@ -674,7 +674,7 @@ def independence_loss(model, X_batch, prof, max_cand, max_vot, num_samples=50) -
     return (1 / num_samples) * loss
 
 
-def check_independence(profile, winners, cand_max, winner_method="borda", sample=4) -> int:
+def check_independence(profile, winners, cand_max, winner_method="borda", n_permutations=10) -> int:
     """Checks whether a given profile fulfills the Independence axiom.
 
     Args:
@@ -682,7 +682,7 @@ def check_independence(profile, winners, cand_max, winner_method="borda", sample
         winners: tensor of shape (cand_max,) with 1 for winning candidates and 0 else
         cand_max: maximum number of candidates
         winner_method: voting rule to use ("borda", "plurality", "copeland")
-        sample: if None, check all possible new profiles where the order of each pair of winner and loser is preserved; if an integer, randomly sample this many new profiles
+        n_permutations: if None, check all possible new profiles where the order of each pair of winner and loser is preserved; if an integer, randomly sample this many new profiles
 
     Returns:
         int: 1 if Independence is satisfied, 0 if not
@@ -708,7 +708,7 @@ def check_independence(profile, winners, cand_max, winner_method="borda", sample
         satisfaction = 0
         return satisfaction
     else:
-        if sample is None:
+        if n_permutations is None:
             #consider all ways of building new rankings where the set of voters raking a above b is the same
             for a in winners:
                 for b in losers:  # a != b
@@ -745,7 +745,7 @@ def check_independence(profile, winners, cand_max, winner_method="borda", sample
                     allowed_rankings = []
                     for ranking in original_profile_list:
                         possible_rankings = []
-                        while len(possible_rankings) < sample:
+                        while len(possible_rankings) < n_permutations:
                             p = list(range(profile.num_cands))
                             random.shuffle(p)
                             if (p.index(a) > p.index(b)) == (
@@ -754,7 +754,7 @@ def check_independence(profile, winners, cand_max, winner_method="borda", sample
                                 possible_rankings.append(p)
                         allowed_rankings.append(possible_rankings)
                     # sample^sample many times sample an allowed choice of ranking
-                    for i in range(int(pow(sample, sample))):
+                    for i in range(int(pow(n_permutations, n_permutations))):
                         choice_of_rankings = []
                         for possible_rankings in allowed_rankings:
                             choice_of_rankings.append(random.choice(possible_rankings))

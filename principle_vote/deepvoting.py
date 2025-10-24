@@ -1,6 +1,4 @@
 """Script to train a Voting MLP model using synthetic data."""
-import numpy as np
-from pref_voting.generate_profiles import generate_profile
 # Experiment 1 with all 4 distributions:
 # n=77, m=7, num_samples=15000
 # Embeding: corpus size = 10^5, dim=200, window_size=7
@@ -11,12 +9,12 @@ from pref_voting.generate_profiles import generate_profile
 # Embeding: corpus size = 2*10^4, dim=100, window_size=5
 
 import torch
-from torch.utils.data import DataLoader, TensorDataset
+from torch.utils.data import DataLoader
 
-from synth_data import SynthData
-from voting_cnn import VotingCNN
-from voting_mlp import VotingMLP
-from voting_wec import VotingWEC
+from principle_vote.synth_data import SynthData
+from principle_vote.voting_cnn import VotingCNN
+from principle_vote.voting_mlp import VotingMLP
+from principle_vote.voting_wec import VotingWEC
 
 torch.manual_seed(42)
 
@@ -51,7 +49,7 @@ mlp_X_test, mlp_y_test = data_test.get_encoded_mlp()
 
 mlp_model.evaluate_model_hard(mlp_X_test, mlp_y_test)
 mlp_model.evaluate_model_soft(mlp_X_test, mlp_y_test)
-mlp_model.evaluate_axiom_satisfaction(data_test, axiom="neutrality")
+mlp_model.evaluate_axiom_satisfaction(data_test, axiom="condorcet")
 
 # Prediction for a single example
 mlp_single_example = mlp_X_test[0:1]
@@ -78,7 +76,7 @@ data_test.encode_cnn()
 cnn_X_test, cnn_y_test = data_test.get_encoded_cnn()
 cnn_model.evaluate_model_hard(cnn_X_test, cnn_y_test)
 cnn_model.evaluate_model_soft(cnn_X_test, cnn_y_test)
-cnn_model.evaluate_axiom_satisfaction(data_test, axiom="neutrality")
+cnn_model.evaluate_axiom_satisfaction(data_test, axiom="pareto")
 
 # Single example prediction
 cnn_single_example = cnn_X_test[0:1]

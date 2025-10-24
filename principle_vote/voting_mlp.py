@@ -1,107 +1,94 @@
-"""VotingCNN: A CNN for Voting-Based Classification"""
+"""VotingMLP: A Multi-Layer Perceptron for Voting-Based Classification"""
 
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
-from torch import optim
-import torch.nn.functional as F
+import torch.optim as optim
 from torch.utils.data import DataLoader
 from typing import List
 
-from axioms import set_training_axiom, check_anonymity, check_neutrality, check_condorcet, check_pareto, \
+from principle_vote.axioms import set_training_axiom, check_anonymity, check_neutrality, check_condorcet, check_pareto, \
     check_independence
-from synth_data import SynthData
+from principle_vote.synth_data import SynthData
 
 
-class VotingCNN(nn.Module):
-    """A Convolutional Neural Network (CNN) for Voting-Based Classification.
+class VotingMLP(nn.Module):
+    """A Multi-Layer Perceptron (MLP) for Voting-Based Classification.
 
     Attributes:
             name (str): Name of the model.
+            input_size (int): Size of the input layer, calculated as max_candidates² * max_voters.
             max_cand (int): Maximum number of candidates (alternatives).
             max_vot (int): Maximum number of voters.
-            conv1 (nn.Conv2d): First convolutional layer.
-            conv2 (nn.Conv2d): Second convolutional layer.
-            flattened_dim (int): Flattened dimension after convolutional layers.
-            fc1, fc2, fc3 (nn.Linear): Fully connected layers.
+            layers (nn.Sequential): Sequential container of the MLP layers.
             train_loader (DataLoader): DataLoader for training data.
             criterion (nn.Module): Loss function used for training.
             optimizer (torch.optim.Optimizer): Optimizer for model parameters.
     """
 
-    def __init__(self, train_loader: DataLoader, max_candidates: int, max_voters: int, conv_channels=[32, 64]):
-        """Initializes the VotingCNN model.
+    def __init__(self, train_loader: DataLoader, max_candidates: int, max_voters: int, ):
+        """Initializes the VotingMLP model.
 
         Args:
             train_loader (DataLoader): DataLoader for training data.
-            max_candidates (int): Maximum number of candidates (alternatives).
-            max_voters (int): Maximum number of voters.
-            conv_channels (List[int]): Number of channels for convolutional layers.
+            max_candidates (int): Maximum number of candidates to consider.
+            max_voters (int): Maximum number of voters to consider.
         """
-        super(VotingCNN, self).__init__()
-        self.name = "cnn"
+        super(VotingMLP, self).__init__()
+        self.name = "mlp"
 
+        self.input_size = max_candidates * max_candidates * max_voters
         self.max_cand = max_candidates
         self.max_vot = max_voters
 
-        # CNN layers
-        self.conv1 = nn.Conv2d(in_channels=max_candidates, out_channels=conv_channels[0],
-                               kernel_size=(5, 1))  # TODO check if this kernel size works for 77/7
-        self.conv2 = nn.Conv2d(in_channels=conv_channels[0], out_channels=conv_channels[0],
-                               kernel_size=(1, 5))  # TODO check effect of conv_channels
-
-        # Compute flattened dim after conv layers
-        self.flattened_dim = conv_channels[0] * (max_candidates - 4) * (max_voters - 4)
-
-        # Fully connected layers
-        self.fc1 = nn.Linear(self.flattened_dim, 128)
-        self.fc2 = nn.Linear(128, 128)
-        self.fc3 = nn.Linear(128, self.max_cand)
+        self.layers = nn.Sequential(
+            nn.Linear(self.input_size, 128),  # input layer: 128 neurons
+            nn.ReLU(),
+            nn.Linear(128, 128),  # first hidden layer: 128 neurons
+            nn.ReLU(),
+            nn.Linear(128, 128),  # second hidden layer: 128 neurons
+            nn.ReLU(),
+            nn.Linear(128, 128),  # third hidden layer: 128 neurons
+            nn.ReLU(),
+            nn.Linear(128, self.max_cand),  # output layer: number of candidates
+        )
 
         self.train_loader = train_loader
         self.criterion = nn.BCEWithLogitsLoss()
         self.optimizer = optim.AdamW(self.parameters(), lr=0.001)
 
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Forward pass of the CNN.
+    def forward(self, x):
+        """Defines the forward pass of the model.
 
         Args:
-            x (torch.Tensor): Input tensor of shape (batch_size, m_max, m_max, n_max).
+            x (torch.Tensor): Input tensor of shape (batch_size, input_size).
 
         Returns:
-            torch.Tensor: Output logits of shape (batch_size, output_dim).
+            torch.Tensor: Output tensor of shape (batch_size, num_classes).
         """
-        x = F.relu(self.conv1(x))
-        x = F.relu(self.conv2(x))
-        x = x.view(x.size(0), -1)  # flatten
-        x = F.relu(self.fc1(x))
-        x = F.relu(self.fc2(x))
-        logits = self.fc3(x)  # shape: (batch_size, output_dim)
-        return logits
+        return self.layers(x)
 
     def train_model(self, num_steps: int, seed: int = 42, plot: bool = False, axiom: str = "default"):
-        """Trains the CNN model.
+        """Train the model using the set optimizer with cosine annealing scheduler.
 
         Args:
-            num_steps (int): Number of training steps.
-            seed (int): Random seed for reproducibility.
-            plot (bool): Whether to plot training loss.
-            axiom (str): Axiom to enforce during training.
+            num_steps (int): Number of gradient steps to perform.
+            seed (int): Random seed for reproducibility. Defaults to 42.
+            plot (bool): Whether to plot the training loss. Defaults to False.
+            axiom (str): Axiom to enforce during training. Defaults to "default".
         """
         # Set fixed seed for reproducibility
         torch.manual_seed(seed)
         torch.cuda.manual_seed(seed) if torch.cuda.is_available() else None
 
-        self.train()
-
         optimizer = self.optimizer
-        criterion = self.criterion
 
-        # Cosine Annealing scheduler with warm restarts
+        # Cosine Annealing with Warm Restarts scheduler
         scheduler = optim.lr_scheduler.CosineAnnealingWarmRestarts(
             optimizer, T_0=500, T_mult=2, eta_min=1e-6
         )
 
+        self.train()
         step_count = 0
 
         # Loss tracking
@@ -109,18 +96,21 @@ class VotingCNN(nn.Module):
         steps = []
 
         while step_count < num_steps:
-            for batch_x, batch_y, prof in self.train_loader:
-                optimizer.zero_grad()
-                logits = self.forward(batch_x)
+            for batch_X, batch_y, prof in self.train_loader:
+                if step_count >= num_steps:
+                    break
 
-                loss = criterion(logits, batch_y.float())
-                loss += set_training_axiom(self, batch_x, prof, axiom)
+                optimizer.zero_grad()  # Reset gradients
+                outputs = self(batch_X)  # Forward pass
 
-                loss.backward()
+                loss = self.criterion(outputs, batch_y.float())
+                loss += set_training_axiom(self, batch_X, prof, axiom)
+
+                loss.backward()  # Backward pass
                 torch.nn.utils.clip_grad_norm_(self.parameters(), max_norm=1.0)
 
-                optimizer.step()
-                scheduler.step()
+                optimizer.step()  # Update weights
+                scheduler.step()  # Update learning rate
 
                 # Track loss and steps
                 losses.append(loss.item())
@@ -135,29 +125,11 @@ class VotingCNN(nn.Module):
         if plot:
             self.plot_training_loss(steps, losses)
 
-    def predict(self, x: torch.Tensor) -> (torch.Tensor, torch.Tensor):
-        """Predicts the winners for the given input.
-
-        Args:
-            x (torch.Tensor): Input tensor of shape (batch_size, m_max, m_max, n_max).
-
-        Returns:
-            Tuple[torch.Tensor, torch.Tensor]: Tuple containing:
-                - winner_mask (torch.Tensor): Binary mask indicating winners.
-                - probs (torch.Tensor): Probabilities of each candidate being the winner.
-        """
-        self.eval()
-        with torch.no_grad():
-            logits = self.forward(x)
-            probs = torch.sigmoid(logits)
-            winner_mask = probs > 0.5
-            return winner_mask.int(), probs
-
     def evaluate_model_hard(self, X_test: torch.Tensor, y_test: torch.Tensor) -> float:
         """Evaluates the model using hard accuracy, meaning that the predicted set of winners must match exactly with the true set: F(P)=S.
 
         Args:
-            X_test (torch.Tensor): Test input tensor of shape (num_samples, m_max, m_max, n_max).
+            X_test (torch.Tensor): Test input tensor of shape (num_samples, input_size).
             y_test (torch.Tensor): True labels tensor of shape (num_samples, num_classes).
 
         Returns:
@@ -181,7 +153,7 @@ class VotingCNN(nn.Module):
         """Evaluates the model using soft accuracy, meaning that there is at least one overlap between predicted winners and true winners: F(P) ⊆ S.
 
         Args:
-            X_test (torch.Tensor): Test input tensor of shape (num_samples, m_max, m_max, n_max).
+            X_test (torch.Tensor): Test input tensor of shape (num_samples, input_size).
             y_test (torch.Tensor): True labels tensor of shape (num_samples, num_classes).
 
         Returns:
@@ -221,7 +193,7 @@ class VotingCNN(nn.Module):
         """
         axiom_fun = self.AXIOM_SAT_FUNCTIONS.get(axiom)
 
-        X_test, y_test = data.get_encoded_cnn()
+        X_test, y_test = data.get_encoded_mlp()
         profiles = data.get_raw_profiles()
 
         self.eval()
@@ -237,14 +209,31 @@ class VotingCNN(nn.Module):
 
         return satisfied / len(y_test)
 
+    def predict(self, x: torch.Tensor) -> (torch.Tensor, torch.Tensor):
+        """Predicts the winners for the given input.
+
+        Args:
+            x (torch.Tensor): Input tensor of shape (batch_size, input_size).
+
+        Returns:
+            Tuple[torch.Tensor, torch.Tensor]: Tuple containing:
+                - winner_mask (torch.Tensor): Binary mask indicating winners.
+                - probs (torch.Tensor): Probabilities of each candidate being the winner.
+        """
+        self.eval()
+        with torch.no_grad():
+            logits = self.forward(x)
+            probs = torch.sigmoid(logits)
+            winner_mask = probs > 0.5
+            return winner_mask.int(), probs
+
     def plot_training_loss(self, steps: List[int], losses: List[float]):
-        """Plots the training loss over time.
+        """Plots the Training Loss.
 
         Args:
             steps (List[int]): List of training steps.
             losses (List[float]): List of loss values corresponding to the steps.
         """
-
         plt.figure(figsize=(12, 6))
 
         # Plot raw losses
@@ -260,7 +249,7 @@ class VotingCNN(nn.Module):
 
         plt.xlabel('Training Steps')
         plt.ylabel('Loss')
-        plt.title('CNN Training Loss Over Time')
+        plt.title('MLP Training Loss Over Time')
         plt.legend()
         plt.grid(True, alpha=0.3)
 

@@ -8,9 +8,9 @@ from hpsv2.src.training.data import RankingDataset, collate_rank
 MODEL_NAME = "ViT-H-14"
 PRECISION = "amp"
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-CHECKPOINT_PATH = ""
-DATA_PATH = ""
-IMAGE_FOLDER = ""
+CHECKPOINT_PATH = "/home/h/hansi/PycharmProjects/HPSv2/HPS_v2_compressed.pt"
+DATA_PATH = "/home/h/hansi/PycharmProjects/HPSv2/test_data"
+IMAGE_FOLDER = "/home/h/hansi/PycharmProjects/HPSv2/test_data/test"
 BATCH_SIZE = 20
 
 def load_model():
@@ -38,5 +38,5 @@ if __name__ == "__main__":
     print("Relative rankings per prompt (from logs/hps_rank.json):")
     for idx, rank in enumerate(rankings):
         print(f"Prompt {idx}: {rank}")
-    with open('model_ranking_results.json', 'w') as f:
+    with open('model_ranking_results_raw_output.json', 'w') as f:
         json.dump({"relative_rankings": rankings}, f, indent=4)
