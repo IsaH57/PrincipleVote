@@ -1,0 +1,4 @@
+model,kendall_tau,spearman_rho,top1_match,top3_overlap,condorcet_top1,exact_position_match,winner_agreement_borda,winner_agreement_plurality,winner_agreement_copeland,prompts_evaluated
+hpsv2::v2.1,0.665389,0.798027,0.507500,0.995000,0.529231,0.353833,0.527500,0.530000,0.527500,400
+open_clip::ViT-H-14::laion2b_s32b_b79k,0.302167,0.392545,0.172500,0.887500,0.175385,0.201361,0.177500,0.182500,0.185000,400
+image_reward::ImageReward-v1.0,0.474333,0.597587,0.365000,0.965000,0.384615,0.252778,0.385000,0.397500,0.402500,400

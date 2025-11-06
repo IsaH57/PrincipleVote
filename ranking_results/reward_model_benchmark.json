@@ -1,0 +1,1142 @@
+{
+  "per_prompt": [
+    {
+      "prompt_index": 0,
+      "prompt": "Dwayne the Rock Johnson wrestles Jesus Christ in a WWE match in a hell in a cell.",
+      "image_filenames": [
+        "test_0_0.jpg",
+        "test_0_1.jpg",
+        "test_0_2.jpg",
+        "test_0_3.jpg",
+        "test_0_4.jpg",
+        "test_0_5.jpg",
+        "test_0_6.jpg",
+        "test_0_7.jpg",
+        "test_0_8.jpg"
+      ],
+      "human_consensus": {
+        "order_indices": [
+          6,
+          1,
+          2,
+          8,
+          3,
+          0,
+          4,
+          7,
+          5
+        ],
+        "order_filenames": [
+          "test_0_6.jpg",
+          "test_0_1.jpg",
+          "test_0_2.jpg",
+          "test_0_8.jpg",
+          "test_0_3.jpg",
+          "test_0_0.jpg",
+          "test_0_4.jpg",
+          "test_0_7.jpg",
+          "test_0_5.jpg"
+        ],
+        "condorcet_winner": 6,
+        "winner_indices": [
+          6
+        ],
+        "winner_filenames": [
+          "test_0_6.jpg"
+        ]
+      },
+      "voting_rules": {
+        "plurality": {
+          "winner_indices": [
+            6
+          ],
+          "winner_filenames": [
+            "test_0_6.jpg"
+          ]
+        },
+        "copeland": {
+          "winner_indices": [
+            6
+          ],
+          "winner_filenames": [
+            "test_0_6.jpg"
+          ]
+        }
+      },
+      "models": {
+        "hpsv2::v2.1": {
+          "scores": [
+            0.1363525390625,
+            0.205810546875,
+            0.2415771484375,
+            0.1578369140625,
+            0.1463623046875,
+            0.052886962890625,
+            0.251708984375,
+            0.18359375,
+            0.2061767578125
+          ],
+          "order_indices": [
+            6,
+            2,
+            8,
+            1,
+            7,
+            3,
+            4,
+            0,
+            5
+          ],
+          "order_filenames": [
+            "test_0_6.jpg",
+            "test_0_2.jpg",
+            "test_0_8.jpg",
+            "test_0_1.jpg",
+            "test_0_7.jpg",
+            "test_0_3.jpg",
+            "test_0_4.jpg",
+            "test_0_0.jpg",
+            "test_0_5.jpg"
+          ],
+          "metrics": {
+            "kendall_tau": 0.6666666666666666,
+            "spearman_rho": 0.8333333333333334,
+            "top1_match": 1.0,
+            "top3_overlap": 1.0,
+            "condorcet_top1": 1.0,
+            "exact_position_match": 0.3333333333333333,
+            "winner_agreement_borda": 1.0,
+            "winner_agreement_plurality": 1.0,
+            "winner_agreement_copeland": 1.0
+          }
+        }
+      }
+    },
+    {
+      "prompt_index": 1,
+      "prompt": "An anime man in flight uniform with hyper detailed digital artwork and an art style inspired by Klimt, Nixeu, Ian Sprigger, Wlop, and Krenz Cushart.",
+      "image_filenames": [
+        "test_1_0.jpg",
+        "test_1_1.jpg",
+        "test_1_2.jpg",
+        "test_1_3.jpg",
+        "test_1_4.jpg",
+        "test_1_5.jpg",
+        "test_1_6.jpg",
+        "test_1_7.jpg",
+        "test_1_8.jpg"
+      ],
+      "human_consensus": {
+        "order_indices": [
+          8,
+          1,
+          6,
+          2,
+          0,
+          3,
+          7,
+          4,
+          5
+        ],
+        "order_filenames": [
+          "test_1_8.jpg",
+          "test_1_1.jpg",
+          "test_1_6.jpg",
+          "test_1_2.jpg",
+          "test_1_0.jpg",
+          "test_1_3.jpg",
+          "test_1_7.jpg",
+          "test_1_4.jpg",
+          "test_1_5.jpg"
+        ],
+        "condorcet_winner": 8,
+        "winner_indices": [
+          8
+        ],
+        "winner_filenames": [
+          "test_1_8.jpg"
+        ]
+      },
+      "voting_rules": {
+        "plurality": {
+          "winner_indices": [
+            8
+          ],
+          "winner_filenames": [
+            "test_1_8.jpg"
+          ]
+        },
+        "copeland": {
+          "winner_indices": [
+            8
+          ],
+          "winner_filenames": [
+            "test_1_8.jpg"
+          ]
+        }
+      },
+      "models": {
+        "hpsv2::v2.1": {
+          "scores": [
+            0.191162109375,
+            0.296142578125,
+            0.2235107421875,
+            0.244384765625,
+            0.169189453125,
+            0.107666015625,
+            0.216552734375,
+            0.214111328125,
+            0.259033203125
+          ],
+          "order_indices": [
+            1,
+            8,
+            3,
+            2,
+            6,
+            7,
+            0,
+            4,
+            5
+          ],
+          "order_filenames": [
+            "test_1_1.jpg",
+            "test_1_8.jpg",
+            "test_1_3.jpg",
+            "test_1_2.jpg",
+            "test_1_6.jpg",
+            "test_1_7.jpg",
+            "test_1_0.jpg",
+            "test_1_4.jpg",
+            "test_1_5.jpg"
+          ],
+          "metrics": {
+            "kendall_tau": 0.6666666666666666,
+            "spearman_rho": 0.8333333333333334,
+            "top1_match": 0.0,
+            "top3_overlap": 1.0,
+            "condorcet_top1": 0.0,
+            "exact_position_match": 0.3333333333333333,
+            "winner_agreement_borda": 0.0,
+            "winner_agreement_plurality": 0.0,
+            "winner_agreement_copeland": 0.0
+          }
+        }
+      }
+    },
+    {
+      "prompt_index": 2,
+      "prompt": "A Wojak looking over a sea of memes from a cliff on 4chan.",
+      "image_filenames": [
+        "test_2_0.jpg",
+        "test_2_1.jpg",
+        "test_2_2.jpg",
+        "test_2_3.jpg",
+        "test_2_4.jpg",
+        "test_2_5.jpg",
+        "test_2_6.jpg",
+        "test_2_7.jpg",
+        "test_2_8.jpg"
+      ],
+      "human_consensus": {
+        "order_indices": [
+          1,
+          6,
+          3,
+          0,
+          4,
+          8,
+          2,
+          7,
+          5
+        ],
+        "order_filenames": [
+          "test_2_1.jpg",
+          "test_2_6.jpg",
+          "test_2_3.jpg",
+          "test_2_0.jpg",
+          "test_2_4.jpg",
+          "test_2_8.jpg",
+          "test_2_2.jpg",
+          "test_2_7.jpg",
+          "test_2_5.jpg"
+        ],
+        "condorcet_winner": 1,
+        "winner_indices": [
+          1
+        ],
+        "winner_filenames": [
+          "test_2_1.jpg"
+        ]
+      },
+      "voting_rules": {
+        "plurality": {
+          "winner_indices": [
+            1
+          ],
+          "winner_filenames": [
+            "test_2_1.jpg"
+          ]
+        },
+        "copeland": {
+          "winner_indices": [
+            1
+          ],
+          "winner_filenames": [
+            "test_2_1.jpg"
+          ]
+        }
+      },
+      "models": {
+        "hpsv2::v2.1": {
+          "scores": [
+            0.16845703125,
+            0.213134765625,
+            0.228271484375,
+            0.19482421875,
+            0.1937255859375,
+            0.111572265625,
+            0.201416015625,
+            0.2344970703125,
+            0.2108154296875
+          ],
+          "order_indices": [
+            7,
+            2,
+            1,
+            8,
+            6,
+            3,
+            4,
+            0,
+            5
+          ],
+          "order_filenames": [
+            "test_2_7.jpg",
+            "test_2_2.jpg",
+            "test_2_1.jpg",
+            "test_2_8.jpg",
+            "test_2_6.jpg",
+            "test_2_3.jpg",
+            "test_2_4.jpg",
+            "test_2_0.jpg",
+            "test_2_5.jpg"
+          ],
+          "metrics": {
+            "kendall_tau": 0.0,
+            "spearman_rho": 0.0,
+            "top1_match": 0.0,
+            "top3_overlap": 1.0,
+            "condorcet_top1": 0.0,
+            "exact_position_match": 0.1111111111111111,
+            "winner_agreement_borda": 0.0,
+            "winner_agreement_plurality": 0.0,
+            "winner_agreement_copeland": 0.0
+          }
+        }
+      }
+    },
+    {
+      "prompt_index": 3,
+      "prompt": "Ralsei and Asriel from Deltarune eating pizza.",
+      "image_filenames": [
+        "test_3_0.jpg",
+        "test_3_1.jpg",
+        "test_3_2.jpg",
+        "test_3_3.jpg",
+        "test_3_4.jpg",
+        "test_3_5.jpg",
+        "test_3_6.jpg",
+        "test_3_7.jpg",
+        "test_3_8.jpg"
+      ],
+      "human_consensus": {
+        "order_indices": [
+          8,
+          1,
+          2,
+          6,
+          3,
+          0,
+          7,
+          4,
+          5
+        ],
+        "order_filenames": [
+          "test_3_8.jpg",
+          "test_3_1.jpg",
+          "test_3_2.jpg",
+          "test_3_6.jpg",
+          "test_3_3.jpg",
+          "test_3_0.jpg",
+          "test_3_7.jpg",
+          "test_3_4.jpg",
+          "test_3_5.jpg"
+        ],
+        "condorcet_winner": 8,
+        "winner_indices": [
+          8
+        ],
+        "winner_filenames": [
+          "test_3_8.jpg"
+        ]
+      },
+      "voting_rules": {
+        "plurality": {
+          "winner_indices": [
+            8
+          ],
+          "winner_filenames": [
+            "test_3_8.jpg"
+          ]
+        },
+        "copeland": {
+          "winner_indices": [
+            8
+          ],
+          "winner_filenames": [
+            "test_3_8.jpg"
+          ]
+        }
+      },
+      "models": {
+        "hpsv2::v2.1": {
+          "scores": [
+            0.1768798828125,
+            0.2196044921875,
+            0.25732421875,
+            0.1844482421875,
+            0.1898193359375,
+            0.136474609375,
+            0.2171630859375,
+            0.21142578125,
+            0.2496337890625
+          ],
+          "order_indices": [
+            2,
+            8,
+            1,
+            6,
+            7,
+            4,
+            3,
+            0,
+            5
+          ],
+          "order_filenames": [
+            "test_3_2.jpg",
+            "test_3_8.jpg",
+            "test_3_1.jpg",
+            "test_3_6.jpg",
+            "test_3_7.jpg",
+            "test_3_4.jpg",
+            "test_3_3.jpg",
+            "test_3_0.jpg",
+            "test_3_5.jpg"
+          ],
+          "metrics": {
+            "kendall_tau": 0.6666666666666666,
+            "spearman_rho": 0.8166666666666667,
+            "top1_match": 0.0,
+            "top3_overlap": 1.0,
+            "condorcet_top1": 0.0,
+            "exact_position_match": 0.2222222222222222,
+            "winner_agreement_borda": 0.0,
+            "winner_agreement_plurality": 0.0,
+            "winner_agreement_copeland": 0.0
+          }
+        }
+      }
+    },
+    {
+      "prompt_index": 4,
+      "prompt": "A portrait of an anime mecha robot with a Japanese town background and a starred night sky.",
+      "image_filenames": [
+        "test_4_0.jpg",
+        "test_4_1.jpg",
+        "test_4_2.jpg",
+        "test_4_3.jpg",
+        "test_4_4.jpg",
+        "test_4_5.jpg",
+        "test_4_6.jpg",
+        "test_4_7.jpg",
+        "test_4_8.jpg"
+      ],
+      "human_consensus": {
+        "order_indices": [
+          2,
+          8,
+          6,
+          0,
+          1,
+          7,
+          3,
+          4,
+          5
+        ],
+        "order_filenames": [
+          "test_4_2.jpg",
+          "test_4_8.jpg",
+          "test_4_6.jpg",
+          "test_4_0.jpg",
+          "test_4_1.jpg",
+          "test_4_7.jpg",
+          "test_4_3.jpg",
+          "test_4_4.jpg",
+          "test_4_5.jpg"
+        ],
+        "condorcet_winner": null,
+        "winner_indices": [
+          2
+        ],
+        "winner_filenames": [
+          "test_4_2.jpg"
+        ]
+      },
+      "voting_rules": {
+        "plurality": {
+          "winner_indices": [
+            7
+          ],
+          "winner_filenames": [
+            "test_4_7.jpg"
+          ]
+        },
+        "copeland": {
+          "winner_indices": [
+            2,
+            8
+          ],
+          "winner_filenames": [
+            "test_4_2.jpg",
+            "test_4_8.jpg"
+          ]
+        }
+      },
+      "models": {
+        "hpsv2::v2.1": {
+          "scores": [
+            0.162841796875,
+            0.1944580078125,
+            0.26318359375,
+            0.20166015625,
+            0.1495361328125,
+            0.1334228515625,
+            0.218994140625,
+            0.2115478515625,
+            0.293212890625
+          ],
+          "order_indices": [
+            8,
+            2,
+            6,
+            7,
+            3,
+            1,
+            0,
+            4,
+            5
+          ],
+          "order_filenames": [
+            "test_4_8.jpg",
+            "test_4_2.jpg",
+            "test_4_6.jpg",
+            "test_4_7.jpg",
+            "test_4_3.jpg",
+            "test_4_1.jpg",
+            "test_4_0.jpg",
+            "test_4_4.jpg",
+            "test_4_5.jpg"
+          ],
+          "metrics": {
+            "kendall_tau": 0.6666666666666666,
+            "spearman_rho": 0.8333333333333334,
+            "top1_match": 0.0,
+            "top3_overlap": 1.0,
+            "condorcet_top1": null,
+            "exact_position_match": 0.3333333333333333,
+            "winner_agreement_borda": 0.0,
+            "winner_agreement_plurality": 0.0,
+            "winner_agreement_copeland": 1.0
+          }
+        }
+      }
+    },
+    {
+      "prompt_index": 5,
+      "prompt": "A minimalist portrait of Chloe Grace by Jean Giraud in a comic style.",
+      "image_filenames": [
+        "test_5_0.jpg",
+        "test_5_1.jpg",
+        "test_5_2.jpg",
+        "test_5_3.jpg",
+        "test_5_4.jpg",
+        "test_5_5.jpg",
+        "test_5_6.jpg",
+        "test_5_7.jpg",
+        "test_5_8.jpg"
+      ],
+      "human_consensus": {
+        "order_indices": [
+          6,
+          8,
+          1,
+          2,
+          0,
+          3,
+          7,
+          4,
+          5
+        ],
+        "order_filenames": [
+          "test_5_6.jpg",
+          "test_5_8.jpg",
+          "test_5_1.jpg",
+          "test_5_2.jpg",
+          "test_5_0.jpg",
+          "test_5_3.jpg",
+          "test_5_7.jpg",
+          "test_5_4.jpg",
+          "test_5_5.jpg"
+        ],
+        "condorcet_winner": 6,
+        "winner_indices": [
+          6
+        ],
+        "winner_filenames": [
+          "test_5_6.jpg"
+        ]
+      },
+      "voting_rules": {
+        "plurality": {
+          "winner_indices": [
+            6,
+            8
+          ],
+          "winner_filenames": [
+            "test_5_6.jpg",
+            "test_5_8.jpg"
+          ]
+        },
+        "copeland": {
+          "winner_indices": [
+            6
+          ],
+          "winner_filenames": [
+            "test_5_6.jpg"
+          ]
+        }
+      },
+      "models": {
+        "hpsv2::v2.1": {
+          "scores": [
+            0.1544189453125,
+            0.22509765625,
+            0.1925048828125,
+            0.144775390625,
+            0.146728515625,
+            0.0606689453125,
+            0.229248046875,
+            0.2188720703125,
+            0.198974609375
+          ],
+          "order_indices": [
+            6,
+            1,
+            7,
+            8,
+            2,
+            0,
+            4,
+            3,
+            5
+          ],
+          "order_filenames": [
+            "test_5_6.jpg",
+            "test_5_1.jpg",
+            "test_5_7.jpg",
+            "test_5_8.jpg",
+            "test_5_2.jpg",
+            "test_5_0.jpg",
+            "test_5_4.jpg",
+            "test_5_3.jpg",
+            "test_5_5.jpg"
+          ],
+          "metrics": {
+            "kendall_tau": 0.6666666666666666,
+            "spearman_rho": 0.7666666666666666,
+            "top1_match": 1.0,
+            "top3_overlap": 1.0,
+            "condorcet_top1": 1.0,
+            "exact_position_match": 0.2222222222222222,
+            "winner_agreement_borda": 1.0,
+            "winner_agreement_plurality": 1.0,
+            "winner_agreement_copeland": 1.0
+          }
+        }
+      }
+    },
+    {
+      "prompt_index": 6,
+      "prompt": "A raccoon riding an oversized fox through a forest in a furry art anime still.",
+      "image_filenames": [
+        "test_6_0.jpg",
+        "test_6_1.jpg",
+        "test_6_2.jpg",
+        "test_6_3.jpg",
+        "test_6_4.jpg",
+        "test_6_5.jpg",
+        "test_6_6.jpg",
+        "test_6_7.jpg",
+        "test_6_8.jpg"
+      ],
+      "human_consensus": {
+        "order_indices": [
+          8,
+          2,
+          1,
+          6,
+          3,
+          7,
+          0,
+          4,
+          5
+        ],
+        "order_filenames": [
+          "test_6_8.jpg",
+          "test_6_2.jpg",
+          "test_6_1.jpg",
+          "test_6_6.jpg",
+          "test_6_3.jpg",
+          "test_6_7.jpg",
+          "test_6_0.jpg",
+          "test_6_4.jpg",
+          "test_6_5.jpg"
+        ],
+        "condorcet_winner": 8,
+        "winner_indices": [
+          8
+        ],
+        "winner_filenames": [
+          "test_6_8.jpg"
+        ]
+      },
+      "voting_rules": {
+        "plurality": {
+          "winner_indices": [
+            8
+          ],
+          "winner_filenames": [
+            "test_6_8.jpg"
+          ]
+        },
+        "copeland": {
+          "winner_indices": [
+            8
+          ],
+          "winner_filenames": [
+            "test_6_8.jpg"
+          ]
+        }
+      },
+      "models": {
+        "hpsv2::v2.1": {
+          "scores": [
+            0.1435546875,
+            0.23828125,
+            0.273681640625,
+            0.178955078125,
+            0.1719970703125,
+            0.11041259765625,
+            0.2109375,
+            0.19677734375,
+            0.275146484375
+          ],
+          "order_indices": [
+            8,
+            2,
+            1,
+            6,
+            7,
+            3,
+            4,
+            0,
+            5
+          ],
+          "order_filenames": [
+            "test_6_8.jpg",
+            "test_6_2.jpg",
+            "test_6_1.jpg",
+            "test_6_6.jpg",
+            "test_6_7.jpg",
+            "test_6_3.jpg",
+            "test_6_4.jpg",
+            "test_6_0.jpg",
+            "test_6_5.jpg"
+          ],
+          "metrics": {
+            "kendall_tau": 0.8888888888888888,
+            "spearman_rho": 0.9666666666666667,
+            "top1_match": 1.0,
+            "top3_overlap": 1.0,
+            "condorcet_top1": 1.0,
+            "exact_position_match": 0.5555555555555556,
+            "winner_agreement_borda": 1.0,
+            "winner_agreement_plurality": 1.0,
+            "winner_agreement_copeland": 1.0
+          }
+        }
+      }
+    },
+    {
+      "prompt_index": 7,
+      "prompt": "Chucky doll dressed as Beetlejuice.",
+      "image_filenames": [
+        "test_7_0.jpg",
+        "test_7_1.jpg",
+        "test_7_2.jpg",
+        "test_7_3.jpg",
+        "test_7_4.jpg",
+        "test_7_5.jpg",
+        "test_7_6.jpg",
+        "test_7_7.jpg",
+        "test_7_8.jpg"
+      ],
+      "human_consensus": {
+        "order_indices": [
+          2,
+          1,
+          8,
+          6,
+          3,
+          4,
+          7,
+          0,
+          5
+        ],
+        "order_filenames": [
+          "test_7_2.jpg",
+          "test_7_1.jpg",
+          "test_7_8.jpg",
+          "test_7_6.jpg",
+          "test_7_3.jpg",
+          "test_7_4.jpg",
+          "test_7_7.jpg",
+          "test_7_0.jpg",
+          "test_7_5.jpg"
+        ],
+        "condorcet_winner": 2,
+        "winner_indices": [
+          2
+        ],
+        "winner_filenames": [
+          "test_7_2.jpg"
+        ]
+      },
+      "voting_rules": {
+        "plurality": {
+          "winner_indices": [
+            2
+          ],
+          "winner_filenames": [
+            "test_7_2.jpg"
+          ]
+        },
+        "copeland": {
+          "winner_indices": [
+            2
+          ],
+          "winner_filenames": [
+            "test_7_2.jpg"
+          ]
+        }
+      },
+      "models": {
+        "hpsv2::v2.1": {
+          "scores": [
+            0.164794921875,
+            0.2420654296875,
+            0.3037109375,
+            0.2181396484375,
+            0.1820068359375,
+            0.141845703125,
+            0.287353515625,
+            0.19189453125,
+            0.2724609375
+          ],
+          "order_indices": [
+            2,
+            6,
+            8,
+            1,
+            3,
+            7,
+            4,
+            0,
+            5
+          ],
+          "order_filenames": [
+            "test_7_2.jpg",
+            "test_7_6.jpg",
+            "test_7_8.jpg",
+            "test_7_1.jpg",
+            "test_7_3.jpg",
+            "test_7_7.jpg",
+            "test_7_4.jpg",
+            "test_7_0.jpg",
+            "test_7_5.jpg"
+          ],
+          "metrics": {
+            "kendall_tau": 0.7777777777777778,
+            "spearman_rho": 0.9166666666666666,
+            "top1_match": 1.0,
+            "top3_overlap": 1.0,
+            "condorcet_top1": 1.0,
+            "exact_position_match": 0.5555555555555556,
+            "winner_agreement_borda": 1.0,
+            "winner_agreement_plurality": 1.0,
+            "winner_agreement_copeland": 1.0
+          }
+        }
+      }
+    },
+    {
+      "prompt_index": 8,
+      "prompt": "2B from NieR Automata eating a bagel.",
+      "image_filenames": [
+        "test_8_0.jpg",
+        "test_8_1.jpg",
+        "test_8_2.jpg",
+        "test_8_3.jpg",
+        "test_8_4.jpg",
+        "test_8_5.jpg",
+        "test_8_6.jpg",
+        "test_8_7.jpg",
+        "test_8_8.jpg"
+      ],
+      "human_consensus": {
+        "order_indices": [
+          2,
+          1,
+          8,
+          6,
+          3,
+          4,
+          7,
+          0,
+          5
+        ],
+        "order_filenames": [
+          "test_8_2.jpg",
+          "test_8_1.jpg",
+          "test_8_8.jpg",
+          "test_8_6.jpg",
+          "test_8_3.jpg",
+          "test_8_4.jpg",
+          "test_8_7.jpg",
+          "test_8_0.jpg",
+          "test_8_5.jpg"
+        ],
+        "condorcet_winner": 2,
+        "winner_indices": [
+          2
+        ],
+        "winner_filenames": [
+          "test_8_2.jpg"
+        ]
+      },
+      "voting_rules": {
+        "plurality": {
+          "winner_indices": [
+            2
+          ],
+          "winner_filenames": [
+            "test_8_2.jpg"
+          ]
+        },
+        "copeland": {
+          "winner_indices": [
+            2
+          ],
+          "winner_filenames": [
+            "test_8_2.jpg"
+          ]
+        }
+      },
+      "models": {
+        "hpsv2::v2.1": {
+          "scores": [
+            0.15087890625,
+            0.244873046875,
+            0.28369140625,
+            0.157470703125,
+            0.1612548828125,
+            0.1357421875,
+            0.21142578125,
+            0.1871337890625,
+            0.1986083984375
+          ],
+          "order_indices": [
+            2,
+            1,
+            6,
+            8,
+            7,
+            4,
+            3,
+            0,
+            5
+          ],
+          "order_filenames": [
+            "test_8_2.jpg",
+            "test_8_1.jpg",
+            "test_8_6.jpg",
+            "test_8_8.jpg",
+            "test_8_7.jpg",
+            "test_8_4.jpg",
+            "test_8_3.jpg",
+            "test_8_0.jpg",
+            "test_8_5.jpg"
+          ],
+          "metrics": {
+            "kendall_tau": 0.7777777777777778,
+            "spearman_rho": 0.9166666666666666,
+            "top1_match": 1.0,
+            "top3_overlap": 1.0,
+            "condorcet_top1": 1.0,
+            "exact_position_match": 0.5555555555555556,
+            "winner_agreement_borda": 1.0,
+            "winner_agreement_plurality": 1.0,
+            "winner_agreement_copeland": 1.0
+          }
+        }
+      }
+    },
+    {
+      "prompt_index": 9,
+      "prompt": "Groot depicted as a flower.",
+      "image_filenames": [
+        "test_9_0.jpg",
+        "test_9_1.jpg",
+        "test_9_2.jpg",
+        "test_9_3.jpg",
+        "test_9_4.jpg",
+        "test_9_5.jpg",
+        "test_9_6.jpg",
+        "test_9_7.jpg",
+        "test_9_8.jpg"
+      ],
+      "human_consensus": {
+        "order_indices": [
+          2,
+          1,
+          6,
+          4,
+          7,
+          3,
+          8,
+          0,
+          5
+        ],
+        "order_filenames": [
+          "test_9_2.jpg",
+          "test_9_1.jpg",
+          "test_9_6.jpg",
+          "test_9_4.jpg",
+          "test_9_7.jpg",
+          "test_9_3.jpg",
+          "test_9_8.jpg",
+          "test_9_0.jpg",
+          "test_9_5.jpg"
+        ],
+        "condorcet_winner": 2,
+        "winner_indices": [
+          2
+        ],
+        "winner_filenames": [
+          "test_9_2.jpg"
+        ]
+      },
+      "voting_rules": {
+        "plurality": {
+          "winner_indices": [
+            2
+          ],
+          "winner_filenames": [
+            "test_9_2.jpg"
+          ]
+        },
+        "copeland": {
+          "winner_indices": [
+            2
+          ],
+          "winner_filenames": [
+            "test_9_2.jpg"
+          ]
+        }
+      },
+      "models": {
+        "hpsv2::v2.1": {
+          "scores": [
+            0.228271484375,
+            0.29443359375,
+            0.313232421875,
+            0.2186279296875,
+            0.2254638671875,
+            0.1558837890625,
+            0.296630859375,
+            0.276611328125,
+            0.2064208984375
+          ],
+          "order_indices": [
+            2,
+            6,
+            1,
+            7,
+            0,
+            4,
+            3,
+            8,
+            5
+          ],
+          "order_filenames": [
+            "test_9_2.jpg",
+            "test_9_6.jpg",
+            "test_9_1.jpg",
+            "test_9_7.jpg",
+            "test_9_0.jpg",
+            "test_9_4.jpg",
+            "test_9_3.jpg",
+            "test_9_8.jpg",
+            "test_9_5.jpg"
+          ],
+          "metrics": {
+            "kendall_tau": 0.7222222222222222,
+            "spearman_rho": 0.85,
+            "top1_match": 1.0,
+            "top3_overlap": 1.0,
+            "condorcet_top1": 1.0,
+            "exact_position_match": 0.2222222222222222,
+            "winner_agreement_borda": 1.0,
+            "winner_agreement_plurality": 1.0,
+            "winner_agreement_copeland": 1.0
+          }
+        }
+      }
+    }
+  ],
+  "summary": {
+    "hpsv2::v2.1": {
+      "kendall_tau": 0.65,
+      "spearman_rho": 0.7733333333333333,
+      "top1_match": 0.6,
+      "top3_overlap": 1.0,
+      "condorcet_top1": 0.6666666666666666,
+      "exact_position_match": 0.34444444444444444,
+      "winner_agreement_borda": 0.6,
+      "winner_agreement_plurality": 0.6,
+      "winner_agreement_copeland": 0.7,
+      "prompts_evaluated": 10
+    }
+  }
+}
