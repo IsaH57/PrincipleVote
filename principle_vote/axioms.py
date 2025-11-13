@@ -189,7 +189,7 @@ def check_anonymity(profile, winners, cand_max, winner_method="borda", n_permuta
             permuted_winners[w] = 1
 
         if not torch.equal(original_winners, permuted_winners):
-            return 0  # anonymity violated
+            return -1  # anonymity violated
 
     return 1
 
@@ -372,7 +372,7 @@ def check_neutrality(profile, winners, cand_max, winner_method="borda") -> int:
     if winners_of_permuted_profile == original_winners_permuted:
         satisfaction += 1
     else:
-        satisfaction += 0
+        satisfaction += -1
 
     return satisfaction
 
@@ -444,7 +444,7 @@ def check_condorcet(profile, winners, cand_max, winner_method="borda") -> int:
 
     a = profile.condorcet_winner()
 
-    if a is not None:  # TODO see if there is an alternative to -1 and 1?
+    if a is not None:
         if set(rule(profile)) == {a}:
             satisfaction = 1
         else:
@@ -550,7 +550,7 @@ def check_pareto(profile, winners, cand_max, winner_method="borda") -> int:
                 if b not in set(rule(profile)):
                     satisfaction = 1
                 else:
-                    satisfaction = 0
+                    satisfaction = -1
     return satisfaction
 
 
@@ -730,7 +730,7 @@ def check_independence(profile, winners, cand_max, winner_method="borda", n_perm
                     ):
                         new_profile = Profile(choice_of_rankings)
                         if b in set(rule(new_profile)):
-                            satisfaction = 0
+                            satisfaction = -1
                             return satisfaction
                         else:
                             satisfaction = 1
@@ -761,7 +761,7 @@ def check_independence(profile, winners, cand_max, winner_method="borda", n_perm
                         new_profile = Profile(choice_of_rankings)
                         #check if b is a loser in permuted profile
                         if b in set(rule(new_profile)):
-                            satisfaction = 0
+                            satisfaction = -1
                             return satisfaction
                         else:
                             satisfaction = 1
