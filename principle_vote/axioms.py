@@ -143,7 +143,7 @@ def anonymity_loss(model, X_batch, num_samples=50, eps=1e-8) -> torch.Tensor:
     return loss / num_samples
 
 
-def check_anonymity(profile, winners, cand_max, winner_method="borda", n_permutations=10):
+def check_anonymity(profile, winners, cand_max, winner_method="borda", n_permutations=50):
     """Check whether a given voting profile satisfies the anonymity axiom.
 
     Args:
@@ -674,7 +674,7 @@ def independence_loss(model, X_batch, prof, max_cand, max_vot, num_samples=50) -
     return (1 / num_samples) * loss
 
 
-def check_independence(profile, winners, cand_max, winner_method="borda", n_permutations=10) -> int:
+def check_independence(profile, winners, cand_max, winner_method="borda", n_permutations=None) -> int:
     """Checks whether a given profile fulfills the Independence axiom.
 
     Args:
@@ -687,6 +687,7 @@ def check_independence(profile, winners, cand_max, winner_method="borda", n_perm
     Returns:
         int: 1 if Independence is satisfied, 0 if not
     """
+    n_permutations = len(winners) * (cand_max - len(winners)) * 256
     if winner_method == "borda":
         rule = borda
     elif winner_method == "plurality":

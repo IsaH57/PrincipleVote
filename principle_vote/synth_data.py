@@ -240,6 +240,16 @@ class SynthData:
 
         return self.wec_data
 
+    def set_raw_data(self,  profiles: list, winners: np.ndarray):
+        """Sets raw profiles and winners directly.
+
+        Args:
+            profiles (list): List of Profile objects.
+            winners (np.ndarray): Array of winners corresponding to the profiles.
+        """
+        self.samples = profiles
+        self.winners = winners
+
     def get_encoded_mlp(self) -> tuple[torch.Tensor, torch.Tensor]:
         """ Gets the encoded MLP data as tensors.
 
