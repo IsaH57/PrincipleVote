@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 import numpy as np
 from pref_voting.generate_profiles import generate_profile
 
-from principle_vote.axioms import check_anonymity, check_neutrality, check_condorcet, check_pareto, check_independence
+from principle_vote.axioms_gpu import check_anonymity, check_neutrality, check_condorcet, check_pareto, check_independence
 from principle_vote.synth_data import SynthData
 from principle_vote.voting_cnn import VotingCNN
 from principle_vote.voting_mlp import VotingMLP

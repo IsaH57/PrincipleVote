@@ -7,7 +7,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 from typing import List
 
-from principle_vote.axioms import set_training_axiom, check_anonymity, check_neutrality, check_condorcet, check_pareto, \
+from principle_vote.axioms_gou import set_training_axiom, check_anonymity, check_neutrality, check_condorcet, check_pareto, \
     check_independence
 from principle_vote.synth_data import SynthData
 
