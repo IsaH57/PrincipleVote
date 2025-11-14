@@ -13,6 +13,7 @@ from principle_vote.voting_mlp import VotingMLP
 from principle_vote.voting_wec import VotingWEC
 
 torch.manual_seed(42)
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Experiment 2: sample 400 profiles fulfilling a given axiom, train models with and without axiom loss on them
 # Create data
@@ -77,7 +78,7 @@ for a in all_axioms:
         train_loader=DataLoader(mlp_dataset_train, batch_size=200, shuffle=True,
                                 collate_fn=data_train.collate_profile),
         max_candidates=max_num_candidates, max_voters=max_num_voters
-    )
+    ).to(device)
 
     # Training
     mlp_model.train_model(num_steps=1000, seed=42, plot=True, axiom="none")
@@ -95,7 +96,7 @@ for a in all_axioms:
         train_loader=DataLoader(mlp_dataset_train, batch_size=200, shuffle=True,
                                 collate_fn=data_train.collate_profile),
         max_candidates=max_num_candidates, max_voters=max_num_voters
-    )
+    ).to(device)
 
     # Training
     mlp_model_a.train_model(num_steps=1000, seed=42, plot=True, axiom=a)
@@ -113,7 +114,7 @@ for a in all_axioms:
 
     cnn_model = VotingCNN(train_loader=DataLoader(cnn_dataset_train, batch_size=200, shuffle=True,
                                               collate_fn=data_train.collate_profile),
-                      max_candidates=max_num_candidates, max_voters=max_num_voters)
+                      max_candidates=max_num_candidates, max_voters=max_num_voters).to(device)
 
     # Training
     cnn_model.train_model(num_steps=5000, seed=42, plot=True, axiom="none")
@@ -128,7 +129,7 @@ for a in all_axioms:
     # CNN for Axiom
     cnn_model_a = VotingCNN(train_loader=DataLoader(cnn_dataset_train, batch_size=200, shuffle=True,
                                                   collate_fn=data_train.collate_profile),
-                          max_candidates=max_num_candidates, max_voters=max_num_voters)
+                          max_candidates=max_num_candidates, max_voters=max_num_voters).to(device)
 
     # Training
     cnn_model_a.train_model(num_steps=5000, seed=42, plot=True, axiom=a)
@@ -146,7 +147,7 @@ for a in all_axioms:
 
     # Initialize WEC model
     wec_model = VotingWEC(max_candidates=max_num_candidates, max_voters=max_num_voters, corpus_size=2 * 10 ** 4,
-                      embed_dim=100, window_size=5)
+                      embed_dim=100, window_size=5).to(device)
 
     # create DataLoader with custom collate function
     wec_train_loader = torch.utils.data.DataLoader(
@@ -169,7 +170,7 @@ for a in all_axioms:
 
     # Initialize WEC model for Axioms
     wec_model_a = VotingWEC(max_candidates=max_num_candidates, max_voters=max_num_voters, corpus_size=2 * 10 ** 4,
-                          embed_dim=100, window_size=5)
+                          embed_dim=100, window_size=5).to(device)
 
     # Training
     wec_model_a.train_model(num_steps=5000, train_loader=wec_train_loader, seed=42, plot=True, axiom=a)
