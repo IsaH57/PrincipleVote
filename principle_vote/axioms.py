@@ -746,7 +746,7 @@ def independence_loss(model, X_batch, prof, max_cand, max_vot, num_samples=50) -
             )
 
         loss += F.kl_div(
-            F.llog_softmax(orig_prediction, dim=1),
+            F.log_softmax(orig_prediction, dim=1),
             F.softmax(perm_prediction, dim=1),
             reduction="batchmean"
         )
