@@ -56,7 +56,7 @@ def permute_voters_cnn(X_batch, cand_max, vot_max) -> torch.Tensor:
         torch.Tensor: Tensor of the same shape with voters permuted.
     """
     batch_size, cand, _, voters = X_batch.shape
-    perm = torch.randperm(voters, device=X_batch.device)
+    perm = torch.randperm(voters)
     return X_batch[:, :, :, perm]
 
 
@@ -125,7 +125,7 @@ def anonymity_loss(model, X_batch, num_samples=50, eps=1e-8) -> torch.Tensor:
     if permute_func is None:
         raise ValueError(f"Model '{model.name}' not supported")
 
-    loss = 0.0
+    loss = torch.tensor(0.0)
     for _ in range(num_samples):
         X_permuted = permute_func(X_batch, model.max_cand, model.max_vot)
         permuted_logits = model(X_permuted)
@@ -134,7 +134,7 @@ def anonymity_loss(model, X_batch, num_samples=50, eps=1e-8) -> torch.Tensor:
 
         # KL divergence
         kl = F.kl_div(
-            (original_probs + eps),
+            torch.log(original_probs + eps),
             permuted_probs,
             reduction="batchmean"
         )
@@ -166,20 +166,31 @@ def check_anonymity(profile, winners, cand_max, winner_method="borda", n_permuta
     else:
         raise ValueError(f"Winner method '{winner_method}' not supported")
 
-    # Ensure the original winners are binary tensor of length cand_max
-    original_winners = winners.clone().int()
+    # Convert winners to binary tensor format 
+    if isinstance(winners, list):
+        # winners is a list like [2] - convert to binary tensor
+        original_winners = torch.zeros(cand_max, dtype=torch.int)
+        for w in winners:
+            original_winners[w] = 1
+    elif winners.dtype == torch.int64 or winners.dtype == torch.long:
+        if winners.max() == 1 and winners.min() == 0:
+            # Already binary format
+            original_winners = winners.cpu().clone().int()
+        else:
+            # indices, convert to binary
+            original_winners = torch.zeros(cand_max, dtype=torch.int)
+            for w in winners:
+                original_winners[w] = 1
+    else:
+        # Already in binary format
+        original_winners = winners.cpu().clone().int()
 
     # Get voter list safely
     voter_rankings = list(profile.rankings)  # shallow copy to avoid mutation
     n_voters = len(voter_rankings)
 
-    # If there are very few voters, test all permutations
-    if n_voters <= 5:
-        from itertools import permutations
-        perms = list(permutations(voter_rankings))
-    else:
-        # Otherwise test n_permutations random shuffles
-        perms = [random.sample(voter_rankings, n_voters) for _ in range(n_permutations)]
+    # get random permutations of voter rankings
+    perms = [random.sample(voter_rankings, n_voters) for _ in range(n_permutations)]
 
     # Check each permutation
     for perm in perms:
@@ -202,6 +213,7 @@ def permute_candidates_mlp(X_batch, max_cand, max_vot, perm) -> torch.Tensor:
         X_batch: tensor of shape (batch, cand^2 * vot)
         max_cand: maximum number of candidates
         max_vot: maximum number of voters
+        perm: tensor of shape (cand,) with a permutation of candidate indices
 
     Returns:
         torch.Tensor: Tensor of the same shape with candidates permuted.
@@ -223,6 +235,8 @@ def permute_candidates_cnn(X_batch, max_cand, max_vot, perm) -> torch.Tensor:
 
     Args:
         X_batch: tensor of shape (batch, cand, cand, voters)
+        max_cand: maximum number of candidates
+        max_vot: maximum number of voters
         perm: tensor of shape (cand,) with a permutation of candidate indices
 
     Returns:
@@ -256,14 +270,16 @@ def permute_candidates_wec(profiles, cand_max, vot_max, perm) -> list[pref_votin
     for prof in profiles:
         candidates = list(prof.candidates)  # candidate IDs
         n = len(candidates)
-        perm = torch.randperm(n)
+        
+        # Generate a valid permutation for this profile's number of candidates
+        # Use the perm tensor as a seed to ensure consistency across the batch
+        perm_indices = torch.argsort(perm[:n])  # Creates a valid permutation of indices 0 to n-1
 
-        # create a mapping from old to new candidate IDs based on permutation
+        #  Create a mapping from old to new candidate IDs based on permutation
         permutation_dict = {}
         for i, cand in enumerate(candidates):
-            if i < len(perm):
-                target_idx = perm[i].item() % n
-                permutation_dict[cand] = candidates[target_idx]
+            target_idx = perm_indices[i].item()
+            permutation_dict[cand] = candidates[target_idx]
 
         new_profiles.append(prof.apply_cand_permutation(permutation_dict))
     return new_profiles
@@ -295,7 +311,7 @@ def neutrality_loss(model, X_batch, max_cand, max_vot, num_samples=50) -> torch.
     if permute_func is None:
         raise ValueError(f"Model '{model.name}' not supported")
 
-    loss = torch.zeros(1, device=original_logits.device).squeeze()
+    loss = torch.tensor(0.0)
 
     for _ in range(num_samples):
         perm = torch.randperm(max_cand, device=original_logits.device)
@@ -332,8 +348,27 @@ def check_neutrality(profile, winners, cand_max, winner_method="borda") -> int:
 
     Returns:
         int: 1 if neutrality is satisfied, 0 otherwise
-    """
-    original_winners = winners
+    """ 
+    # Convert winners to binary tensor format 
+    if isinstance(winners, list):
+        # winners is a list like [2] - convert to binary tensor
+        original_winners = torch.zeros(cand_max, dtype=torch.int)
+        for w in winners:
+            original_winners[w] = 1
+    elif winners.dtype == torch.int64 or winners.dtype == torch.long:
+        # winners might be indices tensor - check if it needs conversion
+        if winners.max() == 1 and winners.min() == 0:
+            # Already binary format
+            original_winners = winners.cpu().clone().int()
+        else:
+            # It's indices, convert to binary
+            original_winners = torch.zeros(cand_max, dtype=torch.int)
+            for w in winners:
+                original_winners[w] = 1
+    else:
+        # Already in binary format
+        original_winners = winners.cpu().clone().int()
+        
     if winner_method == "borda":
         rule = borda
     elif winner_method == "plurality":
@@ -392,7 +427,7 @@ def condorcet_loss(model, X_batch, prof, max_cand, max_vot) -> torch.Tensor:
     """
     logits = model(X_batch)
     probs = F.softmax(logits, dim=1)  # (batch, cand)
-    loss = 0.0
+    loss = torch.tensor(0.0)
 
     # MLP and CNN use tensors
     if model.name in ["mlp", "cnn"]:
@@ -413,7 +448,7 @@ def condorcet_loss(model, X_batch, prof, max_cand, max_vot) -> torch.Tensor:
         for i, p in enumerate(X_batch):
             cw = p.condorcet_winner()
             if cw is not None:
-                loss += 1.0 - probs[i, cw]
+                loss = loss + (1.0 - probs[i, cw])
 
         return loss / batch_size
 
@@ -433,6 +468,29 @@ def check_condorcet(profile, winners, cand_max, winner_method="borda") -> int:
     Returns:
         int: 1 if Condorcet is satisfied, 0 if not, 0.5 if no Condorcet winner exists
     """
+     # Convert winners to binary tensor format 
+    if isinstance(winners, list):
+        # winners is a list like [2] - convert to binary tensor
+        original_winners = torch.zeros(cand_max, dtype=torch.int)
+        for w in winners:
+            original_winners[w] = 1
+    elif winners.dtype == torch.int64 or winners.dtype == torch.long:
+        # winners might be indices tensor - check if it needs conversion
+        if winners.max() == 1 and winners.min() == 0:
+            # Already binary format
+            original_winners = winners.cpu().clone().int()
+        else:
+            # It's indices, convert to binary
+            original_winners = torch.zeros(cand_max, dtype=torch.int)
+            for w in winners:
+                original_winners[w] = 1
+    else:
+        # Already in binary format
+        original_winners = winners.cpu().clone().int()
+        
+    # original_winners is the binary tensor 
+    idxs = original_winners.nonzero(as_tuple=False).view(-1).tolist()
+    
     if winner_method == "borda":
         rule = borda
     elif winner_method == "plurality":
@@ -442,7 +500,7 @@ def check_condorcet(profile, winners, cand_max, winner_method="borda") -> int:
     else:
         raise ValueError(f"Winner method '{winner_method}' not supported")
 
-    a = profile.condorcet_winner()
+    a = profile.condorcet_winner(curr_cands=idxs)
 
     if a is not None:
         if set(rule(profile)) == {a}:
@@ -489,7 +547,7 @@ def pareto_loss(model, X_batch, prof, max_cand, max_vot) -> torch.Tensor:
     """
     logits = model(X_batch)
     probs = F.softmax(logits, dim=1)
-    loss = 0.0
+    loss = torch.tensor(0.0)
 
     if model.name in ["mlp", "cnn"]:
         batch_size = X_batch.size(0)
@@ -529,6 +587,26 @@ def check_pareto(profile, winners, cand_max, winner_method="borda") -> int:
         int: 1 if Pareto is satisfied, -1 if not
 
     """
+    # Convert winners to binary tensor format 
+    if isinstance(winners, list):
+        # winners is a list like [2] - convert to binary tensor
+        original_winners = torch.zeros(cand_max, dtype=torch.int)
+        for w in winners:
+            original_winners[w] = 1
+    elif winners.dtype == torch.int64 or winners.dtype == torch.long:
+        # winners might be indices tensor - check if it needs conversion
+        if winners.max() == 1 and winners.min() == 0:
+            # Already binary format
+            original_winners = winners.cpu().clone().int()
+        else:
+            # It's indices, convert to binary
+            original_winners = torch.zeros(cand_max, dtype=torch.int)
+            for w in winners:
+                original_winners[w] = 1
+    else:
+        # Already in binary format
+        original_winners = winners.cpu().clone().int()
+        
     if winner_method == "borda":
         rule = borda
     elif winner_method == "plurality":
@@ -538,20 +616,22 @@ def check_pareto(profile, winners, cand_max, winner_method="borda") -> int:
     else:
         raise ValueError(f"Winner method '{winner_method}' not supported")
 
-    num_alternatives = profile.num_cands
-    profile_list = profile.rankings
-
-    # Quantify over all possible alternatives a and b
-    satisfaction = 0
-    for a in range(num_alternatives):
-        for b in range(num_alternatives):
-            # Check if each voters ranks a over b, i.e., a has lower index in the ranking submitted by the voter than the index of b
-            if all(ranking.index(a) < ranking.index(b) for ranking in profile_list):
-                if b not in set(rule(profile)):
-                    satisfaction = 1
-                else:
-                    satisfaction = -1
-    return satisfaction
+    # Get the set of winners from the binary tensor
+    winner_indices = torch.nonzero(original_winners, as_tuple=True)[0].tolist()[:profile.num_cands]
+    winner_set = set(winner_indices)
+    
+    # Get the set of Pareto optimal candidates (not Pareto dominated)
+    pareto_optimal = set(pareto(profile))
+    
+    # Check if any winner is Pareto dominated
+    # A candidate is Pareto dominated if it's NOT in the pareto_optimal set
+    for winner in winner_set:
+        if winner not in pareto_optimal:
+            # A Pareto dominated candidate was selected as winner
+            return -1
+    
+    # All winners are Pareto optimal
+    return 1
 
 
 #### Independence  Loss ####
@@ -580,7 +660,7 @@ def independence_loss(model, X_batch, prof, max_cand, max_vot, num_samples=50) -
     original_prediction = model(X_nontrivial)
 
     # initialize the loss
-    loss = torch.zeros(1).squeeze()
+    loss = torch.tensor(0.0)
 
     for _ in range(num_samples):
         # For each original nontrivial profile generate a permuted version
@@ -666,15 +746,15 @@ def independence_loss(model, X_batch, prof, max_cand, max_vot, num_samples=50) -
             )
 
         loss += F.kl_div(
-            F.softmax(orig_prediction, dim=1),
+            F.llog_softmax(orig_prediction, dim=1),
             F.softmax(perm_prediction, dim=1),
             reduction="batchmean"
         )
     # return average loss
-    return (1 / num_samples) * loss
+    return loss / num_samples
 
 
-def check_independence(profile, winners, cand_max, winner_method="borda", n_permutations=None) -> int:
+def check_independence(profile, winners, cand_max, winner_method="borda", n_permutations=4) -> int:
     """Checks whether a given profile fulfills the Independence axiom.
 
     Args:
@@ -687,7 +767,27 @@ def check_independence(profile, winners, cand_max, winner_method="borda", n_perm
     Returns:
         int: 1 if Independence is satisfied, 0 if not
     """
-    n_permutations = len(winners) * (cand_max - len(winners)) * 256
+    # Convert winners to binary tensor format 
+    if isinstance(winners, list):
+        # winners is a list like [2] - convert to binary tensor
+        original_winners = torch.zeros(cand_max, dtype=torch.int)
+        for w in winners:
+            original_winners[w] = 1
+    elif winners.dtype == torch.int64 or winners.dtype == torch.long:
+        # winners might be indices tensor - check if it needs conversion
+        if winners.max() == 1 and winners.min() == 0:
+            # Already binary format
+            original_winners = winners.cpu().clone().int()
+        else:
+            # It's indices, convert to binary
+            original_winners = torch.zeros(cand_max, dtype=torch.int)
+            for w in winners:
+                original_winners[w] = 1
+    else:
+        # Already in binary format
+        original_winners = winners.cpu().clone().int()
+        
+    #n_permutations = len(winners) * (cand_max - len(winners)) * 256
     if winner_method == "borda":
         rule = borda
     elif winner_method == "plurality":
@@ -697,21 +797,21 @@ def check_independence(profile, winners, cand_max, winner_method="borda", n_perm
     else:
         raise ValueError(f"Winner method '{winner_method}' not supported")
 
-    original_profile_list = profile.rankings
+     original_profile_list = profile.rankings
     # get list of winners and losers
-    winners = torch.nonzero(winners, as_tuple=True)[0].tolist()[:profile.num_cands]
-    losers = [i for i in range(profile.num_cands) if i not in winners]
+    original_winners = torch.nonzero(original_winners, as_tuple=True)[0].tolist()[:profile.num_cands]
+    losers = [i for i in range(profile.num_cands) if i not in original_winners]
 
     satisfaction = 0
 
     # if all alternatives are winners, satisfaction is 0
-    if winners == set(profile.candidates) or winners == set([]):
+    if original_winners == set(profile.candidates) or original_winners == set([]):
         satisfaction = 0
         return satisfaction
     else:
         if n_permutations is None:
             #consider all ways of building new rankings where the set of voters raking a above b is the same
-            for a in winners:
+            for a in original_winners:
                 for b in losers:  # a != b
                     # For each voter, build the list of rankings that respect the order of a and b
                     allowed_rankings = []
@@ -740,7 +840,7 @@ def check_independence(profile, winners, cand_max, winner_method="borda", n_perm
 
         else:
             #randomly sample *sample*-many new rankings where the set of voters raking a above b is the same
-            for a in winners:
+            for a in original_winners:
                 for b in losers:  # a != b
                     # For each voter, build the list of rankings that respect the order of a and b
                     allowed_rankings = []

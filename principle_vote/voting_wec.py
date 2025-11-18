@@ -5,9 +5,9 @@ from matplotlib import pyplot as plt
 import numpy as np
 from pref_voting.generate_profiles import generate_profile
 
-from principle_vote.axioms_gpu import set_training_axiom, check_anonymity, check_neutrality, check_condorcet, check_pareto, \
+from axioms_gpu import set_training_axiom, check_anonymity, check_neutrality, check_condorcet, check_pareto, \
     check_independence
-from principle_vote.synth_data import SynthData
+from synth_data import SynthData
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -166,8 +166,8 @@ class VotingWEC(nn.Module):
 
         print(f"Trained embeddings: {embed.shape}")
 
-        torch.save(embed, "../embeddings.pt")
-        with open("../word_to_idx.json", "w") as f:
+        torch.save(embed, "embeddings.pt")
+        with open("word_to_idx.json", "w") as f:
             import json
             json.dump(word_to_idx, f)
 

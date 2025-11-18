@@ -8,9 +8,9 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader
 from typing import List
 
-from principle_vote.axioms_gpu import set_training_axiom, check_anonymity, check_neutrality, check_condorcet, check_pareto, \
+from axioms_gpu import set_training_axiom, check_anonymity, check_neutrality, check_condorcet, check_pareto, \
     check_independence
-from principle_vote.synth_data import SynthData
+from synth_data import SynthData
 
 
 class VotingCNN(nn.Module):
@@ -269,7 +269,7 @@ class VotingCNN(nn.Module):
                     applicable += 1
                 # sat == 0 -> not applicable, don't increment applicable or satisfied
 
-            # defensive: avoid division by zero
+            # avoid division by zero
             if applicable > 0:
                 cond_satisfaction = satisfied / applicable
             else:
