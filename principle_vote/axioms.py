@@ -797,7 +797,7 @@ def check_independence(profile, winners, cand_max, winner_method="borda", n_perm
     else:
         raise ValueError(f"Winner method '{winner_method}' not supported")
 
-     original_profile_list = profile.rankings
+    original_profile_list = profile.rankings
     # get list of winners and losers
     original_winners = torch.nonzero(original_winners, as_tuple=True)[0].tolist()[:profile.num_cands]
     losers = [i for i in range(profile.num_cands) if i not in original_winners]
