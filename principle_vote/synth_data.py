@@ -70,10 +70,10 @@ class SynthData:
         self.cnn_data = None
         self.wec_data = None
 
-        self.generate_training_dataset(self.cand_max, self.vot_max, self.num_samples, self.prob_model,
+        self.generate_training_data(self.cand_max, self.vot_max, self.num_samples, self.prob_model,
                                        self.winner_method)
 
-    def generate_training_dataset(self, cand_max: int, vot_max: int, num_samples: int,
+    def generate_training_data(self, cand_max: int, vot_max: int, num_samples: int,
                                   prob_model: str = "IC", winner_method: str = "borda") -> tuple[list, np.ndarray]:
         """Generates synthetic training data for voting models.
 
@@ -312,6 +312,16 @@ class SynthData:
         )
 
         return self.wec_data
+
+    def set_raw_data(self,  profiles: list, winners: np.ndarray):
+        """Sets raw profiles and winners directly.
+
+        Args:
+            profiles (list): List of Profile objects.
+            winners (np.ndarray): Array of winners corresponding to the profiles.
+        """
+        self.samples = profiles
+        self.winners = winners
 
     def get_encoded_mlp(self) -> tuple[torch.Tensor, torch.Tensor]:
         """ Gets the encoded MLP data as tensors.

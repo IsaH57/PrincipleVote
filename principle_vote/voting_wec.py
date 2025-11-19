@@ -5,9 +5,9 @@ from matplotlib import pyplot as plt
 import numpy as np
 from pref_voting.generate_profiles import generate_profile
 
-from principle_vote.axioms import set_training_axiom, check_anonymity, check_neutrality, check_condorcet, check_pareto, \
+from axioms_gpu import set_training_axiom, check_anonymity, check_neutrality, check_condorcet, check_pareto, \
     check_independence
-from principle_vote.synth_data import SynthData
+from synth_data import SynthData
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -166,8 +166,8 @@ class VotingWEC(nn.Module):
 
         print(f"Trained embeddings: {embed.shape}")
 
-        torch.save(embed, "../embeddings.pt")
-        with open("../word_to_idx.json", "w") as f:
+        torch.save(embed, "embeddings.pt")
+        with open("word_to_idx.json", "w") as f:
             import json
             json.dump(word_to_idx, f)
 
@@ -361,7 +361,7 @@ class VotingWEC(nn.Module):
         "independence": check_independence,
     }
 
-    def evaluate_axiom_satisfaction(self, data: SynthData, axiom: str) -> float:
+    def evaluate_axiom_satisfaction_old(self, data: SynthData, axiom: str) -> float:
         """Evaluates the model's axiom satisfaction rate on the test set.
 
         Args:
@@ -388,6 +388,57 @@ class VotingWEC(nn.Module):
             print(f"Axiom ({axiom}) Satisfaction Rate: {satisfied / len(y_test)}")
 
         return satisfied / len(y_test)
+
+    def evaluate_axiom_satisfaction(self, data: SynthData, axiom: str):
+        """Evaluate axiom satisfaction on the test set and return the same metrics
+        as train_and_eval.axiom_satisfaction (conditional & absolute satisfaction,
+        percent applicable).
+
+        Note: axiom_fun must return -1 (violation), 0 (not applicable), or 1 (satisfied).
+        """
+        axiom_fun = self.AXIOM_SAT_FUNCTIONS.get(axiom)
+        if axiom_fun is None:
+            raise ValueError(f"Axiom '{axiom}' not found in AXIOM_SAT_FUNCTIONS")
+
+        X_test, y_test = data.get_encoded_wec()
+        profiles = data.get_raw_profiles()
+
+        self.eval()
+        with torch.no_grad():
+            outputs = self(X_test)
+            predicted = (torch.sigmoid(outputs) > 0.5).int()
+
+            iteration = len(predicted)
+            applicable = 0
+            satisfied = 0
+
+            for profile, pred in zip(profiles, predicted):
+                sat = int(axiom_fun(profile, pred, data.cand_max, data.winner_method))
+                if sat == 1:
+                    satisfied += 1
+                    applicable += 1
+                elif sat == -1:
+                    applicable += 1
+                # sat == 0 -> not applicable, don't increment applicable or satisfied
+
+            # defensive: avoid division by zero
+            if applicable > 0:
+                cond_satisfaction = satisfied / applicable
+            else:
+                cond_satisfaction = float("nan")
+
+            absolute_satisfaction = (satisfied + (iteration - applicable)) / iteration
+            percent_applicable = applicable / iteration
+
+            print(f"Axiom ({axiom}) conditional satisfaction: {cond_satisfaction}")
+            print(f"Axiom ({axiom}) absolute satisfaction: {absolute_satisfaction}")
+            print(f"Axiom ({axiom}) percent applicable: {percent_applicable}")
+
+        return {
+            "cond_satisfaction": cond_satisfaction,
+            "absolute_satisfaction": absolute_satisfaction,
+            "percent_applicable": percent_applicable,
+        }
 
     def plot_training_loss(self, steps: List[int], losses: List[float]):
         """Plots the training loss over time.

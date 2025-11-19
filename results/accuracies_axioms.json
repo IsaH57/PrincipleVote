@@ -1,0 +1,252 @@
+{
+    "neutrality": {
+        "MLP": {
+            "accuracy_hard": 0.8675,
+            "accuracy_soft": 0.97,
+            "axiom_satisfaction": {
+                "cond_satisfaction": 0.8525,
+                "absolute_satisfaction": 0.8525,
+                "percent_applicable": 1.0
+            },
+            "accuracy_hard_axiom": 0.8625,
+            "accuracy_soft_axiom": 0.9525,
+            "axiom_satisfaction_axiom": {
+                "cond_satisfaction": 0.8475,
+                "absolute_satisfaction": 0.8475,
+                "percent_applicable": 1.0
+            }
+        },
+        "CNN": {
+            "accuracy_hard": 0.9375,
+            "accuracy_soft": 0.985,
+            "axiom_satisfaction": {
+                "cond_satisfaction": 0.9275,
+                "absolute_satisfaction": 0.9275,
+                "percent_applicable": 1.0
+            },
+            "accuracy_hard_axiom": 0.9325,
+            "accuracy_soft_axiom": 0.98,
+            "axiom_satisfaction_axiom": {
+                "cond_satisfaction": 0.9175,
+                "absolute_satisfaction": 0.9175,
+                "percent_applicable": 1.0
+            }
+        },
+        "WEC": {
+            "accuracy_hard": 0.9625,
+            "accuracy_soft": 0.99,
+            "axiom_satisfaction": {
+                "cond_satisfaction": 0.945,
+                "absolute_satisfaction": 0.945,
+                "percent_applicable": 1.0
+            },
+            "accuracy_hard_axiom": 0.9625,
+            "accuracy_soft_axiom": 0.99,
+            "axiom_satisfaction_axiom": {
+                "cond_satisfaction": 0.9525,
+                "absolute_satisfaction": 0.9525,
+                "percent_applicable": 1.0
+            }
+        }
+    },
+    "anonymity": {
+        "MLP": {
+            "accuracy_hard": 0.85,
+            "accuracy_soft": 0.945,
+            "axiom_satisfaction": {
+                "cond_satisfaction": 0.85,
+                "absolute_satisfaction": 0.85,
+                "percent_applicable": 1.0
+            },
+            "accuracy_hard_axiom": 0.845,
+            "accuracy_soft_axiom": 0.9475,
+            "axiom_satisfaction_axiom": {
+                "cond_satisfaction": 0.845,
+                "absolute_satisfaction": 0.845,
+                "percent_applicable": 1.0
+            }
+        },
+        "CNN": {
+            "accuracy_hard": 0.9125,
+            "accuracy_soft": 0.98,
+            "axiom_satisfaction": {
+                "cond_satisfaction": 0.9125,
+                "absolute_satisfaction": 0.9125,
+                "percent_applicable": 1.0
+            },
+            "accuracy_hard_axiom": 0.935,
+            "accuracy_soft_axiom": 0.985,
+            "axiom_satisfaction_axiom": {
+                "cond_satisfaction": 0.935,
+                "absolute_satisfaction": 0.935,
+                "percent_applicable": 1.0
+            }
+        },
+        "WEC": {
+            "accuracy_hard": 0.9325,
+            "accuracy_soft": 0.97,
+            "axiom_satisfaction": {
+                "cond_satisfaction": 0.9325,
+                "absolute_satisfaction": 0.9325,
+                "percent_applicable": 1.0
+            },
+            "accuracy_hard_axiom": 0.9325,
+            "accuracy_soft_axiom": 0.97,
+            "axiom_satisfaction_axiom": {
+                "cond_satisfaction": 0.93,
+                "absolute_satisfaction": 0.93,
+                "percent_applicable": 1.0
+            }
+        }
+    },
+    "condorcet": {
+        "MLP": {
+            "accuracy_hard": 0.865,
+            "accuracy_soft": 0.9475,
+            "axiom_satisfaction": {
+                "cond_satisfaction": 0.9417721518987342,
+                "absolute_satisfaction": 0.9425,
+                "percent_applicable": 0.9875
+            },
+            "accuracy_hard_axiom": 0.86,
+            "accuracy_soft_axiom": 0.9425,
+            "axiom_satisfaction_axiom": {
+                "cond_satisfaction": 0.9363867684478372,
+                "absolute_satisfaction": 0.9375,
+                "percent_applicable": 0.9825
+            }
+        },
+        "CNN": {
+            "accuracy_hard": 0.935,
+            "accuracy_soft": 0.9825,
+            "axiom_satisfaction": {
+                "cond_satisfaction": 0.9721518987341772,
+                "absolute_satisfaction": 0.9725,
+                "percent_applicable": 0.9875
+            },
+            "accuracy_hard_axiom": 0.935,
+            "accuracy_soft_axiom": 0.9825,
+            "axiom_satisfaction_axiom": {
+                "cond_satisfaction": 0.9696202531645569,
+                "absolute_satisfaction": 0.97,
+                "percent_applicable": 0.9875
+            }
+        },
+        "WEC": {
+            "accuracy_hard": 0.9525,
+            "accuracy_soft": 0.9825,
+            "axiom_satisfaction": {
+                "cond_satisfaction": 0.9798994974874372,
+                "absolute_satisfaction": 0.98,
+                "percent_applicable": 0.995
+            },
+            "accuracy_hard_axiom": 0.9525,
+            "accuracy_soft_axiom": 0.9825,
+            "axiom_satisfaction_axiom": {
+                "cond_satisfaction": 0.9874686716791979,
+                "absolute_satisfaction": 0.9875,
+                "percent_applicable": 0.9975
+            }
+        }
+    },
+    "pareto": {
+        "MLP": {
+            "accuracy_hard": 0.835,
+            "accuracy_soft": 0.9425,
+            "axiom_satisfaction": {
+                "cond_satisfaction": 1.0,
+                "absolute_satisfaction": 1.0,
+                "percent_applicable": 1.0
+            },
+            "accuracy_hard_axiom": 0.8175,
+            "accuracy_soft_axiom": 0.95,
+            "axiom_satisfaction_axiom": {
+                "cond_satisfaction": 1.0,
+                "absolute_satisfaction": 1.0,
+                "percent_applicable": 1.0
+            }
+        },
+        "CNN": {
+            "accuracy_hard": 0.925,
+            "accuracy_soft": 0.985,
+            "axiom_satisfaction": {
+                "cond_satisfaction": 1.0,
+                "absolute_satisfaction": 1.0,
+                "percent_applicable": 1.0
+            },
+            "accuracy_hard_axiom": 0.905,
+            "accuracy_soft_axiom": 0.985,
+            "axiom_satisfaction_axiom": {
+                "cond_satisfaction": 0.9975,
+                "absolute_satisfaction": 0.9975,
+                "percent_applicable": 1.0
+            }
+        },
+        "WEC": {
+            "accuracy_hard": 0.925,
+            "accuracy_soft": 0.9683333333333333,
+            "axiom_satisfaction": {
+                "cond_satisfaction": 0.99,
+                "absolute_satisfaction": 0.99,
+                "percent_applicable": 1.0
+            },
+            "accuracy_hard_axiom": 0.925,
+            "accuracy_soft_axiom": 0.9683333333333333,
+            "axiom_satisfaction_axiom": {
+                "cond_satisfaction": 0.99,
+                "absolute_satisfaction": 0.99,
+                "percent_applicable": 1.0
+            }
+        }
+    },
+    "independence": {
+        "MLP": {
+            "accuracy_hard": 0.995,
+            "accuracy_soft": 1.0,
+            "axiom_satisfaction": {
+                "cond_satisfaction": 0.9223057644110275,
+                "absolute_satisfaction": 0.9225,
+                "percent_applicable": 0.9975
+            },
+            "accuracy_hard_axiom": 0.0,
+            "accuracy_soft_axiom": 0.0,
+            "axiom_satisfaction_axiom": {
+                "cond_satisfaction": NaN,
+                "absolute_satisfaction": 1.0,
+                "percent_applicable": 0.0
+            }
+        },
+        "CNN": {
+            "accuracy_hard": 0.99,
+            "accuracy_soft": 1.0,
+            "axiom_satisfaction": {
+                "cond_satisfaction": 0.9118387909319899,
+                "absolute_satisfaction": 0.9125,
+                "percent_applicable": 0.9925
+            },
+            "accuracy_hard_axiom": 0.0,
+            "accuracy_soft_axiom": 0.0,
+            "axiom_satisfaction_axiom": {
+                "cond_satisfaction": NaN,
+                "absolute_satisfaction": 1.0,
+                "percent_applicable": 0.0
+            }
+        },
+        "WEC": {
+            "accuracy_hard": 0.9975,
+            "accuracy_soft": 0.99875,
+            "axiom_satisfaction": {
+                "cond_satisfaction": 0.925,
+                "absolute_satisfaction": 0.925,
+                "percent_applicable": 1.0
+            },
+            "accuracy_hard_axiom": 0.9975,
+            "accuracy_soft_axiom": 0.99875,
+            "axiom_satisfaction_axiom": {
+                "cond_satisfaction": NaN,
+                "absolute_satisfaction": 1.0,
+                "percent_applicable": 0.0
+            }
+        }
+    }
+}

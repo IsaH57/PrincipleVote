@@ -1,0 +1,44 @@
+{
+    "borda": {
+        "mlp_borda": {
+            "hard_accuracy": 0.8425,
+            "soft_accuracy": 0.9575
+        },
+        "cnn_borda": {
+            "hard_accuracy": 0.895,
+            "soft_accuracy": 0.98
+        },
+        "wec_borda": {
+            "hard_accuracy": 0.9425,
+            "soft_accuracy": 0.97375
+        }
+    },
+    "copeland": {
+        "mlp_copeland": {
+            "hard_accuracy": 0.765,
+            "soft_accuracy": 0.9725
+        },
+        "cnn_copeland": {
+            "hard_accuracy": 0.8075,
+            "soft_accuracy": 0.965
+        },
+        "wec_copeland": {
+            "hard_accuracy": 0.8325,
+            "soft_accuracy": 0.9216666666666667
+        }
+    },
+    "plurality": {
+        "mlp_plurality": {
+            "hard_accuracy": 0.895,
+            "soft_accuracy": 0.9925
+        },
+        "cnn_plurality": {
+            "hard_accuracy": 0.9625,
+            "soft_accuracy": 1.0
+        },
+        "wec_plurality": {
+            "hard_accuracy": 0.9875,
+            "soft_accuracy": 0.9983333333333333
+        }
+    }
+}
