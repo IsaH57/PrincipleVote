@@ -7,7 +7,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 from typing import List
 
-from axioms_gpu import set_training_axiom, check_anonymity, check_neutrality, check_condorcet, check_pareto, \
+from axioms import set_training_axiom, check_anonymity, check_neutrality, check_condorcet, check_pareto, \
     check_independence
 from synth_data import SynthData
 
