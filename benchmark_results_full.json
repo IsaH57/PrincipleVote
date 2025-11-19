@@ -1,0 +1,1337 @@
+{
+  "config": {
+    "dataset_sizes": [
+      1000,
+      5000,
+      15000,
+      50000,
+      150000,
+      500000,
+      1000000
+    ],
+    "num_samples_test": 5000,
+    "max_candidates": 5,
+    "max_voters": 55,
+    "batch_size": 200,
+    "num_epochs": 3,
+    "prob_model": "IC",
+    "winner_methods": [
+      "borda",
+      "plurality",
+      "copeland"
+    ],
+    "encoding_types": [
+      "pairwise",
+      "pairwise_per_voter",
+      "onehot"
+    ]
+  },
+  "borda": {
+    "1000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 3.638489246368408,
+        "num_training_steps": 15,
+        "num_epochs": 3,
+        "training_time": 0.1955716609954834,
+        "training_time_per_step": 0.013038110733032227,
+        "training_time_per_epoch": 0.06519055366516113,
+        "evaluation_time": 8.71349811553955,
+        "inference_time_ms": 0.26940345764160156,
+        "hard_accuracy": 0.0,
+        "soft_accuracy": 0.0,
+        "axiom_satisfaction": {
+          "anonymity": 0.0,
+          "neutrality": 0.0,
+          "condorcet": 0.7206,
+          "pareto": 0.05
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 0.4295363426208496,
+        "num_training_steps": 15,
+        "num_epochs": 3,
+        "training_time": 0.08006572723388672,
+        "training_time_per_step": 0.005337715148925781,
+        "training_time_per_epoch": 0.026688575744628906,
+        "evaluation_time": 10.378812789916992,
+        "inference_time_ms": 0.28979063034057617,
+        "hard_accuracy": 0.3942,
+        "soft_accuracy": 0.5478,
+        "axiom_satisfaction": {
+          "anonymity": 0.3942,
+          "neutrality": 0.3872,
+          "condorcet": 0.7174,
+          "pareto": 0.0472
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 0.3528940677642822,
+        "num_training_steps": 15,
+        "num_epochs": 3,
+        "training_time": 0.08585929870605469,
+        "training_time_per_step": 0.0057239532470703125,
+        "training_time_per_epoch": 0.028619766235351562,
+        "evaluation_time": 12.603307247161865,
+        "inference_time_ms": 0.25910139083862305,
+        "hard_accuracy": 0.0,
+        "soft_accuracy": 0.0,
+        "axiom_satisfaction": {
+          "anonymity": 0.0,
+          "neutrality": 0.0,
+          "condorcet": 0.7158,
+          "pareto": 0.048
+        }
+      }
+    },
+    "5000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 4.237621307373047,
+        "num_training_steps": 75,
+        "num_epochs": 3,
+        "training_time": 0.4787158966064453,
+        "training_time_per_step": 0.006382878621419271,
+        "training_time_per_epoch": 0.15957196553548178,
+        "evaluation_time": 9.657015562057495,
+        "inference_time_ms": 0.25226593017578125,
+        "hard_accuracy": 0.7994,
+        "soft_accuracy": 0.8862,
+        "axiom_satisfaction": {
+          "anonymity": 0.7994,
+          "neutrality": 0.7952,
+          "condorcet": 0.7262,
+          "pareto": 0.0486
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 2.1590464115142822,
+        "num_training_steps": 75,
+        "num_epochs": 3,
+        "training_time": 0.3941004276275635,
+        "training_time_per_step": 0.005254672368367513,
+        "training_time_per_epoch": 0.13136680920918783,
+        "evaluation_time": 7.211852550506592,
+        "inference_time_ms": 0.2772665023803711,
+        "hard_accuracy": 0.7954,
+        "soft_accuracy": 0.894,
+        "axiom_satisfaction": {
+          "anonymity": 0.7954,
+          "neutrality": 0.7914,
+          "condorcet": 0.7162,
+          "pareto": 0.051
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 1.9155066013336182,
+        "num_training_steps": 75,
+        "num_epochs": 3,
+        "training_time": 0.2545144557952881,
+        "training_time_per_step": 0.0033935260772705077,
+        "training_time_per_epoch": 0.0848381519317627,
+        "evaluation_time": 2.202043294906616,
+        "inference_time_ms": 0.2442002296447754,
+        "hard_accuracy": 0.458,
+        "soft_accuracy": 0.4892,
+        "axiom_satisfaction": {
+          "anonymity": 0.458,
+          "neutrality": 0.458,
+          "condorcet": 0.7144,
+          "pareto": 0.0474
+        }
+      }
+    },
+    "15000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 11.86510944366455,
+        "num_training_steps": 225,
+        "num_epochs": 3,
+        "training_time": 0.6745100021362305,
+        "training_time_per_step": 0.0029978222317165798,
+        "training_time_per_epoch": 0.2248366673787435,
+        "evaluation_time": 2.19811749458313,
+        "inference_time_ms": 0.24382591247558594,
+        "hard_accuracy": 0.934,
+        "soft_accuracy": 0.993,
+        "axiom_satisfaction": {
+          "anonymity": 0.934,
+          "neutrality": 0.92,
+          "condorcet": 0.7194,
+          "pareto": 0.0486
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 6.551998138427734,
+        "num_training_steps": 225,
+        "num_epochs": 3,
+        "training_time": 0.8540606498718262,
+        "training_time_per_step": 0.0037958251105414498,
+        "training_time_per_epoch": 0.2846868832906087,
+        "evaluation_time": 3.8832292556762695,
+        "inference_time_ms": 0.2779197692871094,
+        "hard_accuracy": 0.8896,
+        "soft_accuracy": 0.9592,
+        "axiom_satisfaction": {
+          "anonymity": 0.8896,
+          "neutrality": 0.8768,
+          "condorcet": 0.724,
+          "pareto": 0.0506
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 5.755706310272217,
+        "num_training_steps": 225,
+        "num_epochs": 3,
+        "training_time": 1.025791883468628,
+        "training_time_per_step": 0.0045590750376383465,
+        "training_time_per_epoch": 0.341930627822876,
+        "evaluation_time": 4.935268402099609,
+        "inference_time_ms": 0.2356553077697754,
+        "hard_accuracy": 0.758,
+        "soft_accuracy": 0.8082,
+        "axiom_satisfaction": {
+          "anonymity": 0.758,
+          "neutrality": 0.7454,
+          "condorcet": 0.7016,
+          "pareto": 0.0462
+        }
+      }
+    },
+    "50000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 40.4722375869751,
+        "num_training_steps": 750,
+        "num_epochs": 3,
+        "training_time": 2.225572347640991,
+        "training_time_per_step": 0.002967429796854655,
+        "training_time_per_epoch": 0.7418574492136637,
+        "evaluation_time": 2.1932430267333984,
+        "inference_time_ms": 0.2440810203552246,
+        "hard_accuracy": 0.9574,
+        "soft_accuracy": 0.9996,
+        "axiom_satisfaction": {
+          "anonymity": 0.9574,
+          "neutrality": 0.9406,
+          "condorcet": 0.7072,
+          "pareto": 0.0484
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 22.003050804138184,
+        "num_training_steps": 750,
+        "num_epochs": 3,
+        "training_time": 2.2834792137145996,
+        "training_time_per_step": 0.003044638951619466,
+        "training_time_per_epoch": 0.7611597379048666,
+        "evaluation_time": 2.1892592906951904,
+        "inference_time_ms": 0.27679443359375,
+        "hard_accuracy": 0.9074,
+        "soft_accuracy": 0.9752,
+        "axiom_satisfaction": {
+          "anonymity": 0.9074,
+          "neutrality": 0.8902,
+          "condorcet": 0.7068,
+          "pareto": 0.0542
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 22.015738010406494,
+        "num_training_steps": 750,
+        "num_epochs": 3,
+        "training_time": 3.472952365875244,
+        "training_time_per_step": 0.004630603154500325,
+        "training_time_per_epoch": 1.1576507886250813,
+        "evaluation_time": 2.192199468612671,
+        "inference_time_ms": 0.2413630485534668,
+        "hard_accuracy": 0.8928,
+        "soft_accuracy": 0.9556,
+        "axiom_satisfaction": {
+          "anonymity": 0.8928,
+          "neutrality": 0.8798,
+          "condorcet": 0.72,
+          "pareto": 0.0478
+        }
+      }
+    },
+    "150000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 121.2797474861145,
+        "num_training_steps": 2250,
+        "num_epochs": 3,
+        "training_time": 6.792543649673462,
+        "training_time_per_step": 0.003018908288743761,
+        "training_time_per_epoch": 2.264181216557821,
+        "evaluation_time": 2.1986703872680664,
+        "inference_time_ms": 0.23760318756103516,
+        "hard_accuracy": 0.9728,
+        "soft_accuracy": 1.0,
+        "axiom_satisfaction": {
+          "anonymity": 0.9728,
+          "neutrality": 0.9492,
+          "condorcet": 0.6982,
+          "pareto": 0.0498
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 67.18010473251343,
+        "num_training_steps": 2250,
+        "num_epochs": 3,
+        "training_time": 7.334040880203247,
+        "training_time_per_step": 0.0032595737245347763,
+        "training_time_per_epoch": 2.4446802934010825,
+        "evaluation_time": 0.22156834602355957,
+        "inference_time_ms": 0.2783799171447754,
+        "hard_accuracy": 0.9502,
+        "soft_accuracy": 0.9936,
+        "axiom_satisfaction": {
+          "anonymity": 0.9502,
+          "neutrality": 0.9278,
+          "condorcet": 0.7128,
+          "pareto": 0.0438
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 57.11435675621033,
+        "num_training_steps": 2250,
+        "num_epochs": 3,
+        "training_time": 7.605377912521362,
+        "training_time_per_step": 0.0033801679611206053,
+        "training_time_per_epoch": 2.535125970840454,
+        "evaluation_time": 0.2230360507965088,
+        "inference_time_ms": 0.23751258850097656,
+        "hard_accuracy": 0.9422,
+        "soft_accuracy": 0.9934,
+        "axiom_satisfaction": {
+          "anonymity": 0.9422,
+          "neutrality": 0.92,
+          "condorcet": 0.7136,
+          "pareto": 0.0446
+        }
+      }
+    },
+    "500000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 400.9573860168457,
+        "num_training_steps": 7500,
+        "num_epochs": 3,
+        "training_time": 19.657526969909668,
+        "training_time_per_step": 0.002621003595987956,
+        "training_time_per_epoch": 6.55250898996989,
+        "evaluation_time": 0.21439480781555176,
+        "inference_time_ms": 0.23612737655639648,
+        "hard_accuracy": 0.9776,
+        "soft_accuracy": 1.0,
+        "axiom_satisfaction": {
+          "anonymity": 0.9776,
+          "neutrality": 0.9496,
+          "condorcet": 0.714,
+          "pareto": 0.0478
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 219.8111081123352,
+        "num_training_steps": 7500,
+        "num_epochs": 3,
+        "training_time": 27.189080238342285,
+        "training_time_per_step": 0.003625210698445638,
+        "training_time_per_epoch": 9.063026746114096,
+        "evaluation_time": 0.2215425968170166,
+        "inference_time_ms": 0.2747464179992676,
+        "hard_accuracy": 0.9942,
+        "soft_accuracy": 1.0,
+        "axiom_satisfaction": {
+          "anonymity": 0.9942,
+          "neutrality": 0.9564,
+          "condorcet": 0.7272,
+          "pareto": 0.0492
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 193.62626147270203,
+        "num_training_steps": 7500,
+        "num_epochs": 3,
+        "training_time": 27.837740898132324,
+        "training_time_per_step": 0.003711698786417643,
+        "training_time_per_epoch": 9.279246966044107,
+        "evaluation_time": 0.22594213485717773,
+        "inference_time_ms": 0.2405381202697754,
+        "hard_accuracy": 0.9866,
+        "soft_accuracy": 0.9994,
+        "axiom_satisfaction": {
+          "anonymity": 0.9866,
+          "neutrality": 0.955,
+          "condorcet": 0.709,
+          "pareto": 0.0456
+        }
+      }
+    },
+    "1000000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 791.5245442390442,
+        "num_training_steps": 15000,
+        "num_epochs": 3,
+        "training_time": 47.22385883331299,
+        "training_time_per_step": 0.003148257255554199,
+        "training_time_per_epoch": 15.741286277770996,
+        "evaluation_time": 0.22522306442260742,
+        "inference_time_ms": 0.2506899833679199,
+        "hard_accuracy": 0.982,
+        "soft_accuracy": 1.0,
+        "axiom_satisfaction": {
+          "anonymity": 0.982,
+          "neutrality": 0.9558,
+          "condorcet": 0.7092,
+          "pareto": 0.0496
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 447.57870054244995,
+        "num_training_steps": 15000,
+        "num_epochs": 3,
+        "training_time": 46.39894962310791,
+        "training_time_per_step": 0.003093263308207194,
+        "training_time_per_epoch": 15.46631654103597,
+        "evaluation_time": 0.22826218605041504,
+        "inference_time_ms": 0.2916121482849121,
+        "hard_accuracy": 0.9986,
+        "soft_accuracy": 1.0,
+        "axiom_satisfaction": {
+          "anonymity": 0.9986,
+          "neutrality": 0.9608,
+          "condorcet": 0.7256,
+          "pareto": 0.0526
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 390.93840312957764,
+        "num_training_steps": 15000,
+        "num_epochs": 3,
+        "training_time": 55.00303506851196,
+        "training_time_per_step": 0.003666869004567464,
+        "training_time_per_epoch": 18.334345022837322,
+        "evaluation_time": 0.22533750534057617,
+        "inference_time_ms": 0.2361154556274414,
+        "hard_accuracy": 0.994,
+        "soft_accuracy": 0.9998,
+        "axiom_satisfaction": {
+          "anonymity": 0.994,
+          "neutrality": 0.9552,
+          "condorcet": 0.718,
+          "pareto": 0.052
+        }
+      }
+    }
+  },
+  "plurality": {
+    "1000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 1.0766704082489014,
+        "num_training_steps": 15,
+        "num_epochs": 3,
+        "training_time": 0.042522430419921875,
+        "training_time_per_step": 0.0028348286946614583,
+        "training_time_per_epoch": 0.014174143473307291,
+        "evaluation_time": 0.21840381622314453,
+        "inference_time_ms": 0.23665189743041992,
+        "hard_accuracy": 0.4266,
+        "soft_accuracy": 0.5036,
+        "axiom_satisfaction": {
+          "anonymity": 0.4266,
+          "neutrality": 0.4266,
+          "condorcet": 0.5574,
+          "pareto": 0.0494
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 0.4182884693145752,
+        "num_training_steps": 15,
+        "num_epochs": 3,
+        "training_time": 0.04439401626586914,
+        "training_time_per_step": 0.002959601084391276,
+        "training_time_per_epoch": 0.01479800542195638,
+        "evaluation_time": 0.21835756301879883,
+        "inference_time_ms": 0.2746105194091797,
+        "hard_accuracy": 0.4116,
+        "soft_accuracy": 0.4684,
+        "axiom_satisfaction": {
+          "anonymity": 0.4116,
+          "neutrality": 0.4108,
+          "condorcet": 0.543,
+          "pareto": 0.05
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 0.3507382869720459,
+        "num_training_steps": 15,
+        "num_epochs": 3,
+        "training_time": 0.04472851753234863,
+        "training_time_per_step": 0.002981901168823242,
+        "training_time_per_epoch": 0.014909505844116211,
+        "evaluation_time": 0.21803569793701172,
+        "inference_time_ms": 0.23717641830444336,
+        "hard_accuracy": 0.0,
+        "soft_accuracy": 0.0,
+        "axiom_satisfaction": {
+          "anonymity": 0.0,
+          "neutrality": 0.0,
+          "condorcet": 0.5426,
+          "pareto": 0.0466
+        }
+      }
+    },
+    "5000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 4.042535066604614,
+        "num_training_steps": 75,
+        "num_epochs": 3,
+        "training_time": 0.25734710693359375,
+        "training_time_per_step": 0.0034312947591145834,
+        "training_time_per_epoch": 0.08578236897786458,
+        "evaluation_time": 0.5154919624328613,
+        "inference_time_ms": 0.23979425430297852,
+        "hard_accuracy": 0.651,
+        "soft_accuracy": 0.7744,
+        "axiom_satisfaction": {
+          "anonymity": 0.651,
+          "neutrality": 0.649,
+          "condorcet": 0.5432,
+          "pareto": 0.051
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 2.08843994140625,
+        "num_training_steps": 75,
+        "num_epochs": 3,
+        "training_time": 0.22308683395385742,
+        "training_time_per_step": 0.0029744911193847656,
+        "training_time_per_epoch": 0.07436227798461914,
+        "evaluation_time": 0.7705051898956299,
+        "inference_time_ms": 0.27936220169067383,
+        "hard_accuracy": 0.676,
+        "soft_accuracy": 0.8206,
+        "axiom_satisfaction": {
+          "anonymity": 0.676,
+          "neutrality": 0.6658,
+          "condorcet": 0.5384,
+          "pareto": 0.0504
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 1.723480224609375,
+        "num_training_steps": 75,
+        "num_epochs": 3,
+        "training_time": 0.2547931671142578,
+        "training_time_per_step": 0.0033972422281901044,
+        "training_time_per_epoch": 0.08493105570475261,
+        "evaluation_time": 0.22355246543884277,
+        "inference_time_ms": 0.24203777313232422,
+        "hard_accuracy": 0.5302,
+        "soft_accuracy": 0.6096,
+        "axiom_satisfaction": {
+          "anonymity": 0.5302,
+          "neutrality": 0.5286,
+          "condorcet": 0.5478,
+          "pareto": 0.0464
+        }
+      }
+    },
+    "15000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 11.856951713562012,
+        "num_training_steps": 225,
+        "num_epochs": 3,
+        "training_time": 0.5691885948181152,
+        "training_time_per_step": 0.0025297270880805123,
+        "training_time_per_epoch": 0.18972953160603842,
+        "evaluation_time": 0.22119951248168945,
+        "inference_time_ms": 0.24813175201416016,
+        "hard_accuracy": 0.7202,
+        "soft_accuracy": 0.8576,
+        "axiom_satisfaction": {
+          "anonymity": 0.7202,
+          "neutrality": 0.7154,
+          "condorcet": 0.5396,
+          "pareto": 0.051
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 6.653197288513184,
+        "num_training_steps": 225,
+        "num_epochs": 3,
+        "training_time": 1.6335878372192383,
+        "training_time_per_step": 0.007260390387641059,
+        "training_time_per_epoch": 0.5445292790730795,
+        "evaluation_time": 0.3169412612915039,
+        "inference_time_ms": 0.28687477111816406,
+        "hard_accuracy": 0.685,
+        "soft_accuracy": 0.8398,
+        "axiom_satisfaction": {
+          "anonymity": 0.685,
+          "neutrality": 0.6778,
+          "condorcet": 0.554,
+          "pareto": 0.05
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 5.1959228515625,
+        "num_training_steps": 225,
+        "num_epochs": 3,
+        "training_time": 0.6962149143218994,
+        "training_time_per_step": 0.003094288508097331,
+        "training_time_per_epoch": 0.2320716381072998,
+        "evaluation_time": 0.22466683387756348,
+        "inference_time_ms": 0.23314952850341797,
+        "hard_accuracy": 0.8152,
+        "soft_accuracy": 0.9224,
+        "axiom_satisfaction": {
+          "anonymity": 0.8152,
+          "neutrality": 0.7954,
+          "condorcet": 0.5376,
+          "pareto": 0.0458
+        }
+      }
+    },
+    "50000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 39.2109956741333,
+        "num_training_steps": 750,
+        "num_epochs": 3,
+        "training_time": 1.8906383514404297,
+        "training_time_per_step": 0.0025208511352539063,
+        "training_time_per_epoch": 0.6302127838134766,
+        "evaluation_time": 0.21603751182556152,
+        "inference_time_ms": 0.2323317527770996,
+        "hard_accuracy": 0.7212,
+        "soft_accuracy": 0.8592,
+        "axiom_satisfaction": {
+          "anonymity": 0.7212,
+          "neutrality": 0.7176,
+          "condorcet": 0.5446,
+          "pareto": 0.0484
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 21.90498423576355,
+        "num_training_steps": 750,
+        "num_epochs": 3,
+        "training_time": 2.696214437484741,
+        "training_time_per_step": 0.0035949525833129884,
+        "training_time_per_epoch": 0.8987381458282471,
+        "evaluation_time": 0.23443078994750977,
+        "inference_time_ms": 0.28393030166625977,
+        "hard_accuracy": 0.7284,
+        "soft_accuracy": 0.8482,
+        "axiom_satisfaction": {
+          "anonymity": 0.7284,
+          "neutrality": 0.7146,
+          "condorcet": 0.559,
+          "pareto": 0.0492
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 18.044538736343384,
+        "num_training_steps": 750,
+        "num_epochs": 3,
+        "training_time": 2.8113250732421875,
+        "training_time_per_step": 0.0037484334309895832,
+        "training_time_per_epoch": 0.9371083577473959,
+        "evaluation_time": 0.7711334228515625,
+        "inference_time_ms": 0.2334451675415039,
+        "hard_accuracy": 0.919,
+        "soft_accuracy": 0.992,
+        "axiom_satisfaction": {
+          "anonymity": 0.919,
+          "neutrality": 0.8738,
+          "condorcet": 0.5636,
+          "pareto": 0.0476
+        }
+      }
+    },
+    "150000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 117.84084820747375,
+        "num_training_steps": 2250,
+        "num_epochs": 3,
+        "training_time": 6.259252548217773,
+        "training_time_per_step": 0.0027818900214301215,
+        "training_time_per_epoch": 2.0864175160725913,
+        "evaluation_time": 0.21617746353149414,
+        "inference_time_ms": 0.2374720573425293,
+        "hard_accuracy": 0.7134,
+        "soft_accuracy": 0.8476,
+        "axiom_satisfaction": {
+          "anonymity": 0.7134,
+          "neutrality": 0.7058,
+          "condorcet": 0.5296,
+          "pareto": 0.047
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 64.10880017280579,
+        "num_training_steps": 2250,
+        "num_epochs": 3,
+        "training_time": 8.001924514770508,
+        "training_time_per_step": 0.003556410895453559,
+        "training_time_per_epoch": 2.6673081715901694,
+        "evaluation_time": 0.2192533016204834,
+        "inference_time_ms": 0.2745985984802246,
+        "hard_accuracy": 0.7432,
+        "soft_accuracy": 0.8628,
+        "axiom_satisfaction": {
+          "anonymity": 0.7432,
+          "neutrality": 0.7188,
+          "condorcet": 0.538,
+          "pareto": 0.047
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 58.628689765930176,
+        "num_training_steps": 2250,
+        "num_epochs": 3,
+        "training_time": 10.253545999526978,
+        "training_time_per_step": 0.004557131555345323,
+        "training_time_per_epoch": 3.4178486665089927,
+        "evaluation_time": 0.24198675155639648,
+        "inference_time_ms": 0.24986743927001953,
+        "hard_accuracy": 0.9704,
+        "soft_accuracy": 0.9992,
+        "axiom_satisfaction": {
+          "anonymity": 0.9704,
+          "neutrality": 0.9118,
+          "condorcet": 0.5442,
+          "pareto": 0.0498
+        }
+      }
+    },
+    "500000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 391.85117506980896,
+        "num_training_steps": 7500,
+        "num_epochs": 3,
+        "training_time": 19.6281099319458,
+        "training_time_per_step": 0.0026170813242594403,
+        "training_time_per_epoch": 6.542703310648601,
+        "evaluation_time": 0.21754956245422363,
+        "inference_time_ms": 0.2396869659423828,
+        "hard_accuracy": 0.7196,
+        "soft_accuracy": 0.8536,
+        "axiom_satisfaction": {
+          "anonymity": 0.7196,
+          "neutrality": 0.7122,
+          "condorcet": 0.5296,
+          "pareto": 0.0454
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 214.6774399280548,
+        "num_training_steps": 7500,
+        "num_epochs": 3,
+        "training_time": 24.81689715385437,
+        "training_time_per_step": 0.003308919620513916,
+        "training_time_per_epoch": 8.27229905128479,
+        "evaluation_time": 0.22267460823059082,
+        "inference_time_ms": 0.27855873107910156,
+        "hard_accuracy": 0.796,
+        "soft_accuracy": 0.9044,
+        "axiom_satisfaction": {
+          "anonymity": 0.796,
+          "neutrality": 0.7698,
+          "condorcet": 0.5442,
+          "pareto": 0.047
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 190.87729358673096,
+        "num_training_steps": 7500,
+        "num_epochs": 3,
+        "training_time": 27.641208171844482,
+        "training_time_per_step": 0.003685494422912598,
+        "training_time_per_epoch": 9.213736057281494,
+        "evaluation_time": 0.22235846519470215,
+        "inference_time_ms": 0.24092912673950195,
+        "hard_accuracy": 0.9986,
+        "soft_accuracy": 1.0,
+        "axiom_satisfaction": {
+          "anonymity": 0.9986,
+          "neutrality": 0.9226,
+          "condorcet": 0.558,
+          "pareto": 0.0518
+        }
+      }
+    },
+    "1000000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 798.0364153385162,
+        "num_training_steps": 15000,
+        "num_epochs": 3,
+        "training_time": 44.56470966339111,
+        "training_time_per_step": 0.002970980644226074,
+        "training_time_per_epoch": 14.854903221130371,
+        "evaluation_time": 0.7686212062835693,
+        "inference_time_ms": 0.2356553077697754,
+        "hard_accuracy": 0.731,
+        "soft_accuracy": 0.8608,
+        "axiom_satisfaction": {
+          "anonymity": 0.731,
+          "neutrality": 0.7232,
+          "condorcet": 0.5472,
+          "pareto": 0.0448
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 427.5370090007782,
+        "num_training_steps": 15000,
+        "num_epochs": 3,
+        "training_time": 48.50950241088867,
+        "training_time_per_step": 0.003233966827392578,
+        "training_time_per_epoch": 16.16983413696289,
+        "evaluation_time": 0.2208421230316162,
+        "inference_time_ms": 0.2734041213989258,
+        "hard_accuracy": 0.8172,
+        "soft_accuracy": 0.9162,
+        "axiom_satisfaction": {
+          "anonymity": 0.8172,
+          "neutrality": 0.7852,
+          "condorcet": 0.5232,
+          "pareto": 0.048
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 362.3754107952118,
+        "num_training_steps": 15000,
+        "num_epochs": 3,
+        "training_time": 51.72790336608887,
+        "training_time_per_step": 0.003448526891072591,
+        "training_time_per_epoch": 17.242634455362957,
+        "evaluation_time": 0.22475600242614746,
+        "inference_time_ms": 0.23658275604248047,
+        "hard_accuracy": 1.0,
+        "soft_accuracy": 1.0,
+        "axiom_satisfaction": {
+          "anonymity": 1.0,
+          "neutrality": 0.9246,
+          "condorcet": 0.5376,
+          "pareto": 0.052
+        }
+      }
+    }
+  },
+  "copeland": {
+    "1000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 0.7956321239471436,
+        "num_training_steps": 15,
+        "num_epochs": 3,
+        "training_time": 0.042890310287475586,
+        "training_time_per_step": 0.002859354019165039,
+        "training_time_per_epoch": 0.014296770095825195,
+        "evaluation_time": 0.22095775604248047,
+        "inference_time_ms": 0.23701190948486328,
+        "hard_accuracy": 0.0,
+        "soft_accuracy": 0.0,
+        "axiom_satisfaction": {
+          "anonymity": 0.0,
+          "neutrality": 0.0,
+          "condorcet": 0.7972,
+          "pareto": 0.0468
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 0.4159963130950928,
+        "num_training_steps": 15,
+        "num_epochs": 3,
+        "training_time": 0.05404782295227051,
+        "training_time_per_step": 0.003603188196818034,
+        "training_time_per_epoch": 0.018015940984090168,
+        "evaluation_time": 0.22310590744018555,
+        "inference_time_ms": 0.2752971649169922,
+        "hard_accuracy": 0.3968,
+        "soft_accuracy": 0.5082,
+        "axiom_satisfaction": {
+          "anonymity": 0.3968,
+          "neutrality": 0.394,
+          "condorcet": 0.812,
+          "pareto": 0.051
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 0.3417038917541504,
+        "num_training_steps": 15,
+        "num_epochs": 3,
+        "training_time": 0.05415201187133789,
+        "training_time_per_step": 0.0036101341247558594,
+        "training_time_per_epoch": 0.018050670623779297,
+        "evaluation_time": 0.22172856330871582,
+        "inference_time_ms": 0.23390531539916992,
+        "hard_accuracy": 0.0,
+        "soft_accuracy": 0.0,
+        "axiom_satisfaction": {
+          "anonymity": 0.0,
+          "neutrality": 0.0,
+          "condorcet": 0.8014,
+          "pareto": 0.0438
+        }
+      }
+    },
+    "5000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 3.9344537258148193,
+        "num_training_steps": 75,
+        "num_epochs": 3,
+        "training_time": 0.19089269638061523,
+        "training_time_per_step": 0.0025452359517415366,
+        "training_time_per_epoch": 0.0636308987935384,
+        "evaluation_time": 0.22061824798583984,
+        "inference_time_ms": 0.2369999885559082,
+        "hard_accuracy": 0.7034,
+        "soft_accuracy": 0.8114,
+        "axiom_satisfaction": {
+          "anonymity": 0.7034,
+          "neutrality": 0.7002,
+          "condorcet": 0.8142,
+          "pareto": 0.0524
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 2.137791872024536,
+        "num_training_steps": 75,
+        "num_epochs": 3,
+        "training_time": 0.24651622772216797,
+        "training_time_per_step": 0.003286883036295573,
+        "training_time_per_epoch": 0.08217207590738933,
+        "evaluation_time": 0.21939611434936523,
+        "inference_time_ms": 0.2728080749511719,
+        "hard_accuracy": 0.7452,
+        "soft_accuracy": 0.8972,
+        "axiom_satisfaction": {
+          "anonymity": 0.7452,
+          "neutrality": 0.7368,
+          "condorcet": 0.809,
+          "pareto": 0.052
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 1.7353787422180176,
+        "num_training_steps": 75,
+        "num_epochs": 3,
+        "training_time": 0.26888346672058105,
+        "training_time_per_step": 0.0035851128896077474,
+        "training_time_per_epoch": 0.08962782224019368,
+        "evaluation_time": 0.4640493392944336,
+        "inference_time_ms": 0.23283720016479492,
+        "hard_accuracy": 0.4788,
+        "soft_accuracy": 0.5458,
+        "axiom_satisfaction": {
+          "anonymity": 0.4788,
+          "neutrality": 0.4782,
+          "condorcet": 0.8068,
+          "pareto": 0.0432
+        }
+      }
+    },
+    "15000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 11.706276416778564,
+        "num_training_steps": 225,
+        "num_epochs": 3,
+        "training_time": 0.5648388862609863,
+        "training_time_per_step": 0.0025103950500488283,
+        "training_time_per_epoch": 0.1882796287536621,
+        "evaluation_time": 0.21914410591125488,
+        "inference_time_ms": 0.2325892448425293,
+        "hard_accuracy": 0.8164,
+        "soft_accuracy": 0.9664,
+        "axiom_satisfaction": {
+          "anonymity": 0.8164,
+          "neutrality": 0.8072,
+          "condorcet": 0.7986,
+          "pareto": 0.05
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 6.506373405456543,
+        "num_training_steps": 225,
+        "num_epochs": 3,
+        "training_time": 0.6489903926849365,
+        "training_time_per_step": 0.0028844017452663846,
+        "training_time_per_epoch": 0.21633013089497885,
+        "evaluation_time": 0.22242450714111328,
+        "inference_time_ms": 0.27236461639404297,
+        "hard_accuracy": 0.8066,
+        "soft_accuracy": 0.9494,
+        "axiom_satisfaction": {
+          "anonymity": 0.8066,
+          "neutrality": 0.7914,
+          "condorcet": 0.8178,
+          "pareto": 0.0478
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 5.424241065979004,
+        "num_training_steps": 225,
+        "num_epochs": 3,
+        "training_time": 0.7859580516815186,
+        "training_time_per_step": 0.0034931468963623046,
+        "training_time_per_epoch": 0.26198601722717285,
+        "evaluation_time": 0.22462701797485352,
+        "inference_time_ms": 0.23263931274414062,
+        "hard_accuracy": 0.7366,
+        "soft_accuracy": 0.8506,
+        "axiom_satisfaction": {
+          "anonymity": 0.7366,
+          "neutrality": 0.725,
+          "condorcet": 0.8028,
+          "pareto": 0.052
+        }
+      }
+    },
+    "50000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 39.236406087875366,
+        "num_training_steps": 750,
+        "num_epochs": 3,
+        "training_time": 1.9051213264465332,
+        "training_time_per_step": 0.0025401617685953774,
+        "training_time_per_epoch": 0.6350404421488444,
+        "evaluation_time": 0.21897268295288086,
+        "inference_time_ms": 0.23641347885131836,
+        "hard_accuracy": 0.868,
+        "soft_accuracy": 0.9884,
+        "axiom_satisfaction": {
+          "anonymity": 0.868,
+          "neutrality": 0.856,
+          "condorcet": 0.802,
+          "pareto": 0.0434
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 21.35703158378601,
+        "num_training_steps": 750,
+        "num_epochs": 3,
+        "training_time": 2.178773880004883,
+        "training_time_per_step": 0.0029050318400065103,
+        "training_time_per_epoch": 0.7262579600016276,
+        "evaluation_time": 0.2228071689605713,
+        "inference_time_ms": 0.27564048767089844,
+        "hard_accuracy": 0.8078,
+        "soft_accuracy": 0.9562,
+        "axiom_satisfaction": {
+          "anonymity": 0.8078,
+          "neutrality": 0.7904,
+          "condorcet": 0.8032,
+          "pareto": 0.0512
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 18.095812797546387,
+        "num_training_steps": 750,
+        "num_epochs": 3,
+        "training_time": 4.003982782363892,
+        "training_time_per_step": 0.005338643709818522,
+        "training_time_per_epoch": 1.3346609274546306,
+        "evaluation_time": 0.3986694812774658,
+        "inference_time_ms": 0.23477792739868164,
+        "hard_accuracy": 0.8164,
+        "soft_accuracy": 0.934,
+        "axiom_satisfaction": {
+          "anonymity": 0.8164,
+          "neutrality": 0.8024,
+          "condorcet": 0.8158,
+          "pareto": 0.0466
+        }
+      }
+    },
+    "150000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 119.11969447135925,
+        "num_training_steps": 2250,
+        "num_epochs": 3,
+        "training_time": 5.743948698043823,
+        "training_time_per_step": 0.002552866088019477,
+        "training_time_per_epoch": 1.9146495660146077,
+        "evaluation_time": 0.23121118545532227,
+        "inference_time_ms": 0.2390122413635254,
+        "hard_accuracy": 0.909,
+        "soft_accuracy": 0.9982,
+        "axiom_satisfaction": {
+          "anonymity": 0.909,
+          "neutrality": 0.8798,
+          "condorcet": 0.8032,
+          "pareto": 0.0482
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 64.65054273605347,
+        "num_training_steps": 2250,
+        "num_epochs": 3,
+        "training_time": 6.464375734329224,
+        "training_time_per_step": 0.0028730558819240995,
+        "training_time_per_epoch": 2.1547919114430747,
+        "evaluation_time": 0.22189617156982422,
+        "inference_time_ms": 0.26932477951049805,
+        "hard_accuracy": 0.875,
+        "soft_accuracy": 0.9808,
+        "axiom_satisfaction": {
+          "anonymity": 0.875,
+          "neutrality": 0.8432,
+          "condorcet": 0.798,
+          "pareto": 0.0446
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 53.71690273284912,
+        "num_training_steps": 2250,
+        "num_epochs": 3,
+        "training_time": 6.61482048034668,
+        "training_time_per_step": 0.002939920213487413,
+        "training_time_per_epoch": 2.20494016011556,
+        "evaluation_time": 0.22490930557250977,
+        "inference_time_ms": 0.23462295532226562,
+        "hard_accuracy": 0.8292,
+        "soft_accuracy": 0.961,
+        "axiom_satisfaction": {
+          "anonymity": 0.8292,
+          "neutrality": 0.8082,
+          "condorcet": 0.8088,
+          "pareto": 0.0502
+        }
+      }
+    },
+    "500000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 395.32808327674866,
+        "num_training_steps": 7500,
+        "num_epochs": 3,
+        "training_time": 20.318928241729736,
+        "training_time_per_step": 0.0027091904322306317,
+        "training_time_per_epoch": 6.772976080576579,
+        "evaluation_time": 0.2194979190826416,
+        "inference_time_ms": 0.23582220077514648,
+        "hard_accuracy": 0.9604,
+        "soft_accuracy": 1.0,
+        "axiom_satisfaction": {
+          "anonymity": 0.9604,
+          "neutrality": 0.9106,
+          "condorcet": 0.8024,
+          "pareto": 0.0488
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 216.2191185951233,
+        "num_training_steps": 7500,
+        "num_epochs": 3,
+        "training_time": 26.129812240600586,
+        "training_time_per_step": 0.0034839749654134115,
+        "training_time_per_epoch": 8.70993741353353,
+        "evaluation_time": 0.2216949462890625,
+        "inference_time_ms": 0.2726173400878906,
+        "hard_accuracy": 0.9528,
+        "soft_accuracy": 0.998,
+        "axiom_satisfaction": {
+          "anonymity": 0.9528,
+          "neutrality": 0.9046,
+          "condorcet": 0.8118,
+          "pareto": 0.04
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 178.75910568237305,
+        "num_training_steps": 7500,
+        "num_epochs": 3,
+        "training_time": 27.002142906188965,
+        "training_time_per_step": 0.0036002857208251955,
+        "training_time_per_epoch": 9.000714302062988,
+        "evaluation_time": 0.22526121139526367,
+        "inference_time_ms": 0.23354053497314453,
+        "hard_accuracy": 0.8498,
+        "soft_accuracy": 0.9706,
+        "axiom_satisfaction": {
+          "anonymity": 0.8498,
+          "neutrality": 0.8272,
+          "condorcet": 0.8124,
+          "pareto": 0.0484
+        }
+      }
+    },
+    "1000000": {
+      "pairwise": {
+        "input_size": 10,
+        "num_parameters": 236293,
+        "data_creation_time": 799.1104261875153,
+        "num_training_steps": 15000,
+        "num_epochs": 3,
+        "training_time": 39.452035427093506,
+        "training_time_per_step": 0.002630135695139567,
+        "training_time_per_epoch": 13.150678475697836,
+        "evaluation_time": 0.21734166145324707,
+        "inference_time_ms": 0.2356553077697754,
+        "hard_accuracy": 0.9756,
+        "soft_accuracy": 1.0,
+        "axiom_satisfaction": {
+          "anonymity": 0.9756,
+          "neutrality": 0.9202,
+          "condorcet": 0.8056,
+          "pareto": 0.0498
+        }
+      },
+      "pairwise_per_voter": {
+        "input_size": 550,
+        "num_parameters": 241669,
+        "data_creation_time": 428.64353036880493,
+        "num_training_steps": 15000,
+        "num_epochs": 3,
+        "training_time": 42.98458170890808,
+        "training_time_per_step": 0.002865638780593872,
+        "training_time_per_epoch": 14.32819390296936,
+        "evaluation_time": 0.22543621063232422,
+        "inference_time_ms": 0.2765512466430664,
+        "hard_accuracy": 0.9788,
+        "soft_accuracy": 0.9992,
+        "axiom_satisfaction": {
+          "anonymity": 0.9788,
+          "neutrality": 0.9234,
+          "condorcet": 0.8092,
+          "pareto": 0.0472
+        }
+      },
+      "onehot": {
+        "input_size": 1375,
+        "num_parameters": 226309,
+        "data_creation_time": 358.677875995636,
+        "num_training_steps": 15000,
+        "num_epochs": 3,
+        "training_time": 43.6842885017395,
+        "training_time_per_step": 0.0029122859001159667,
+        "training_time_per_epoch": 14.561429500579834,
+        "evaluation_time": 0.22495126724243164,
+        "inference_time_ms": 0.24023056030273438,
+        "hard_accuracy": 0.8444,
+        "soft_accuracy": 0.9714,
+        "axiom_satisfaction": {
+          "anonymity": 0.8444,
+          "neutrality": 0.819,
+          "condorcet": 0.8004,
+          "pareto": 0.045
+        }
+      }
+    }
+  }
+}

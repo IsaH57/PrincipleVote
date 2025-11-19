@@ -31,7 +31,7 @@ class SynthData:
     SUPPORTED_PROB_MODELS = ["IC", "MALLOWS-RELPHI", "Urn-R", "euclidean"]
     SUPPORTED_VOTING_RULES = ["borda", "plurality", "copeland"]
 
-    def __init__(self, cand_max: int, vot_max: int, num_samples: int, prob_model: str, winner_method: str):
+    def __init__(self, cand_max: int, vot_max: int, num_samples: int, prob_model: str, winner_method: str, encoding_type: str = "pairwise"):
         """Initializes the SynthData class used to generate synthetic training data for voting models.
 
         Args:
@@ -40,6 +40,7 @@ class SynthData:
             num_samples (int): Number of samples to generate.
             prob_model (str): Probability model for generating profiles. Defaults to "IC".
             winner_method (str): Method to compute the winner. Defaults to "borda".
+            encoding_type (str): Type of encoding for MLP. Either "pairwise", "pairwise_per_voter", or "onehot". Defaults to "pairwise".
         """
         # TODO make utils function
         if prob_model not in self.SUPPORTED_PROB_MODELS:
@@ -48,12 +49,16 @@ class SynthData:
         if winner_method not in self.SUPPORTED_VOTING_RULES:
             raise ValueError(
                 f"Unsupported winner method: {winner_method}. Supported methods are: {self.SUPPORTED_VOTING_RULES}")
+        if encoding_type not in ["pairwise", "pairwise_per_voter", "onehot"]:
+            raise ValueError(
+                f"Unsupported encoding_type: {encoding_type}. Supported types are: ['pairwise', 'pairwise_per_voter', 'onehot']")
 
         self.cand_max = cand_max
         self.vot_max = vot_max
         self.num_samples = num_samples
         self.prob_model = prob_model
         self.winner_method = winner_method
+        self.encoding_type = encoding_type
 
         self.samples = None
         self.winners = None
@@ -123,11 +128,21 @@ class SynthData:
 
     def encode_mlp(self) -> Dataset:
         """Encodes synthetic training data for Multi-Layer Perceptron (MLP) models.
+        Supports aggregated pairwise, per-voter pairwise, and one-hot encodings.
 
         Returns:
             VotingDataset: Custom dataset containing the generated profiles and their winners.
         """
-        X = np.zeros((self.num_samples, self.cand_max * self.cand_max * self.vot_max), dtype=np.float32)
+        # Calculate input size based on encoding type
+        if self.encoding_type in ["pairwise", "pairwise_per_voter"]:
+            # Pairwise: upper triangle of aggregated comparison matrix
+            input_size = self.cand_max * (self.cand_max - 1) // 2
+            if self.encoding_type == "pairwise_per_voter":
+                input_size *= self.vot_max
+        else:  # onehot
+            input_size = self.cand_max * self.cand_max * self.vot_max
+        
+        X = np.zeros((self.num_samples, input_size), dtype=np.float32)
 
         for i, prof in enumerate(self.samples):
             encoded_profile = self.pad_profile(prof, mode="mlp")
@@ -174,7 +189,12 @@ class SynthData:
 
         Returns:
             np.ndarray
-                - MLP: flat vector length cand_max^2 * vot_max, Fortran order
+                    - MLP (pairwise): flat vector with symmetric pairwise comparison matrix (upper triangle)
+                        Entry for pair (i,j) = (voters preferring i over j - voters preferring j over i) / total
+                        Values in range [-1, 1]. Shape: (cand_max * (cand_max - 1) // 2,)
+                    - MLP (pairwise_per_voter): concatenated per-voter upper triangles with values in {-1, 0, +1}
+                        Shape: (vot_max * cand_max * (cand_max - 1) // 2,)
+                - MLP (onehot): flat vector length cand_max^2 * vot_max, Fortran order
                 - CNN: (cand_max, cand_max, vot_max) one-hot [alt, rank, voter]
         """
         num_voters = profile.num_voters
@@ -186,17 +206,70 @@ class SynthData:
             raise ValueError(f"Number of alternatives ({num_alternatives}) exceeds maximum ({self.cand_max})")
 
         if mode == "mlp":
-            encoded = np.zeros((self.cand_max, self.cand_max, self.vot_max), dtype=np.float32)
-            voter_idx = 0
-            for ranking, count in zip(profile.rankings, profile.counts):
-                for _ in range(count):
-                    if voter_idx < self.vot_max:
-                        for rank_pos, alt in enumerate(ranking):
-                            if rank_pos < self.cand_max:
-                                if alt < self.cand_max:
-                                    encoded[alt, rank_pos, voter_idx] = 1
+            if self.encoding_type == "pairwise":
+                # Symmetric pairwise comparison matrix with values in [-1, 1]
+                pairwise_matrix = np.zeros((self.cand_max, self.cand_max), dtype=np.float32)
+                total_voters = sum(profile.counts)
+
+                for ranking, count in zip(profile.rankings, profile.counts):
+                    for i, cand_i in enumerate(ranking):
+                        if cand_i >= self.cand_max:
+                            continue
+                        for j, cand_j in enumerate(ranking):
+                            if cand_j >= self.cand_max or cand_i == cand_j:
+                                continue
+                            if i < j:
+                                pairwise_matrix[cand_i, cand_j] += count
+                                pairwise_matrix[cand_j, cand_i] -= count
+
+                if total_voters > 0:
+                    pairwise_matrix /= total_voters
+
+                upper_triangle = []
+                for i in range(self.cand_max):
+                    for j in range(i + 1, self.cand_max):
+                        upper_triangle.append(pairwise_matrix[i, j])
+
+                return np.array(upper_triangle, dtype=np.float32)
+            if self.encoding_type == "pairwise_per_voter":
+                tri_size = self.cand_max * (self.cand_max - 1) // 2
+                encoded = np.zeros((self.vot_max, tri_size), dtype=np.float32)
+                voter_idx = 0
+                pair_indices = [(a, b) for a in range(self.cand_max) for b in range(a + 1, self.cand_max)]
+
+                for ranking, count in zip(profile.rankings, profile.counts):
+                    truncated = tuple(ranking[:self.cand_max])
+                    positions = {cand: pos for pos, cand in enumerate(truncated)}
+                    default_pos = len(truncated)
+                    for _ in range(count):
+                        if voter_idx >= self.vot_max:
+                            break
+                        vec = []
+                        for a, b in pair_indices:
+                            pos_a = positions.get(a, default_pos)
+                            pos_b = positions.get(b, default_pos)
+                            if pos_a == pos_b == default_pos:
+                                vec.append(0.0)
+                            elif pos_a == pos_b:
+                                vec.append(0.0)
+                            else:
+                                vec.append(1.0 if pos_a < pos_b else -1.0)
+                        encoded[voter_idx] = np.array(vec, dtype=np.float32)
                         voter_idx += 1
-            return encoded.flatten(order='F')
+
+                return encoded.flatten(order="C")
+            else:  # onehot encoding
+                encoded = np.zeros((self.cand_max, self.cand_max, self.vot_max), dtype=np.float32)
+                voter_idx = 0
+                for ranking, count in zip(profile.rankings, profile.counts):
+                    for _ in range(count):
+                        if voter_idx < self.vot_max:
+                            for rank_pos, alt in enumerate(ranking):
+                                if rank_pos < self.cand_max:
+                                    if alt < self.cand_max:
+                                        encoded[alt, rank_pos, voter_idx] = 1
+                            voter_idx += 1
+                return encoded.flatten(order='F')
 
         elif mode == "cnn":
             encoded = np.zeros((self.cand_max, self.cand_max, self.vot_max), dtype=np.float32)
@@ -245,7 +318,10 @@ class SynthData:
 
         Returns:
             tuple: A tuple containing:
-                - X (torch.Tensor): Encoded input tensor of shape (num_samples, cand_max * cand_max * vot_max).
+                - X (torch.Tensor): Encoded input tensor. Shape depends on encoding_type:
+                    - pairwise: (num_samples, cand_max * (cand_max - 1) // 2) - symmetric scores [-1,1]
+                    - pairwise_per_voter: (num_samples, vot_max * cand_max * (cand_max - 1) // 2) - per-voter {-1,0,1}
+                    - onehot: (num_samples, cand_max * cand_max * vot_max)
                 - y (torch.Tensor): Labels tensor of shape (num_samples, cand_max).
         """
         if self.mlp_encoded is None:

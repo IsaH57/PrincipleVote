@@ -184,7 +184,7 @@ def check_anonymity(profile, winners, cand_max, winner_method="borda", n_permuta
     # Check each permutation
     for perm in perms:
         permuted_profile = Profile(list(perm))
-        permuted_winners = torch.zeros(cand_max, dtype=torch.int)
+        permuted_winners = torch.zeros(cand_max, dtype=torch.int, device=original_winners.device)
         for w in rule(permuted_profile):
             permuted_winners[w] = 1
 
@@ -580,7 +580,7 @@ def independence_loss(model, X_batch, prof, max_cand, max_vot, num_samples=50) -
     original_prediction = model(X_nontrivial)
 
     # initialize the loss
-    loss = torch.zeros(1).squeeze()
+    loss = torch.zeros(1, device=original_prediction.device).squeeze()
 
     for _ in range(num_samples):
         # For each original nontrivial profile generate a permuted version
