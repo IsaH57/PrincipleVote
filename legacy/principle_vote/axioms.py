@@ -3,7 +3,7 @@ import itertools
 import pref_voting
 import random
 import torch
-from principle_vote import utils
+import utils
 
 from pref_voting.c1_methods import copeland
 from pref_voting.other_methods import pareto
@@ -195,7 +195,7 @@ def check_anonymity(profile, winners, cand_max, winner_method="borda", n_permuta
     # Check each permutation
     for perm in perms:
         permuted_profile = Profile(list(perm))
-        permuted_winners = torch.zeros(cand_max, dtype=torch.int, device=original_winners.device)
+        permuted_winners = torch.zeros(cand_max, dtype=torch.int)
         for w in rule(permuted_profile):
             permuted_winners[w] = 1
 
@@ -635,7 +635,7 @@ def check_pareto(profile, winners, cand_max, winner_method="borda") -> int:
 
 
 #### Independence  Loss ####
-def independence_loss(model, X_batch, prof, max_cand, max_vot, num_samples=50) -> torch.Tensor:
+def independence_loss(model, X_batch, prof, max_cand, max_vot, num_samples=25) -> torch.Tensor:
     """Independence Loss: the relative probabilities of two alternatives a and b should not depend on other alternatives.
 
     Args:
@@ -655,12 +655,17 @@ def independence_loss(model, X_batch, prof, max_cand, max_vot, num_samples=50) -
         X_nontrivial = torch.stack([batch for batch, p in zip(X_batch, prof) if p.num_cands > 1])
     elif model.name == "wec":
         X_nontrivial = [p for p in X_batch if p.num_cands > 1]
-
+        
+    # Return zero loss if no nontrivial profiles
+    if len(X_nontrivial_p) == 0:
+        print("No nontrivial profiles found for independence loss calculation.")
+        return torch.tensor(0.0)
+    
     # Compute prediction of model
-    original_prediction = model(X_nontrivial)
+    original_prediction_logits = model(X_nontrivial)
 
     # initialize the loss
-    loss = torch.zeros(1, device=original_prediction.device).squeeze()
+    loss = torch.tensor(0.0)
 
     for _ in range(num_samples):
         # For each original nontrivial profile generate a permuted version
@@ -707,48 +712,49 @@ def independence_loss(model, X_batch, prof, max_cand, max_vot, num_samples=50) -
         if model.name == "mlp":
             X_permuted = torch.stack(X_permuted, dim=0)
             # Next compute prediction of the model on the permuted profiles
-            permuted_prediction = model(X_permuted).squeeze(1)
+            permuted_prediction_logits = model(X_permuted).squeeze(1)
 
             orig_prediction = torch.stack(
-                [original_prediction[i][[a, b]] for i, (a, b) in enumerate(pairs_of_alternatives)],
+                [original_prediction_logits[i][[a, b]] for i, (a, b) in enumerate(pairs_of_alternatives)],
                 dim=0
             )
             perm_prediction = torch.stack(
-                [permuted_prediction[i][[a, b]] for i, (a, b) in enumerate(pairs_of_alternatives)],
+                [permuted_prediction_logits[i][[a, b]] for i, (a, b) in enumerate(pairs_of_alternatives)],
                 dim=0
             )
 
         elif model.name == "cnn":
             X_permuted = torch.stack(X_permuted, dim=0)
             # Next compute prediction of the model on the permuted profiles
-            permuted_prediction = model(X_permuted.squeeze(1))
+            permuted_prediction_logits = model(X_permuted.squeeze(1))
 
             orig_prediction = torch.stack(
-                [original_prediction[i][[a, b]] for i, (a, b) in enumerate(pairs_of_alternatives)],
+                [original_prediction_logits[i][[a, b]] for i, (a, b) in enumerate(pairs_of_alternatives)],
                 dim=0
             )
             perm_prediction = torch.stack(
-                [permuted_prediction[i][[a, b]] for i, (a, b) in enumerate(pairs_of_alternatives)],
+                [permuted_prediction_logits[i][[a, b]] for i, (a, b) in enumerate(pairs_of_alternatives)],
                 dim=0
             )
 
         elif model.name == "wec":
             # Next compute prediction of the model on the permuted profiles
-            permuted_prediction = model(X_permuted)
+            permuted_prediction_logits = model(X_permuted)
 
             orig_prediction = torch.stack(
-                [original_prediction[i][pairs_of_alternatives[i],] for i in range(len(original_prediction))],
+                [original_prediction_logits[i][pairs_of_alternatives[i],] for i in range(len(original_prediction_logits))],
                 dim=0
             )
             perm_prediction = torch.stack(
-                [permuted_prediction[i][pairs_of_alternatives[i],] for i in range(len(permuted_prediction))],
+                [permuted_prediction_logits[i][pairs_of_alternatives[i],] for i in range(len(permuted_prediction_logits))],
                 dim=0
             )
-
+        
         loss += F.kl_div(
             F.log_softmax(orig_prediction, dim=1),
-            F.softmax(perm_prediction, dim=1),
-            reduction="batchmean"
+            F.log_softmax(perm_prediction, dim=1),
+            reduction="batchmean",
+            log_target=True
         )
     # return average loss
     return loss / num_samples
@@ -806,6 +812,7 @@ def check_independence(profile, winners, cand_max, winner_method="borda", n_perm
 
     # if all alternatives are winners, satisfaction is 0
     if original_winners == set(profile.candidates) or original_winners == set([]):
+        print("All alternatives are winners or no winners, independence trivially satisfied")
         satisfaction = 0
         return satisfaction
     else:
@@ -886,10 +893,10 @@ def set_training_axiom(model, batch_X, prof, axiom: str, lambda_axiom: float = 1
     if axiom == "none":
         return 0
     elif axiom == "anonymity":
-        axiom_loss = anonymity_loss(model, batch_X, num_samples=5)
+        axiom_loss = anonymity_loss(model, batch_X, num_samples=50)
         return lambda_axiom * axiom_loss
     elif axiom == "neutrality":
-        axiom_loss = neutrality_loss(model, batch_X, model.max_cand, model.max_vot, num_samples=5)
+        axiom_loss = neutrality_loss(model, batch_X, model.max_cand, model.max_vot, num_samples=50)
         return lambda_axiom * axiom_loss
     elif axiom == "condorcet":
         axiom_loss = condorcet_loss(model, batch_X, prof, model.max_cand, model.max_vot)
@@ -898,7 +905,7 @@ def set_training_axiom(model, batch_X, prof, axiom: str, lambda_axiom: float = 1
         axiom_loss = pareto_loss(model, batch_X, prof, model.max_cand, model.max_vot)
         return lambda_axiom * axiom_loss
     elif axiom == "independence":
-        axiom_loss = independence_loss(model, batch_X, prof, model.max_cand, model.max_vot, num_samples=5)
+        axiom_loss = independence_loss(model, batch_X, prof, model.max_cand, model.max_vot, num_samples=25)
         return lambda_axiom * axiom_loss
     else:
         raise ValueError(f"Axiom {axiom} not supported.")

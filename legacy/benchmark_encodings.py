@@ -9,6 +9,9 @@ from principle_vote.synth_data import SynthData
 from principle_vote.voting_mlp_pairwise import VotingMLP
 from principle_vote.voting_mlp_pairwise_per_voter import VotingMLPPerVoter
 
+
+import principle_vote.axioms as axioms
+print("Using standard axioms")
 torch.manual_seed(42)
 
 # GPU Setup
@@ -24,12 +27,12 @@ else:
     print("WARNING: CUDA not available. Running on CPU will be much slower!")
 
 # Configuration
-dataset_sizes = [1000, 5000, 15000, 50000, 150000, 500000, 1000000]  # Varying training set sizes
+dataset_sizes = [1000, 5000, 15000, 50000, 150000, 500000, 100000, 3000000]  # Varying training set sizes
 num_samples_test = 5000
 max_num_candidates = 5
 max_num_voters = 55
 batch_size = 200
-num_epochs = 3
+num_epochs = 1
 prob_model = "IC"
 winner_methods = ["borda", "plurality", "copeland"]  # Test multiple voting methods
 encoding_types = ["pairwise", "pairwise_per_voter", "onehot"]  # Pairwise = symmetric encoding
@@ -143,7 +146,7 @@ def benchmark_encoding(encoding_type: str, winner_method: str, num_samples_train
     
     # Axiom satisfaction
     print("Checking axiom satisfaction...")
-    axiom_types = ["anonymity", "neutrality", "condorcet", "pareto"]
+    axiom_types = ["anonymity", "neutrality", "condorcet", "pareto", "independence"]
     axiom_results = {}
     for axiom in axiom_types:
         try:
@@ -290,7 +293,7 @@ for winner_method in winner_methods:
 
     print(f"\n{'Axiom Satisfaction Rates':<35}")
     print(f"{'-'*35}" + ''.join('-' * 20 for _ in encoding_types))
-    for axiom in ["anonymity", "neutrality", "condorcet", "pareto"]:
+    for axiom in ["anonymity", "neutrality", "condorcet", "pareto", "independence"]:
         vals = [
             format_cell(method_results[enc]['axiom_satisfaction'].get(axiom), "float")
             if method_results[enc]['axiom_satisfaction'].get(axiom) is not None else f"{'n/a':<20}"

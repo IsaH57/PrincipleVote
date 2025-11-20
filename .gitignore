@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+.venv
+*.out
+
+# Data
+data/*.csv
+legacy/PersonaAlignment/*.csv
+legacy/PersonaAlignment/*.json
+legacy/benchmark_results_full.json
+legacy/ranking_models/ranking_results/
+legacy/ranking_models/result_comparisons/
+legacy/results/

@@ -109,7 +109,7 @@ plt.savefig('soft_accuracy_vs_dataset_size.png', dpi=300, bbox_inches='tight')
 print("Saved: soft_accuracy_vs_dataset_size.png")
 
 # Axiom Satisfaction - Create separate plots for each axiom
-axioms = ['anonymity', 'neutrality', 'condorcet', 'pareto']
+axioms = ['anonymity', 'neutrality', 'condorcet', 'pareto', 'independence']
 
 for axiom in axioms:
     fig, axes = plt.subplots(1, 3, figsize=(18, 5))
@@ -165,7 +165,8 @@ for method in winner_methods:
         ('anonymity', 'Anonymity'),
         ('neutrality', 'Neutrality'),
         ('condorcet', 'Condorcet'),
-        ('pareto', 'Pareto')
+        ('pareto', 'Pareto'),
+        ('independence', 'Independence')
     ]
     
     for plot_idx, (metric_key, metric_name) in enumerate(metrics):
