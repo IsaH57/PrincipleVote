@@ -24,7 +24,6 @@ class RestaurantData:
         self.restaurants_df = pd.read_csv(os.path.join(data_dir, restaurants_file))
         
         # Pre-compute text representations
-        self.personas_df['text'] = self.personas_df.apply(self._persona_text, axis=1)
         self.restaurants_df['text'] = self.restaurants_df.apply(self._restaurant_text, axis=1)
         
         print(f"Loaded {len(self.personas_df)} personas and {len(self.restaurants_df)} restaurants from {restaurants_file}.")
@@ -33,6 +32,7 @@ class RestaurantData:
         # Compute Embeddings
         # We only use a subset of personas to keep things fast for this demo
         self.personas_df = self.personas_df.sample(n=min(100, len(self.personas_df)), random_state=42).reset_index(drop=True)
+        self.personas_df['text'] = self.personas_df.apply(self._persona_text, axis=1)
         
         self.persona_embeddings = self.model.encode(self.personas_df['text'].tolist())
         self.restaurant_embeddings = self.model.encode(self.restaurants_df['text'].tolist())

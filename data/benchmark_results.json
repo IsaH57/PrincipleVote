@@ -1,0 +1,63 @@
+[
+  {
+    "method": "Pandas CSV (Default)",
+    "file_size_mb": 5046.1407108306885,
+    "load_time_sec": 48.03492832183838,
+    "load_memory_mb": 10012.87109375,
+    "num_rows": 1000000,
+    "num_cols": 23,
+    "iteration_time_ms": 0.031107187271118168,
+    "throughput_rows_per_sec": 32146.911621561547
+  },
+  {
+    "method": "Pandas CSV (Optimized)",
+    "file_size_mb": 5046.1407108306885,
+    "load_time_sec": 52.79463768005371,
+    "load_memory_mb": 1665.82421875,
+    "num_rows": 1000000,
+    "num_cols": 23,
+    "iteration_time_ms": 0.02894449234008789,
+    "throughput_rows_per_sec": 34548.887168250934
+  },
+  {
+    "method": "Pandas CSV (Chunked 10000)",
+    "file_size_mb": 5046.1407108306885,
+    "load_time_sec": 41.20170307159424,
+    "load_memory_mb": 1196.55859375,
+    "num_rows": 1000000,
+    "num_cols": 23,
+    "iteration_time_ms": 0.03115367889404297,
+    "throughput_rows_per_sec": 32098.937765941162
+  },
+  {
+    "method": "Pandas CSV (Chunked 50000)",
+    "file_size_mb": 5046.1407108306885,
+    "load_time_sec": 44.148924827575684,
+    "load_memory_mb": 1086.70703125,
+    "num_rows": 1000000,
+    "num_cols": 23,
+    "iteration_time_ms": 0.03009200096130371,
+    "throughput_rows_per_sec": 33231.42257259438
+  },
+  {
+    "method": "CSV to HuggingFace",
+    "file_size_mb": 5046.1407108306885,
+    "conversion_time_sec": 149.23827576637268,
+    "load_time_sec": 0.24935364723205566,
+    "load_memory_mb": 10393.8046875,
+    "num_rows": 1000000,
+    "num_cols": 23,
+    "iteration_time_ms": 0.1476757526397705,
+    "throughput_rows_per_sec": 6771.592371290142
+  },
+  {
+    "method": "HuggingFace Dataset",
+    "file_size_mb": 5084.066012382507,
+    "load_time_sec": 1.9876394271850586,
+    "load_memory_mb": -3447.53125,
+    "num_rows": 1000000,
+    "num_cols": 23,
+    "iteration_time_ms": 0.15220975875854492,
+    "throughput_rows_per_sec": 6569.880986319223
+  }
+]

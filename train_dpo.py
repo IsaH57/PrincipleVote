@@ -15,7 +15,7 @@ from tqdm import tqdm
 
 from data import RestaurantData, PairwiseComparisonDataset
 
-MAX_LEN = 64 # Max length for generation
+MAX_LEN = 20 # Max length for generation
 
 def get_log_probs(model, tokenizer, prompts, responses, device):
     """
@@ -91,8 +91,8 @@ def main():
     MODEL_NAME = "gpt2"
     BATCH_SIZE = 16
     LR = 1e-4 # Low LR for fine-tuning
-    BETA = 0.1 # DPO KL penalty
-    EPOCHS = 20
+    BETA = 0.1
+    EPOCHS = 2000
     DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
     
     print(f"--- DPO Training ({DEVICE}) ---")
@@ -137,7 +137,11 @@ def main():
     
     policy_model = AutoModelForCausalLM.from_pretrained(MODEL_NAME).to(DEVICE)
     ref_model = AutoModelForCausalLM.from_pretrained(MODEL_NAME).to(DEVICE)
-    ref_model.eval() # Frozen
+    
+    # CRITICAL: Freeze reference model parameters
+    ref_model.eval()
+    for param in ref_model.parameters():
+        param.requires_grad = False
     
     optimizer = optim.AdamW(policy_model.parameters(), lr=LR)
     
@@ -147,7 +151,15 @@ def main():
     
     accumulation_steps = 4 # Simulate larger batch size
     total_steps = (len(train_loader) // accumulation_steps) * EPOCHS
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=total_steps)
+    warmup_steps = min(100, total_steps // 10)
+    
+    # Warmup + Cosine Annealing Scheduler
+    def lr_lambda(step):
+        if step < warmup_steps:
+            return step / warmup_steps
+        return 0.5 * (1 + np.cos(np.pi * (step - warmup_steps) / (total_steps - warmup_steps)))
+    
+    scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda)
     
     for epoch in range(EPOCHS):
         policy_model.train()
@@ -193,10 +205,10 @@ def main():
                 scheduler.step()
                 optimizer.zero_grad()
                 
-                # Optional: Print grad norm occasionally
+                # Print grad norm occasionally for debugging
                 if i % (accumulation_steps * 10) == 0:
-                    # print(f"  Grad Norm: {total_norm:.4f}")
-                    pass
+                    current_lr = optimizer.param_groups[0]['lr']
+                    print(f"  Step {i//accumulation_steps} | Grad Norm: {total_norm:.4f} | LR: {current_lr:.6f}")
             
             total_loss += loss.item() * accumulation_steps
             

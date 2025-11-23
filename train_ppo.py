@@ -72,32 +72,7 @@ def evaluate_ranking(model, tokenizer, r_data, device):
     return rho
 
 # --- 1. Reward Model Training ---
-
-def train_reward_model(rm, tokenizer, train_loader, device, epochs=1):
-    print("Training Reward Model...")
-    optimizer = optim.AdamW(rm.parameters(), lr=1e-5)
-    rm.train()
-    
-    prompt = "The best restaurant is"
-    
-    for epoch in range(epochs):
-        total_loss = 0
-        for batch in tqdm(train_loader, desc=f"RM Epoch {epoch+1}"):
-            w_ids = batch['winner_id'].tolist()
-            l_ids = batch['loser_id'].tolist()
-            
-            # We need to map IDs back to text. 
-            # The dataset provides features, but we need text for GPT2.
-            # We'll access the dataframe directly via the dataset object hack or pass it in.
-            # For now, let's assume we can get text from the batch if we modify dataset?
-            # No, let's just use the global id_to_name map.
-            pass 
-            
-            # Note: This function assumes id_to_name is available in scope or passed.
-            # We will handle this in main.
-            
-    # Since we need id_to_name inside, let's just put the loop in main or pass it.
-    pass
+# (Moved to main() for access to id_to_name mapping)
 
 # --- 2. PPO Implementation ---
 
@@ -109,14 +84,17 @@ def ppo_step(policy, value_model, ref_model, reward_model, tokenizer, optimizer,
     policy.eval()
     inputs = tokenizer(prompts, return_tensors='pt', padding=True).to(DEVICE)
     
-    # Generate
+    # Generate - Add temperature and ensure valid sampling
     with torch.no_grad():
         gen_outputs = policy.generate(
             **inputs, 
             max_new_tokens=10, 
             do_sample=True, 
-            top_k=50, 
-            pad_token_id=tokenizer.eos_token_id
+            top_k=50,
+            temperature=1.0,
+            pad_token_id=tokenizer.eos_token_id,
+            eos_token_id=tokenizer.eos_token_id,
+            repetition_penalty=1.0
         )
     
     # Decode
@@ -147,15 +125,21 @@ def ppo_step(policy, value_model, ref_model, reward_model, tokenizer, optimizer,
     
     # Clamp KL to avoid massive negative rewards
     total_kl = torch.clamp(total_kl, min=0, max=10.0)
+    
+    # Early stopping if KL is too high (policy diverged too much)
+    if total_kl.mean().item() > 5.0:
+        print(f"  [WARNING] KL divergence too high ({total_kl.mean().item():.2f}), skipping this batch")
+        return 0.0
 
     # Total Reward
     # Normalize RM scores roughly to keep them in a reasonable range if they aren't already
     # But for now, just clamping KL is a good safety.
     total_rewards = rm_scores - beta * total_kl
     
-    # Debug stats (optional, but helpful)
-    if np.random.rand() < 0.05:
-        print(f"  [Debug] RM: {rm_scores.mean().item():.2f} | KL: {total_kl.mean().item():.2f} | Rew: {total_rewards.mean().item():.2f}")
+    # Debug stats
+    if np.random.rand() < 0.1:  # Print 10% of the time
+        print(f"  [Debug] RM Score: {rm_scores.mean().item():.2f}±{rm_scores.std().item():.2f} | "
+              f"KL: {total_kl.mean().item():.2f} | Total Reward: {total_rewards.mean().item():.2f}")
 
     # 3. PPO Update Loop
     last_loss = 0
@@ -165,6 +149,12 @@ def ppo_step(policy, value_model, ref_model, reward_model, tokenizer, optimizer,
         policy.train()
         policy_outputs = policy(gen_outputs, attention_mask=attention_mask)
         policy_logits = policy_outputs.logits
+        
+        # Check for NaN/Inf in logits before proceeding
+        if torch.isnan(policy_logits).any() or torch.isinf(policy_logits).any():
+            print("  [WARNING] NaN/Inf detected in policy logits, skipping this PPO epoch")
+            return last_loss if last_loss > 0 else 1.0
+        
         policy_logprobs = F.log_softmax(policy_logits[:, :-1, :], dim=-1)
         new_policy_token_logprobs = torch.gather(policy_logprobs, -1, gen_tokens.unsqueeze(-1)).squeeze(-1)
         
@@ -177,11 +167,13 @@ def ppo_step(policy, value_model, ref_model, reward_model, tokenizer, optimizer,
         targets = total_rewards.detach()
         advantages = targets - values.detach()
         
-        # Normalize Advantages
+        # Normalize Advantages (important for stability)
         advantages = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
         
-        # Ratio
-        ratio = torch.exp(new_policy_token_logprobs - old_policy_token_logprobs)
+        # Ratio - Clamp to prevent extreme values
+        log_ratio = new_policy_token_logprobs - old_policy_token_logprobs
+        log_ratio = torch.clamp(log_ratio, min=-5.0, max=5.0)  # Prevent extreme ratios
+        ratio = torch.exp(log_ratio)
         
         # Broadcast Advantage
         adv_expanded = advantages.unsqueeze(-1).expand_as(new_policy_token_logprobs)
@@ -194,8 +186,8 @@ def ppo_step(policy, value_model, ref_model, reward_model, tokenizer, optimizer,
         policy_loss = -torch.min(surr1, surr2)
         policy_loss = (policy_loss * mask).sum() / mask.sum()
         
-        # Value Loss - Use Huber Loss (SmoothL1) for stability
-        value_loss = F.smooth_l1_loss(values, targets)
+        # Value Loss - Use MSE for simplicity and stability
+        value_loss = F.mse_loss(values, targets)
         
         # Entropy Bonus
         probs = torch.softmax(policy_logits[:, :-1, :], dim=-1)
@@ -205,10 +197,18 @@ def ppo_step(policy, value_model, ref_model, reward_model, tokenizer, optimizer,
         
         loss = policy_loss + 0.1 * value_loss + entropy_loss
         
+        # Check for NaN loss
+        if torch.isnan(loss) or torch.isinf(loss):
+            print("  [WARNING] NaN/Inf detected in loss, skipping optimization step")
+            return last_loss if last_loss > 0 else 1.0
+        
         optimizer.zero_grad()
         loss.backward()
-        torch.nn.utils.clip_grad_norm_(policy.parameters(), 1.0)
-        torch.nn.utils.clip_grad_norm_(value_model.parameters(), 1.0)
+        
+        # More aggressive gradient clipping
+        torch.nn.utils.clip_grad_norm_(policy.parameters(), 0.5)
+        torch.nn.utils.clip_grad_norm_(value_model.parameters(), 0.5)
+        
         optimizer.step()
         
         last_loss = loss.item()
@@ -244,7 +244,11 @@ def main():
     # Policy & Ref
     policy_model = AutoModelForCausalLM.from_pretrained(MODEL_NAME).to(DEVICE)
     ref_model = AutoModelForCausalLM.from_pretrained(MODEL_NAME).to(DEVICE)
+    
+    # CRITICAL: Freeze reference model
     ref_model.eval()
+    for param in ref_model.parameters():
+        param.requires_grad = False
     
     # Value Model (Scalar output)
     value_model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=1).to(DEVICE)
@@ -255,7 +259,7 @@ def main():
     rm_optimizer = optim.AdamW(reward_model.parameters(), lr=1e-5)
     prompt = "The best restaurant is"
     
-    for epoch in range(10):
+    for epoch in range(50):
         reward_model.train()
         total_loss = 0
         for batch in tqdm(train_loader):
@@ -284,14 +288,24 @@ def main():
         
     # 4. Train PPO
     print("\nStep 2: Training Policy with PPO...")
-    ppo_optimizer = optim.AdamW(list(policy_model.parameters()) + list(value_model.parameters()), lr=1e-5)
+    ppo_optimizer = optim.AdamW(list(policy_model.parameters()) + list(value_model.parameters()), lr=5e-6)  # Lower learning rate
     
     for epoch in range(10):
         total_loss = 0
         num_steps = 50 # Number of PPO steps
         
-        for _ in tqdm(range(num_steps), desc=f"PPO Epoch {epoch+1}"):
-            loss = ppo_step(policy_model, value_model, ref_model, reward_model, tokenizer, ppo_optimizer, batch_size=16)
+        for step_idx in tqdm(range(num_steps), desc=f"PPO Epoch {epoch+1}"):
+            try:
+                loss = ppo_step(policy_model, value_model, ref_model, reward_model, tokenizer, ppo_optimizer, batch_size=16)
+            except RuntimeError as e:
+                if "CUDA" in str(e):
+                    print(f"\n  [ERROR] CUDA error at step {step_idx}, clearing cache and continuing...")
+                    torch.cuda.empty_cache()
+                    # Reinitialize the policy from reference to recover
+                    policy_model.load_state_dict(ref_model.state_dict())
+                    loss = 1.0
+                else:
+                    raise e
             
             # ppo_optimizer.step() # Handled inside ppo_step now
             total_loss += loss
