@@ -6,11 +6,11 @@ from torch.utils.data import DataLoader
 import numpy as np
 from pref_voting.generate_profiles import generate_profile
 
-from principle_vote.axioms_gpu import check_anonymity, check_neutrality, check_condorcet, check_pareto, check_independence
-from principle_vote.synth_data import SynthData
-from principle_vote.voting_cnn import VotingCNN
-from principle_vote.voting_mlp import VotingMLP
-from principle_vote.voting_wec import VotingWEC
+from axioms import check_anonymity, check_neutrality, check_condorcet, check_pareto, check_independence
+from synth_data import SynthData
+from voting_cnn import VotingCNN
+from voting_mlp import VotingMLP
+from voting_wec import VotingWEC
 
 torch.manual_seed(42)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -25,39 +25,53 @@ max_num_voters = 55  # n
 def sample_profiles_fulfilling_axiom(axiom: str, num_samples: int, cand_max: int, vot_max: int, prob_model= "IC") -> SynthData:
 
     profiles = []
-    winners = []
+    winners_array = np.zeros((num_samples, cand_max), dtype=np.float32)  # Changed variable name
     while len(profiles)<num_samples:
+        print(f"Collected {len(profiles)}/{num_samples} profiles fulfilling {axiom}")
         num_candidates = np.random.randint(1, cand_max + 1)
         num_voters = np.random.randint(1, vot_max + 1)
         prof = generate_profile(num_candidates, num_voters, probmodel=prob_model)
-        winners = torch.tensor(borda(prof))
-
+        
+        # Get winners for this profile
+        winner_list = borda(prof)  # This is a list like [2]
+        
+        # Convert to binary tensor for checking
+        winners_binary = torch.zeros(cand_max, dtype=torch.int)
+        for w in winner_list:
+            winners_binary[w] = 1
 
         if axiom == "anonymity":
-            check = check_anonymity(prof, winners, cand_max)
+            check = check_anonymity(prof, winner_list, cand_max)  # Pass list directly
         elif axiom == "neutrality":
-            check = check_neutrality(prof, winners, cand_max)
+            check = check_neutrality(prof, winners_binary, cand_max)
         elif axiom == "condorcet":
-            check = check_condorcet(prof, winners, cand_max)
+            check = check_condorcet(prof, winners_binary, cand_max)
         elif axiom == "pareto":
-            check = check_pareto(prof, winners, cand_max)
+            check = check_pareto(prof, winners_binary, cand_max)
         elif axiom == "independence":
-            check= check_independence(prof, winners, cand_max)
+            check = check_independence(prof, winners_binary, cand_max)
         else:
             raise ValueError(f"Axiom '{axiom}' not recognized.")
 
         if check == 1:
+            idx = len(profiles)
             profiles.append(prof)
-            winners.append(winners)
+            # Store winners in the array using the binary format
+            for w in winner_list:
+                winners_array[idx, w] = 1
         else:
             continue
+        
+        # Create SynthData object
+    synth_data = SynthData(cand_max=cand_max, vot_max=vot_max, num_samples=num_samples,
+                           prob_model=prob_model, winner_method="borda")
+    
+    # Set the filtered data
+    synth_data.set_raw_data(profiles, winners_array)
 
-    return SynthData(cand_max=max_num_candidates, vot_max=max_num_voters, num_samples=num_samples,
-                     prob_model="IC",
-                     winner_method="borda").set_raw_data(profiles, winners)
-
-
-all_axioms = ["anonymity", "neutrality", "condorcet", "pareto", "independence"]
+    return synth_data
+    
+all_axioms = ["independence", "anonymity", "neutrality", "condorcet", "pareto"]
 results = {}
 
 for a in all_axioms:
@@ -81,11 +95,13 @@ for a in all_axioms:
     ).to(device)
 
     # Training
-    mlp_model.train_model(num_steps=1000, seed=42, plot=True, axiom="none")
+    mlp_model.train_model(num_steps=5000, seed=42, plot=True, axiom="none")
 
-    # Evaluation
+   # Evaluation
     data_test.encode_mlp()
     mlp_X_test, mlp_y_test = data_test.get_encoded_mlp()
+    mlp_X_test = mlp_X_test.to(device) 
+    mlp_y_test = mlp_y_test.to(device) 
 
     acc_hard_mlp = mlp_model.evaluate_model_hard(mlp_X_test, mlp_y_test)
     acc_soft_mlp = mlp_model.evaluate_model_soft(mlp_X_test, mlp_y_test)
@@ -99,7 +115,7 @@ for a in all_axioms:
     ).to(device)
 
     # Training
-    mlp_model_a.train_model(num_steps=1000, seed=42, plot=True, axiom=a)
+    mlp_model_a.train_model(num_steps=5000, seed=42, plot=True, axiom=a)
 
     # Evaluation
     acc_hard_mlp_a = mlp_model_a.evaluate_model_hard(mlp_X_test, mlp_y_test)
@@ -119,9 +135,11 @@ for a in all_axioms:
     # Training
     cnn_model.train_model(num_steps=5000, seed=42, plot=True, axiom="none")
 
-    # Evaluation
+     # Evaluation
     data_test.encode_cnn()
     cnn_X_test, cnn_y_test = data_test.get_encoded_cnn()
+    cnn_X_test = cnn_X_test.to(device) 
+    cnn_y_test = cnn_y_test.to(device) 
     acc_hard_cnn = cnn_model.evaluate_model_hard(cnn_X_test, cnn_y_test)
     acc_soft_cnn = cnn_model.evaluate_model_soft(cnn_X_test, cnn_y_test)
     axiom_satisfaction_cnn = cnn_model.evaluate_axiom_satisfaction(data_test, axiom=a)
@@ -163,6 +181,7 @@ for a in all_axioms:
     # Evaluation
     data_test.encode_wec()
     wec_X_test, wec_y_test = data_test.get_encoded_wec()
+    wec_y_test = wec_y_test.to(device) 
 
     acc_hard_wec = wec_model.evaluate_model_hard(wec_X_test, wec_y_test)
     acc_soft_wec = wec_model.evaluate_model_soft(wec_X_test, wec_y_test)
@@ -210,5 +229,5 @@ for a in all_axioms:
     }
 
 # Write all results to the JSON file
-with open("results/accuracies_axioms.json", "w") as f:
+with open("accuracies_axioms_all.json", "w") as f:
     json.dump(results, f, indent=4)
